@@ -12,14 +12,21 @@ public class Parse {
     public static String parseFromCSVtoString(Scanner in) throws IOException, CsvValidationException {
         String res = "";
         while (in.hasNext()){
-            Reader reader = Files.newBufferedReader(Paths.get(in.next()));
-            CSVReader csvReader = new CSVReader(reader);
+            try {
+                Reader reader = Files.newBufferedReader(Paths.get(in.next()));
+                CSVReader csvReader = new CSVReader(reader);
 
-            String[] record;
-            while ((record = csvReader.readNext()) != null) {
-                res += String.join(" ", record);
-                res += "\n";
+                String[] record;
+                while ((record = csvReader.readNext()) != null) {
+                    res += String.join(" ", record);
+                    res += "\n";
+                }
+            } catch (IOException e){
+                System.out.println("fr");
+            } catch (CsvValidationException e){
+                System.out.println("ef");
             }
+
 
         }
 

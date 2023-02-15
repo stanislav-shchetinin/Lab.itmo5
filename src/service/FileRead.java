@@ -3,16 +3,16 @@ package service;
 import base.Coordinates;
 import base.Vehicle;
 import base.VehicleType;
+import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class FileRead {
-
-    private PriorityQueue<Vehicle> priorityQueue = new PriorityQueue<>();
 
     private static String readString(Scanner in, int numberWord){
         return in.next();
@@ -56,12 +56,15 @@ public class FileRead {
         }
 
     }
-    public PriorityQueue<Vehicle> fileRead(String nameFile){
+    public static PriorityQueue<Vehicle> fileRead(Scanner in) throws CsvValidationException, IOException {
+        PriorityQueue<Vehicle> priorityQueue = new PriorityQueue<>();
         int numberWord = 1;
-        try {
-            Scanner in = new Scanner(Path.of(nameFile), StandardCharsets.UTF_8);
 
-            while (in.hasNext()){
+        String str = Parse.parseFromCSVtoString(in);
+        in = new Scanner(str);
+
+        while (in.hasNext()){
+            try {
                 priorityQueue.add(new Vehicle(
                         readString(in, numberWord), //name
                         new Coordinates(readFloat(in, numberWord + 1), readFloat(in, numberWord + 2)),
@@ -72,13 +75,13 @@ public class FileRead {
                         numberWord //для каждого объекта это значение уникально, поэтому можно использовать как id
                 ));
                 numberWord += 7;
+            } catch (NoSuchElementException e){
+                System.out.println("Нет значения");
             }
-            return priorityQueue;
-        } catch (IOException e){
-            System.out.println("Не существует файла с именем: " + e.getMessage());
+
         }
-        priorityQueue = null;
         return priorityQueue;
+
     }
 
 }

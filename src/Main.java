@@ -1,6 +1,7 @@
 import base.Vehicle;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
+import service.FileRead;
 import service.Parse;
 
 import java.io.*;
@@ -19,7 +20,9 @@ public class Main {
     public static void main(String[] args) throws IOException, CsvValidationException {
 
         Scanner in = new Scanner("files/input.csv");
-        System.out.println(Parse.parseFromCSVtoString(in));
+        //System.out.println(Parse.parseFromCSVtoString(in));
+        PriorityQueue priorityQueue = FileRead.fileRead(in);
+        System.out.println(priorityQueue.toString());
 
     }
 }
