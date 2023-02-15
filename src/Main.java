@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException, CsvValidationException, FileNotFoundException {
-        
+
 
         try (Reader reader = Files.newBufferedReader(Paths.get("files/input.csv"));
              CSVReader csvReader = new CSVReader(reader)) {

@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class FileRead {
 
-    private static PriorityQueue<Vehicle> priorityQueue = new PriorityQueue<>();
+    private PriorityQueue<Vehicle> priorityQueue = new PriorityQueue<>();
 
     private static String readString(Scanner in, int numberWord){
         return in.next();
@@ -56,7 +56,7 @@ public class FileRead {
         }
 
     }
-    public static PriorityQueue<Vehicle> fileRead(String nameFile){
+    public PriorityQueue<Vehicle> fileRead(String nameFile){
         int numberWord = 1;
         try {
             Scanner in = new Scanner(Path.of(nameFile), StandardCharsets.UTF_8);
