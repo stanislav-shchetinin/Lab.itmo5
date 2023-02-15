@@ -16,19 +16,10 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, CsvValidationException, FileNotFoundException {
+    public static void main(String[] args) throws IOException, CsvValidationException {
 
         Scanner in = new Scanner("files/input.csv");
-        while (in.hasNext()){
-            Reader reader = Files.newBufferedReader(Paths.get(in.next()));
-            CSVReader csvReader = new CSVReader(reader);
-
-            String[] record;
-            while ((record = csvReader.readNext()) != null) {
-                System.out.println(String.join(", ", record));
-            }
-
-        }
+        System.out.println(Parse.parseFromCSVtoString(in));
 
     }
 }
