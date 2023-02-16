@@ -1,5 +1,7 @@
 package base;
 
+import exceptions.ReadValueException;
+
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
@@ -15,7 +17,7 @@ public class  Vehicle implements Comparable<Vehicle>{
     private final double EPS = 1e-8;
 
     public Vehicle(String name, Coordinates coordinates, double enginePower,
-                   Long capacity, Double distanceTravelled, VehicleType type, Integer id){
+                   Long capacity, Double distanceTravelled, VehicleType type, Integer id) throws ReadValueException {
         this.name = name;
         this.coordinates = coordinates;
         this.enginePower = enginePower;
@@ -27,23 +29,19 @@ public class  Vehicle implements Comparable<Vehicle>{
         this.creationDate = ZonedDateTime.now(); //текущая дата
 
         if (this.coordinates.getY() > -769){
-            System.out.println("Координата Y должна быть не больще -769, установлено значение -769 в координату Y");
-            this.coordinates.setY(-769);
+            throw new ReadValueException("Координата Y должна быть не больще -769");
         }
 
         if (this.enginePower <= 0){
-            System.out.println("ebginePower должна быть больше 0, установлено значение 100 в enginePower");
-            this.enginePower = 100;
+            throw new ReadValueException("enginePower должна быть больше 0, установлено значение 100 в enginePower");
         }
 
         if (this.capacity <= 0){
-            System.out.println("capacity должна быть больше 0, установлено значение 4 в capacity");
-            this.capacity = 4L;
+            throw new ReadValueException("capacity должна быть больше 0, установлено значение 4 в capacity");
         }
 
         if (this.distanceTravelled <= 0){
-            System.out.println("distanceTravelled должна быть больше 0, установлено значение 0.1 в distanceTravelled");
-            this.distanceTravelled = 0.1d;
+            throw new ReadValueException("distanceTravelled должна быть больше 0, установлено значение 0.1 в distanceTravelled");
         }
 
     }
