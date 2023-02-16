@@ -4,9 +4,10 @@ import exceptions.ReadValueException;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class  Vehicle implements Comparable<Vehicle>{
-    private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private UUID id = UUID.randomUUID(); //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private java.time.ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -15,7 +16,6 @@ public class  Vehicle implements Comparable<Vehicle>{
     private Double distanceTravelled; //Поле может быть null, Значение поля должно быть больше 0
     private VehicleType type; //Поле не может быть null
     private final double EPS = 1e-8;
-
     public Vehicle(String name, Coordinates coordinates, double enginePower,
                    Long capacity, Double distanceTravelled, VehicleType type, Integer id) throws ReadValueException {
         this.name = name;
@@ -25,7 +25,6 @@ public class  Vehicle implements Comparable<Vehicle>{
         this.distanceTravelled = distanceTravelled;
         this.type = type;
 
-        this.id = id;
         this.creationDate = ZonedDateTime.now(); //текущая дата
 
         if (this.coordinates.getY() > -769){

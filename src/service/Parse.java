@@ -27,7 +27,6 @@ public class Parse {
                 System.out.println(e.getMessage());
             }
 
-
         }
 
         return res;
