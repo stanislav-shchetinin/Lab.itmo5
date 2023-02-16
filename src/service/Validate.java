@@ -1,6 +1,10 @@
 package service;
 
 import base.VehicleType;
+import exceptions.ReadDoubleException;
+import exceptions.ReadFloatException;
+import exceptions.ReadLongException;
+import exceptions.ReadVehicleTypeException;
 
 import java.util.Scanner;
 
@@ -9,42 +13,34 @@ public class Validate { //все методы видны в пределах к�
     static String readString(Scanner in, int numberWord){
         return in.next();
     }
-    static float readFloat(Scanner in, int numberWord){
+    static float readFloat(Scanner in, int numberWord) throws ReadFloatException {
         if (in.hasNextFloat()){
             return in.nextFloat(); //Должна быть запятая
         } else {
-            System.out.println("Слово #" + numberWord + ": \"" + in.next() + "\" не типа float, оно было пропущено" +
-                    "\nДобавлено значение по умолчанию для типа float (0)");
-            return 0f;
+            throw new ReadFloatException(numberWord, in.next());
         }
     }
-    static Long readLong(Scanner in, int numberWord){
+    static Long readLong(Scanner in, int numberWord) throws ReadLongException {
         if (in.hasNextLong()){
             return in.nextLong();
         } else {
-            System.out.println("Слово #" + numberWord + ": \"" + in.next() + "\" не типа Long, оно было пропущено" +
-                    "\nДобавлено значение по умолчанию для типа Long (4)");
-            return 4L;
+            throw new ReadLongException(numberWord, in.next());
         }
     }
-    static double readDouble(Scanner in, int numberWord){
+    static double readDouble(Scanner in, int numberWord) throws ReadDoubleException {
         if (in.hasNextDouble()){
             return in.nextDouble();
         } else {
-            System.out.println("Слово #" + numberWord + ": \"" + in.next() + "\" не типа double, оно было пропущено" +
-                    "\nДобавлено значение по умолчанию для типа double (100)");
-            return 100d;
+            throw new ReadDoubleException(numberWord, in.next());
         }
     }
 
-    static VehicleType readVehicleType(Scanner in, int numberWord){
+    static VehicleType readVehicleType(Scanner in, int numberWord) throws ReadVehicleTypeException {
         String string = in.next();
         try {
             return VehicleType.valueOf(string); //Возвращает тип VehicleType с именем string
         } catch (IllegalArgumentException e){
-            System.out.println("Нет такого типа VehicleType, как: \"" + string + "\", слово #" + numberWord + " было пропущено" +
-                    "\nДобавлено значение по умолчанию для типа VehicleType (CAR)");
-            return VehicleType.CAR;
+            throw new ReadVehicleTypeException(numberWord, in.next());
         }
 
     }

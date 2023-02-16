@@ -4,6 +4,10 @@ import base.Coordinates;
 import base.Vehicle;
 import base.VehicleType;
 import com.opencsv.exceptions.CsvValidationException;
+import exceptions.ReadDoubleException;
+import exceptions.ReadFloatException;
+import exceptions.ReadLongException;
+import exceptions.ReadVehicleTypeException;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -36,7 +40,9 @@ public class FileRead {
                 ));
                 numberWord += 7;
             } catch (NoSuchElementException e){
-                System.out.println("Нет значения");
+                System.out.println("Недостаточно значений, чтобы добавить последний объект");
+            } catch (ReadVehicleTypeException | ReadFloatException | ReadLongException | ReadDoubleException e) {
+                System.out.println(e.getMessage());
             }
 
         }

@@ -23,7 +23,7 @@ public class  Vehicle implements Comparable<Vehicle>{
         this.distanceTravelled = distanceTravelled;
         this.type = type;
 
-        this.id = id; //Уникальное, т.к. хеш-код берется по ссылке
+        this.id = id;
         this.creationDate = ZonedDateTime.now(); //текущая дата
 
         if (this.coordinates.getY() > -769){
