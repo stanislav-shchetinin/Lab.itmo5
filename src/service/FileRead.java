@@ -15,7 +15,7 @@ import static service.Validate.*;
 
 public class FileRead {
 
-    public static PriorityQueue<Vehicle> fileRead(Scanner in) throws CsvValidationException, IOException{
+    public static PriorityQueue<Vehicle> fileRead(Scanner in) {
         PriorityQueue<Vehicle> priorityQueue = new PriorityQueue<>();
         int numberWord = 1;
 

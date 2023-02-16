@@ -29,7 +29,7 @@ public class  Vehicle implements Comparable<Vehicle>{
         this.creationDate = ZonedDateTime.now(); //текущая дата
 
         if (this.coordinates.getY() > -769){
-            throw new ReadValueException("Координата Y должна быть не больще -769");
+            throw new ReadValueException("Координата Y должна быть не больше -769");
         }
 
         if (this.enginePower <= 0){

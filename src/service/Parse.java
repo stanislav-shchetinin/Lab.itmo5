@@ -22,9 +22,9 @@ public class Parse {
                     res += "\n";
                 }
             } catch (IOException e){
-                System.out.println("fr");
+                System.out.println(String.format("Фаил с именем %s не найден", e.getMessage()));
             } catch (CsvValidationException e){
-                System.out.println("ef");
+                System.out.println(e.getMessage());
             }
 
 
