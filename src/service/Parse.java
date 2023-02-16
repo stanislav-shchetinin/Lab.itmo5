@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Parse {
-    public static String parseFromCSVtoString(Scanner in) throws IOException, CsvValidationException {
+    public static String parseFromCSVtoString(Scanner in){
         String res = "";
         while (in.hasNext()){
             try {

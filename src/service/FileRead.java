@@ -2,16 +2,10 @@ package service;
 
 import base.Coordinates;
 import base.Vehicle;
-import base.VehicleType;
 import com.opencsv.exceptions.CsvValidationException;
-import exceptions.ReadDoubleException;
-import exceptions.ReadFloatException;
-import exceptions.ReadLongException;
-import exceptions.ReadVehicleTypeException;
+import exceptions.ReadTypeException;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
 import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
 import java.util.Scanner;
@@ -20,7 +14,7 @@ import static service.Validate.*;
 
 public class FileRead {
 
-    public static PriorityQueue<Vehicle> fileRead(Scanner in) throws CsvValidationException, IOException {
+    public static PriorityQueue<Vehicle> fileRead(Scanner in) throws CsvValidationException, IOException{
         PriorityQueue<Vehicle> priorityQueue = new PriorityQueue<>();
         int numberWord = 1;
 
@@ -41,8 +35,9 @@ public class FileRead {
                 numberWord += 7;
             } catch (NoSuchElementException e){
                 System.out.println("Недостаточно значений, чтобы добавить последний объект");
-            } catch (ReadVehicleTypeException | ReadFloatException | ReadLongException | ReadDoubleException e) {
+            } catch (ReadTypeException e) {
                 System.out.println(e.getMessage());
+                break;
             }
 
         }
