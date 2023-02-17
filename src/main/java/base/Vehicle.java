@@ -17,7 +17,7 @@ public class  Vehicle implements Comparable<Vehicle>{
     private VehicleType type; //Поле не может быть null
     private final double EPS = 1e-8;
     public Vehicle(String name, Coordinates coordinates, double enginePower,
-                   Long capacity, Double distanceTravelled, VehicleType type, Integer id) throws ReadValueException {
+                   Long capacity, Double distanceTravelled, VehicleType type) throws ReadValueException {
         this.name = name;
         this.coordinates = coordinates;
         this.enginePower = enginePower;

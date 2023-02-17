@@ -31,8 +31,7 @@ public class FileRead {
                         readDouble(in, numberWord + 3), //enginePower
                         readLong(in, numberWord + 4), //capacity
                         readDouble(in, numberWord + 5), //distanceTravelled
-                        readVehicleType(in, numberWord + 6),
-                        numberWord //для каждого объекта это значение уникально, поэтому можно использовать как id
+                        readVehicleType(in, numberWord + 6)
                 );
                 numberWord += 7;
             } catch (NoSuchElementException e){
