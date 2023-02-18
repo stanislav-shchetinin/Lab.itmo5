@@ -1,5 +1,6 @@
 import com.opencsv.exceptions.CsvValidationException;
 import service.FileRead;
+import service.Parse;
 
 import java.io.*;
 import java.util.Map;
@@ -10,14 +11,11 @@ import static console.Console.getFile;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException {
 
         File file = getFile(); //NAME_FILE
-
-        /*Scanner in = new Scanner("files/input.csv");
-        PriorityQueue priorityQueue = FileRead.fileRead(in);
-
-        System.out.println(priorityQueue.toString());*/
+        PriorityQueue priorityQueue = FileRead.fileRead(file);
+        System.out.println(priorityQueue.toString());
 
     }
 }

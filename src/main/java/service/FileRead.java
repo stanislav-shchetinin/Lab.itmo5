@@ -6,6 +6,7 @@ import com.opencsv.exceptions.CsvValidationException;
 import exceptions.ReadTypeException;
 import exceptions.ReadValueException;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
@@ -15,12 +16,12 @@ import static service.Validate.*;
 
 public class FileRead {
 
-    public static PriorityQueue<Vehicle> fileRead(Scanner in) {
+    public static PriorityQueue<Vehicle> fileRead(File file) {
         PriorityQueue<Vehicle> priorityQueue = new PriorityQueue<>();
         int numberWord = 1;
 
-        String str = Parse.parseFromCSVtoString(in);
-        in = new Scanner(str);
+        String str = Parse.parseFromCSVtoString(new Scanner(file.getAbsolutePath()));
+        Scanner in = new Scanner(str);
 
         while (in.hasNext()){
             Vehicle vehicle = null;
