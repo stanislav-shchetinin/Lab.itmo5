@@ -7,6 +7,7 @@ import exceptions.ReadTypeException;
 import exceptions.ReadValueException;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
@@ -16,11 +17,11 @@ import static service.Validate.*;
 
 public class FileRead {
 
-    public static PriorityQueue<Vehicle> fileRead(File file) {
+    public static PriorityQueue<Vehicle> fileRead(File file) throws FileNotFoundException {
         PriorityQueue<Vehicle> priorityQueue = new PriorityQueue<>();
         int numberWord = 1;
 
-        String str = Parse.parseFromCSVtoString(new Scanner(file.getAbsolutePath()));
+        String str = Parse.parseFromCSVtoString(file);
         Scanner in = new Scanner(str);
 
         while (in.hasNext()){

@@ -9,11 +9,12 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Parse {
-    public static String parseFromCSVtoString(Scanner in){
+    public static String parseFromCSVtoString(File file) throws FileNotFoundException {
         String res = "";
+        Scanner in = new Scanner(file);
         while (in.hasNext()){
             try {
-                Reader reader = Files.newBufferedReader(Paths.get(in.next()));
+                Reader reader = new StringReader(in.next());
                 CSVReader csvReader = new CSVReader(reader);
 
                 String[] record;
