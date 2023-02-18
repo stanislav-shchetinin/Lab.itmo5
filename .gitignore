@@ -1,4 +1,4 @@
 .idea/
-out/
 Lab5.iml
-target/classes/*/*
+target/
+*.classes
