@@ -1,4 +1,3 @@
 .idea/
 Lab5.iml
-target/
-*.class
+target/Main.class
