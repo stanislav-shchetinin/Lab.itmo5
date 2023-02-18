@@ -1,4 +1,4 @@
 .idea/
 Lab5.iml
 target/
-*.classes
+*.class
