@@ -20,6 +20,7 @@ public class Console {
                 File file = new File(nameFile);
                 if (file.exists() && !file.isDirectory()){
                     System.out.println("Успех!");
+                    in.close();
                     return file;
                 } else {
                     System.out.println("Не существует файла по указанному пути");

@@ -29,7 +29,7 @@ public class Parse {
             }
 
         }
-
+        in.close();
         return res;
 
     }

@@ -46,6 +46,7 @@ public class FileRead {
                 priorityQueue.add(vehicle);
             }
         }
+        in.close();
         return priorityQueue;
 
     }
