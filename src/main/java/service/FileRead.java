@@ -12,10 +12,14 @@ import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static service.Validate.*;
 
 public class FileRead {
+
+    private static final Logger logger = Logger.getLogger(FileRead.class.getName());
 
     public static PriorityQueue<Vehicle> fileRead(File file) throws FileNotFoundException {
         PriorityQueue<Vehicle> priorityQueue = new PriorityQueue<>();
@@ -37,9 +41,9 @@ public class FileRead {
                 );
                 numberWord += 7;
             } catch (NoSuchElementException e){
-                System.out.println("Недостаточно значений, чтобы добавить последний объект");
+                logger.warning("Недостаточно значений, чтобы добавить последний объект");
             } catch (ReadTypeException | ReadValueException e) {
-                System.out.println(e.getMessage());
+                logger.warning(e.getMessage());
                 break;
             }
             if (vehicle != null){

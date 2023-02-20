@@ -7,8 +7,11 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Parse {
+
+    private static final Logger logger = Logger.getLogger(Parse.class.getName());
     public static String parseFromCSVtoString(File file) throws FileNotFoundException {
         String res = "";
         Scanner in = new Scanner(file);
@@ -23,9 +26,9 @@ public class Parse {
                     res += "\n";
                 }
             } catch (IOException e){
-                System.out.println(String.format("Фаил с именем %s не найден", e.getMessage()));
+                logger.warning(String.format("Фаил с именем %s не найден", e.getMessage()));
             } catch (CsvValidationException e){
-                System.out.println(e.getMessage());
+                logger.warning(e.getMessage());
             }
 
         }

@@ -1,10 +1,15 @@
 package console;
 
+import service.FileRead;
+
 import java.io.File;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Console {
+
+    private static final Logger logger = Logger.getLogger(Console.class.getName());
     public static File getFile(){
 
         String nameFile = "";
@@ -19,15 +24,14 @@ public class Console {
                 nameFile = mapEnv.get(nameVar);
                 File file = new File(nameFile);
                 if (file.exists() && !file.isDirectory()){
-                    System.out.println("Успех!");
+                    logger.info("Файл успешно получен");
                     in.close();
                     return file;
                 } else {
-                    System.out.println("Не существует файла по указанному пути");
+                    System.out.print("Не существует файла по указанному пути");
                 }
-
             } else {
-                System.out.println("Не существует такой переменной окружения");
+                System.out.print("Не существует такой переменной окружения");
             }
         }
     }
