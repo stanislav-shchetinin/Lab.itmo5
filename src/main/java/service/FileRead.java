@@ -21,7 +21,8 @@ public class FileRead {
 
     private static final Logger logger = Logger.getLogger(FileRead.class.getName());
 
-    public static PriorityQueue<Vehicle> fileRead(File file) throws FileNotFoundException {
+    public static PriorityQueue<Vehicle> fileRead(File file){
+
         PriorityQueue<Vehicle> priorityQueue = new PriorityQueue<>();
         int numberWord = 1;
 

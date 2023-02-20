@@ -12,11 +12,14 @@ import java.util.logging.Logger;
 public class Parse {
 
     private static final Logger logger = Logger.getLogger(Parse.class.getName());
-    public static String parseFromCSVtoString(File file) throws FileNotFoundException {
+    public static String parseFromCSVtoString(File file) {
+
         String res = "";
-        Scanner in = new Scanner(file);
-        while (in.hasNext()){
-            try {
+
+        try {
+            Scanner in = new Scanner(file);
+            while (in.hasNext()) {
+
                 Reader reader = new StringReader(in.next());
                 CSVReader csvReader = new CSVReader(reader);
 
@@ -25,14 +28,18 @@ public class Parse {
                     res += String.join(" ", record);
                     res += "\n";
                 }
-            } catch (IOException e){
-                logger.warning(String.format("Фаил с именем %s не найден", e.getMessage()));
-            } catch (CsvValidationException e){
-                logger.warning(e.getMessage());
-            }
 
+            }
+            in.close();
+        } catch (FileNotFoundException e){
+            logger.warning(String.format("%s: Нет прав на чтение файла", e.getMessage()));
+        } catch (IOException e){
+            logger.warning(String.format("Файл с именем %s не найден", e.getMessage()));
+        } catch (CsvValidationException e){
+            logger.warning(e.getMessage());
         }
-        in.close();
+
+
         return res;
 
     }

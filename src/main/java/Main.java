@@ -14,9 +14,10 @@ import static console.Console.getFile;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args){
 
         File file = getFile(); //NAME_FILE
+
         PriorityQueue priorityQueue = FileRead.fileRead(file);
         System.out.println(priorityQueue.toString());
 
