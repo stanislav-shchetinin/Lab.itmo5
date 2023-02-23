@@ -40,6 +40,6 @@ public class Console {
     }
     public static void inputCommands(CollectionClass collectionClass){
         HashMap<String, Command> noArgumentCommands = InitMap.noArgumentCommandHashMap(collectionClass);
-        noArgumentCommands.get("info").execute();
+        noArgumentCommands.get("help").execute();
     }
 }
