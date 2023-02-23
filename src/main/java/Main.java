@@ -25,12 +25,12 @@ public class Main {
 
         File file = getFile(); //NAME_FILE
 
-        CollectionClass collectionClass = new CollectionClass<>(new PriorityQueue<Vehicle>());
+        CollectionClass collectionClass = new CollectionClass();
 
         collectionClass.collection = FileRead.fileRead(file);
         System.out.println(collectionClass.toString());
 
-
+        Console.inputCommands(collectionClass);
 
     }
 }

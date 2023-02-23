@@ -1,12 +1,13 @@
 package console;
 
-import service.FileRead;
+import service.CollectionClass;
+import service.command.Command;
+import service.command.InitMap;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.function.Supplier;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Console {
@@ -37,8 +38,8 @@ public class Console {
             }
         }
     }
-    public static void inputCommands(){
-        Scanner in = new Scanner(System.in);
-
+    public static void inputCommands(CollectionClass collectionClass){
+        HashMap<String, Command> noArgumentCommands = InitMap.noArgumentCommandHashMap(collectionClass);
+        noArgumentCommands.get("info").execute();
     }
 }
