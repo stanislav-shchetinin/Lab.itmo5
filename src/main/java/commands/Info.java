@@ -13,9 +13,9 @@ public class Info implements Command {
     @Override
     public void execute() {
         System.out.println(String.format("Тип: %s\nДата инициализации: %s\nКоличество элементов: %d",
-                collectionClass.collection.getClass().getSimpleName(),
+                collectionClass.getCollection().getClass().getSimpleName(),
                 collectionClass.getTime(),
-                collectionClass.collection.size())
+                collectionClass.getCollection().size())
         );
     }
 }

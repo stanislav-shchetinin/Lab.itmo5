@@ -20,15 +20,11 @@ import static console.Console.getFile;
 public class Main {
 
     private static final Logger logger = Logger.getLogger(Main.class.getName());
-
     public static void main(String[] args){
 
         File file = getFile(); //NAME_FILE
 
-        CollectionClass collectionClass = new CollectionClass();
-
-        collectionClass.collection = FileRead.fileRead(file);
-        System.out.println(collectionClass.toString());
+        CollectionClass collectionClass = new CollectionClass(FileRead.fileRead(file));
 
         Console.inputCommands(collectionClass);
 
