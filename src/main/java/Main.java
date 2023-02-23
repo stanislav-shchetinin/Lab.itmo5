@@ -1,6 +1,8 @@
+import base.Vehicle;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import console.Console;
+import service.CollectionClass;
 import service.FileRead;
 import service.Parse;
 
@@ -21,10 +23,14 @@ public class Main {
 
     public static void main(String[] args){
 
-        /*File file = getFile(); //NAME_FILE
+        File file = getFile(); //NAME_FILE
 
-        PriorityQueue priorityQueue = FileRead.fileRead(file);
-        System.out.println(priorityQueue.toString());*/
+        CollectionClass collectionClass = new CollectionClass<>(new PriorityQueue<Vehicle>());
+
+        collectionClass.collection = FileRead.fileRead(file);
+        System.out.println(collectionClass.toString());
+
+
 
     }
 }

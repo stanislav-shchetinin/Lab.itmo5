@@ -37,4 +37,8 @@ public class Console {
             }
         }
     }
+    public static void inputCommands(){
+        Scanner in = new Scanner(System.in);
+
+    }
 }
