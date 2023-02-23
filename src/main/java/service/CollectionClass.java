@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 
 public class CollectionClass{
     private Date date;
-    public PriorityQueue collection = new PriorityQueue();
+    private PriorityQueue collection = new PriorityQueue();
     public CollectionClass (PriorityQueue collection){
         this.collection = collection;
         date = new Date();
@@ -20,8 +20,16 @@ public class CollectionClass{
         return date;
     }
 
+    public PriorityQueue getCollection() {
+        return collection;
+    }
+
     @Override
     public String toString() {
         return collection.toString();
+    }
+
+    public void clear(){
+        collection.clear();
     }
 }

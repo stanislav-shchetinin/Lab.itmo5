@@ -1,5 +1,6 @@
 package service.command;
 
+import commands.Clear;
 import commands.Help;
 import commands.Info;
 import commands.Show;
@@ -13,6 +14,7 @@ public class InitMap {
         hashMap.put("info", new Info(collectionClass));
         hashMap.put("help", new Help());
         hashMap.put("show", new Show(collectionClass));
+        hashMap.put("clear", new Clear(collectionClass));
         return hashMap;
     }
 }

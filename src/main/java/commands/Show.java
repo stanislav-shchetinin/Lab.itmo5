@@ -11,6 +11,6 @@ public class Show implements Command {
     }
     @Override
     public void execute() {
-        System.out.print(collectionClass.collection.toString().substring(1, collectionClass.collection.toString().length() - 1));
+        System.out.print(collectionClass.getCollection().toString().substring(1, collectionClass.getCollection().toString().length() - 1));
     }
 }
