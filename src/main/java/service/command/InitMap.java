@@ -15,6 +15,7 @@ public class InitMap {
         hashMap.put("exit", new Exit());
         hashMap.put("remove_first", new RemoveFirst(collectionClass));
         hashMap.put("print_ascending", new PrintAscending(collectionClass));
+        hashMap.put("print_unique_engine_power", new PrintUniqueEnginePower(collectionClass));
         return hashMap;
     }
 }

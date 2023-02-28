@@ -45,6 +45,10 @@ public class  Vehicle implements Comparable<Vehicle>{
 
     }
 
+    public double getEnginePower() {
+        return enginePower;
+    }
+
     private int compDouble (double l, double r){
         if (Math.abs(l - r) < EPS){
             return 0;

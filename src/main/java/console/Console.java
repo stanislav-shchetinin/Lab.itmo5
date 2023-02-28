@@ -20,7 +20,7 @@ public class Console {
         Scanner in = new Scanner(System.in);
 
         while (true){
-            System.out.print("Введите имя переменной среды: ");
+            System.out.print("\nВведите имя переменной среды: ");
             String nameVar = in.nextLine();
 
             if (mapEnv.containsKey(nameVar)){
@@ -40,6 +40,6 @@ public class Console {
     }
     public static void inputCommands(CollectionClass collectionClass){
         HashMap<String, Command> noArgumentCommands = InitMap.noArgumentCommandHashMap(collectionClass);
-        noArgumentCommands.get("print_ascending").execute();
+        noArgumentCommands.get("print_unique_engine_power").execute();
     }
 }

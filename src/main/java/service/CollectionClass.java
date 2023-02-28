@@ -1,9 +1,9 @@
 package service;
 
+import base.Vehicle;
+
 import java.time.ZonedDateTime;
-import java.util.Collection;
-import java.util.Date;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class CollectionClass{
     private Date date;
@@ -40,5 +40,13 @@ public class CollectionClass{
         while (!collectionCopy.isEmpty()){
             System.out.println(collectionCopy.poll().toString());
         }
+    }
+    public void printUniqueEnginePower(){
+        PriorityQueue<Vehicle> collectionCopy = collection;
+        HashSet hashSet = new HashSet<Double>();
+        while (!collectionCopy.isEmpty()){
+            hashSet.add(collectionCopy.poll().getEnginePower());
+        }
+        System.out.print(hashSet.toString());
     }
 }
