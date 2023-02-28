@@ -13,6 +13,7 @@ public class InitMap {
         hashMap.put("show", new Show(collectionClass));
         hashMap.put("clear", new Clear(collectionClass));
         hashMap.put("exit", new Exit());
+        hashMap.put("remove_first", new RemoveFirst(collectionClass));
         return hashMap;
     }
 }

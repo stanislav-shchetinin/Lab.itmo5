@@ -32,4 +32,7 @@ public class CollectionClass{
     public void clear(){
         collection.clear();
     }
+    public void removeFirst(){
+        collection.poll();
+    }
 }
