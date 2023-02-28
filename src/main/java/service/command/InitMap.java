@@ -1,9 +1,6 @@
 package service.command;
 
-import commands.Clear;
-import commands.Help;
-import commands.Info;
-import commands.Show;
+import commands.*;
 import service.CollectionClass;
 
 import java.util.HashMap;
@@ -15,6 +12,7 @@ public class InitMap {
         hashMap.put("help", new Help());
         hashMap.put("show", new Show(collectionClass));
         hashMap.put("clear", new Clear(collectionClass));
+        hashMap.put("exit", new Exit());
         return hashMap;
     }
 }
