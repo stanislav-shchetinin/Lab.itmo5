@@ -1,8 +1,12 @@
 package service;
 
+import base.Coordinates;
+import base.Vehicle;
 import base.VehicleType;
 import exceptions.ReadTypeException;
+import exceptions.ReadValueException;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Validate { //все методы видны в пределах классов service
@@ -41,4 +45,17 @@ public class Validate { //все методы видны в пределах к�
         }
 
     }
+
+    static Vehicle readVehicle(Scanner in, int numberWord) throws NoSuchElementException, ReadTypeException, ReadValueException {
+        Vehicle vehicle = new Vehicle(
+                readString(in, numberWord), //name
+                new Coordinates(readFloat(in, numberWord + 1), readFloat(in, numberWord + 2)),
+                readDouble(in, numberWord + 3), //enginePower
+                readLong(in, numberWord + 4), //capacity
+                readDouble(in, numberWord + 5), //distanceTravelled
+                readVehicleType(in, numberWord + 6)
+        );
+        return vehicle;
+    }
+
 }
