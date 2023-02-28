@@ -35,4 +35,10 @@ public class CollectionClass{
     public void removeFirst(){
         collection.poll();
     }
+    public void printAscending(){
+        PriorityQueue collectionCopy = collection;
+        while (!collectionCopy.isEmpty()){
+            System.out.println(collectionCopy.poll().toString());
+        }
+    }
 }

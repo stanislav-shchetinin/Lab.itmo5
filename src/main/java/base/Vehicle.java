@@ -83,6 +83,6 @@ public class  Vehicle implements Comparable<Vehicle>{
         return "******************\nId: " + id + "\nName: " + name + "\nCoordinates: " + coordinates.toString() +
                 "\nCreation Date: " + creationDate + "\nEngine Power: " + enginePower +
                 "\nCapacity: " + capacity + "\nDistance Travelled: " + distanceTravelled +
-                "\nType: " + type + "\n******************";
+                "\nType: " + type + "\n******************\n";
     }
 }

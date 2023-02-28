@@ -14,6 +14,7 @@ public class InitMap {
         hashMap.put("clear", new Clear(collectionClass));
         hashMap.put("exit", new Exit());
         hashMap.put("remove_first", new RemoveFirst(collectionClass));
+        hashMap.put("print_ascending", new PrintAscending(collectionClass));
         return hashMap;
     }
 }
