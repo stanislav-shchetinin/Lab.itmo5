@@ -49,6 +49,14 @@ public class  Vehicle implements Comparable<Vehicle>{
         return enginePower;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public Long getCapacity() {
+        return capacity;
+    }
+
     private int compDouble (double l, double r){
         if (Math.abs(l - r) < EPS){
             return 0;
@@ -84,9 +92,10 @@ public class  Vehicle implements Comparable<Vehicle>{
 
     @Override
     public String toString() {
-        return "******************\nId: " + id + "\nName: " + name + "\nCoordinates: " + coordinates.toString() +
-                "\nCreation Date: " + creationDate + "\nEngine Power: " + enginePower +
-                "\nCapacity: " + capacity + "\nDistance Travelled: " + distanceTravelled +
-                "\nType: " + type + "\n******************\n";
+        return String.format(
+                "\nId: %s\nName: %s\nCoordinates: %s\nCreation Date: %s" +
+                        "\nEngine Power: %f\nCapacity: %d\nDistance Travelled: %f\nType: %s\n******************\n",
+                id.toString(), name, coordinates.toString(), creationDate.toString(), enginePower, capacity, distanceTravelled, type.toString()
+        );
     }
 }

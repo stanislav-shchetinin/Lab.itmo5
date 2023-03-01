@@ -1,13 +1,14 @@
 package service;
 
 import base.Vehicle;
+import console.Console;
 
 import java.time.ZonedDateTime;
 import java.util.*;
 
 public class CollectionClass{
     private Date date;
-    private PriorityQueue collection = new PriorityQueue();
+    private PriorityQueue<Vehicle> collection = new PriorityQueue();
     public CollectionClass (PriorityQueue collection){
         this.collection = collection;
         date = new Date();
@@ -26,7 +27,8 @@ public class CollectionClass{
 
     @Override
     public String toString() {
-        return collection.toString();
+        String cs = collection.toString();
+        return cs.substring(1, cs.length() - 1);
     }
 
     public void clear(){
@@ -49,4 +51,26 @@ public class CollectionClass{
         }
         System.out.print(hashSet.toString());
     }
+    public void removeById (UUID id){
+        PriorityQueue<Vehicle> collectionNew = new PriorityQueue<Vehicle>();
+        while (!collection.isEmpty()){
+            Vehicle vehicle = (Vehicle) collection.poll();
+            if (vehicle.getId() != id){
+                collectionNew.add(vehicle);
+            }
+        }
+        collection = collectionNew;
+    }
+
+    public void countByCapacity(Long capacity){
+        Integer count = 0;
+        PriorityQueue <Vehicle> collectionCopy = collection;
+        while (!collectionCopy.isEmpty()){
+            if (collectionCopy.poll().getCapacity() == capacity){
+                count += 1;
+            }
+        }
+        System.out.println(count);
+    }
+
 }

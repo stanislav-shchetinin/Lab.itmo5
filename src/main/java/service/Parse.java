@@ -16,8 +16,7 @@ public class Parse {
 
         String res = "";
 
-        try {
-            Scanner in = new Scanner(file);
+        try (Scanner in = new Scanner(file)){
             in.nextLine(); //Заголовок
             while (in.hasNext()) {
 
@@ -29,9 +28,7 @@ public class Parse {
                     res += String.join(" ", record);
                     res += "\n";
                 }
-
             }
-            in.close();
         } catch (FileNotFoundException e){
             logger.warning(String.format("%s: Нет прав на чтение файла", e.getMessage()));
         } catch (IOException e){
