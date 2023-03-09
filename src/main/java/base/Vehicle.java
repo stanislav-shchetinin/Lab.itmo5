@@ -2,6 +2,8 @@ package base;
 
 import exceptions.ReadValueException;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -15,7 +17,6 @@ public class  Vehicle implements Comparable<Vehicle>{
     private Long capacity; //Поле может быть null, Значение поля должно быть больше 0
     private Double distanceTravelled; //Поле может быть null, Значение поля должно быть больше 0
     private VehicleType type; //Поле не может быть null
-    private final double EPS = 1e-8;
     public Vehicle(String name, Coordinates coordinates, double enginePower,
                    Long capacity, Double distanceTravelled, VehicleType type) throws ReadValueException {
         this.name = name;
@@ -57,15 +58,12 @@ public class  Vehicle implements Comparable<Vehicle>{
         return capacity;
     }
 
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
     private int compDouble (double l, double r){
-        if (Math.abs(l - r) < EPS){
-            return 0;
-        } else {
-            if (l < r){
-                return -1;
-            }
-            return 1;
-        }
+        return Double.valueOf(l).compareTo(Double.valueOf(r));
     }
 
     @Override
@@ -95,7 +93,8 @@ public class  Vehicle implements Comparable<Vehicle>{
         return String.format(
                 "\nId: %s\nName: %s\nCoordinates: %s\nCreation Date: %s" +
                         "\nEngine Power: %f\nCapacity: %d\nDistance Travelled: %f\nType: %s\n******************\n",
-                id.toString(), name, coordinates.toString(), creationDate.toString(), enginePower, capacity, distanceTravelled, type.toString()
+                id.toString(), name, coordinates.toString(), creationDate.toString(), enginePower, capacity,
+                distanceTravelled, type.toString()
         );
     }
 }
