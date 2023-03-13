@@ -38,13 +38,13 @@ public class CollectionClass{
         collection.poll();
     }
     public void printAscending(){
-        PriorityQueue collectionCopy = collection;
+        PriorityQueue<Vehicle> collectionCopy = new PriorityQueue<>(collection);
         while (!collectionCopy.isEmpty()){
             System.out.println(collectionCopy.poll().toString());
         }
     }
     public void printUniqueEnginePower(){
-        PriorityQueue<Vehicle> collectionCopy = collection;
+        PriorityQueue<Vehicle> collectionCopy = new PriorityQueue<>(collection);
         HashSet hashSet = new HashSet<Double>();
         while (!collectionCopy.isEmpty()){
             hashSet.add(collectionCopy.poll().getEnginePower());
