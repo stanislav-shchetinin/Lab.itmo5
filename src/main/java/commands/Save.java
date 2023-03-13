@@ -14,7 +14,7 @@ import java.util.PriorityQueue;
 public class Save implements Command {
 
     private CollectionClass collectionClass;
-    private final String HEAD = "id,name,coordinates.x,coordinates.y,date,engine_power,capacity,distance_travelled,type";
+    private final String HEAD = "id,name,coordinates.x,coordinates.y,date,engine_power,capacity,distance_travelled,type\n";
     private File file;
 
     public Save(CollectionClass collectionClass, File file){
