@@ -64,13 +64,17 @@ public class CollectionClass{
 
     public void countByCapacity(Long capacity){
         Integer count = 0;
-        PriorityQueue <Vehicle> collectionCopy = collection;
+        PriorityQueue<Vehicle> collectionCopy = new PriorityQueue<>(collection);
         while (!collectionCopy.isEmpty()){
             if (collectionCopy.poll().getCapacity() == capacity){
                 count += 1;
             }
         }
         System.out.println(count);
+    }
+
+    public void add(Vehicle vehicle){
+        collection.add(vehicle);
     }
 
 }
