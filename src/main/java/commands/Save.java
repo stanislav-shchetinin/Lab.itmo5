@@ -10,12 +10,13 @@ import service.command.Command;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.util.PriorityQueue;
+import java.util.Scanner;
 
 public class Save implements Command {
 
     private CollectionClass collectionClass;
     private final String HEAD = "id,name,coordinates.x,coordinates.y,date,engine_power,capacity,distance_travelled,type\n";
-    private File file;
+    private File file = new File("file/output.csv");
 
     public Save(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
