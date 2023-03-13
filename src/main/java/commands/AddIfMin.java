@@ -2,8 +2,9 @@ package commands;
 
 import base.Vehicle;
 import service.CollectionClass;
+import service.command.Command;
 
-public class AddIfMin extends AbstractCommand{
+public class AddIfMin implements Command {
     private Vehicle vehicle;
     private CollectionClass collectionClass;
 
@@ -11,8 +12,8 @@ public class AddIfMin extends AbstractCommand{
         this.collectionClass = collectionClass;
     }
     @Override
-    public Object getParametr() {
-        return vehicle;
+    public void getParametr() {
+
     }
 
     @Override

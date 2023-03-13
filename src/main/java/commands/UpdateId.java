@@ -3,11 +3,12 @@ package commands;
 import base.Vehicle;
 import service.CollectionClass;
 import service.Pair;
+import service.command.Command;
 
 import java.util.AbstractMap;
 import java.util.UUID;
 
-public class UpdateId extends AbstractCommand{
+public class UpdateId implements Command {
 
     private Pair<Vehicle, UUID> pair;
     private CollectionClass collectionClass;
@@ -16,8 +17,8 @@ public class UpdateId extends AbstractCommand{
         this.collectionClass = collectionClass;
     }
     @Override
-    public Object getParametr() {
-        return pair;
+    public void getParametr() {
+
     }
 
     @Override

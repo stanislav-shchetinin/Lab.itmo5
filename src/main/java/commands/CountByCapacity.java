@@ -2,11 +2,12 @@ package commands;
 
 import base.Vehicle;
 import service.CollectionClass;
+import service.command.Command;
 
 import java.util.PriorityQueue;
 import java.util.UUID;
 
-public class CountByCapacity extends AbstractCommand{
+public class CountByCapacity implements Command {
     private CollectionClass collectionClass;
     private Long capacity;
     public CountByCapacity(CollectionClass collectionClass){
@@ -14,14 +15,7 @@ public class CountByCapacity extends AbstractCommand{
     }
 
     @Override
-    public void setParametr(Object parametr) {
-        this.capacity = Long.parseLong((String) parametr);
-    }
-
-    @Override
-    public String getParametr() {
-        return String.valueOf(capacity);
-    }
+    public void getParametr() {}
 
     @Override
     public void execute() {

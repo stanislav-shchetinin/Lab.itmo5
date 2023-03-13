@@ -2,8 +2,9 @@ package commands;
 
 import base.Vehicle;
 import service.CollectionClass;
+import service.command.Command;
 
-public class AddElement extends AbstractCommand {
+public class AddElement implements Command {
 
     private Vehicle vehicle;
     private CollectionClass collectionClass;
@@ -11,13 +12,14 @@ public class AddElement extends AbstractCommand {
     public AddElement(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
-    @Override
-    public Object getParametr() {
-        return vehicle;
-    }
 
     @Override
     public void execute() {
         collectionClass.add(vehicle);
+    }
+
+    @Override
+    public void getParametr() {
+
     }
 }

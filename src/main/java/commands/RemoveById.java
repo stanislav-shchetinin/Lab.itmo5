@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.UUID;
 
-public class RemoveById extends AbstractCommand {
+public class RemoveById implements Command {
     private CollectionClass collectionClass;
     private UUID id;
     public RemoveById(CollectionClass collectionClass){
@@ -16,13 +16,8 @@ public class RemoveById extends AbstractCommand {
     }
 
     @Override
-    public void setParametr(Object parametr) {
-        this.id = UUID.fromString((String) parametr);
-    }
+    public void getParametr() {
 
-    @Override
-    public String getParametr() {
-        return String.valueOf(id);
     }
 
     @Override

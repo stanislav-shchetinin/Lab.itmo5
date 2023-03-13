@@ -1,11 +1,9 @@
 package console;
 
-import commands.AbstractCommand;
 import service.CollectionClass;
 import service.command.Command;
 import service.command.InitMap;
 
-import java.awt.*;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +39,7 @@ public class Console {
     }
     public static void inputCommands(CollectionClass collectionClass) {
         HashMap<String, Command> mapCommand = InitMap.mapCommand(collectionClass);
-        
+
     }
 
 }
