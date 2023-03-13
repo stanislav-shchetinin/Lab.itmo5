@@ -95,4 +95,16 @@ public class CollectionClass{
 
     }
 
+    public void addIfMax(Vehicle vehicle){
+        if (vehicle.compareTo(collection.peek()) > 0){
+            collection.add(vehicle);
+        }
+    }
+
+    public void addIfMin(Vehicle vehicle){
+        if (vehicle.compareTo(collection.peek()) < 0){
+            collection.add(vehicle);
+        }
+    }
+
 }
