@@ -77,4 +77,22 @@ public class CollectionClass{
         collection.add(vehicle);
     }
 
+    public void updateVyId(Pair<Vehicle, UUID> pair){
+        Vehicle vehicleNew = pair.getL();
+        UUID id = pair.getR();
+
+        PriorityQueue<Vehicle> collectionNew = new PriorityQueue<>();
+        while (!collection.isEmpty()){
+            Vehicle vehicleOld = collection.poll();
+            if (vehicleOld.getId() == id){
+                collectionNew.add(vehicleNew);
+            } else {
+                collectionNew.add(vehicleOld);
+            }
+        }
+
+        collection = collectionNew;
+
+    }
+
 }
