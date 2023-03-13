@@ -39,6 +39,13 @@ public class Console {
     }
     public static void inputCommands(CollectionClass collectionClass) {
         HashMap<String, Command> mapCommand = InitMap.mapCommand(collectionClass);
+        Scanner in = new Scanner(System.in);
+        while (true){
+            String nameCommand = in.next();
+            Command command = mapCommand.get(nameCommand);
+            command.getParametr();
+            command.execute();
+        }
 
     }
 
