@@ -6,6 +6,10 @@ import service.CollectionClass;
 public class AddIfMin extends AbstractCommand{
     private Vehicle vehicle;
     private CollectionClass collectionClass;
+
+    public AddIfMin(CollectionClass collectionClass){
+        this.collectionClass = collectionClass;
+    }
     @Override
     public Object getParametr() {
         return vehicle;

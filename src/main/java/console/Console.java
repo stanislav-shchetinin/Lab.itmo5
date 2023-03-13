@@ -39,30 +39,9 @@ public class Console {
             }
         }
     }
-    public static void inputCommands(CollectionClass collectionClass){
-        HashMap<String, Integer> countArguments = InitMap.countArguments(collectionClass);
-        HashMap<String, Command> noArgumentCommands = InitMap.noArgumentCommands(collectionClass);
-        HashMap<String, AbstractCommand> withArgumentsCommands = InitMap.withArgumentsCommands(collectionClass);
-        Scanner in = new Scanner(System.in);
-        while (true){
-            try {
-                String nameCommand = in.next().trim();
-                if (countArguments.get(nameCommand) == 1){
-                    noArgumentCommands.get(nameCommand).execute();
-                } else if (countArguments.get(nameCommand) == 2){
-                    String arg = in.next();
-                    AbstractCommand abstractCommand = withArgumentsCommands.get(nameCommand);
-                    abstractCommand.setParametr(arg);
-                    abstractCommand.execute();
-                } else if (countArguments.get(nameCommand) == 3){
-
-                } else {
-
-                }
-            } catch (NullPointerException e){
-                logger.warning("Неверное имя команды");
-            }
-
-        }
+    public static void inputCommands(CollectionClass collectionClass) {
+        HashMap<String, Command> mapCommand = InitMap.mapCommand(collectionClass);
+        
     }
+
 }

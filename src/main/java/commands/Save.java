@@ -17,9 +17,8 @@ public class Save implements Command {
     private final String HEAD = "id,name,coordinates.x,coordinates.y,date,engine_power,capacity,distance_travelled,type\n";
     private File file;
 
-    public Save(CollectionClass collectionClass, File file){
+    public Save(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
-        this.file = file;
     }
     @Override
     public void execute() {

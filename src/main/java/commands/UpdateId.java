@@ -11,6 +11,10 @@ public class UpdateId extends AbstractCommand{
 
     private Pair<Vehicle, UUID> pair;
     private CollectionClass collectionClass;
+
+    public UpdateId(CollectionClass collectionClass){
+        this.collectionClass = collectionClass;
+    }
     @Override
     public Object getParametr() {
         return pair;
