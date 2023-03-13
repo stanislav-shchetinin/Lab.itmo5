@@ -64,7 +64,7 @@ public class Parse {
                     } else {
                         ans += field.get(vehicle).toString();
                     }
-                    ans += ", ";
+                    ans += ",";
                 } catch (IllegalAccessException e){
                     logger.warning("Нет доступа к полю класса");
                 }

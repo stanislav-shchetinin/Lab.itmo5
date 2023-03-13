@@ -27,9 +27,7 @@ public class Main {
 
         CollectionClass collectionClass = new CollectionClass(FileRead.fileRead(file));
 
-        System.out.println(Parse.queueToString(collectionClass.getCollection()));
-
-        //Console.inputCommands(collectionClass);
+        Console.inputCommands(collectionClass);
 
     }
 }

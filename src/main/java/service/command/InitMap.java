@@ -3,6 +3,7 @@ package service.command;
 import commands.*;
 import service.CollectionClass;
 
+import java.io.File;
 import java.util.HashMap;
 
 public class InitMap {
@@ -37,7 +38,7 @@ public class InitMap {
         commandHashMap.put("remove_first", new RemoveFirst(collectionClass));
         commandHashMap.put("print_ascending", new PrintAscending(collectionClass));
         commandHashMap.put("print_unique_engine_power", new PrintUniqueEnginePower(collectionClass));
-        //commandHashMap.put("save", new Save());
+        commandHashMap.put("save", new Save(collectionClass, new File("files/output.csv")));
         return commandHashMap;
     }
     public static HashMap<String, AbstractCommand> withArgumentsCommands (CollectionClass collectionClass){
