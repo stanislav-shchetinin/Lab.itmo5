@@ -26,6 +26,10 @@ public class CollectionClass{
         return collection;
     }
 
+    public HashSet<UUID> getUuidHashSet() {
+        return uuidHashSet;
+    }
+
     @Override
     public String toString() {
         String cs = collection.toString();
@@ -34,9 +38,11 @@ public class CollectionClass{
 
     public void clear(){
         collection.clear();
+        uuidHashSet.clear();
     }
     public void removeFirst(){
-        collection.poll();
+        UUID id = collection.poll().getId();
+        uuidHashSet.remove(id);
     }
     public void printAscending(){
         PriorityQueue<Vehicle> collectionCopy = new PriorityQueue<>(collection);
@@ -60,6 +66,7 @@ public class CollectionClass{
                 collectionNew.add(vehicle);
             }
         }
+        uuidHashSet.remove(id);
         collection = collectionNew;
     }
 
@@ -76,9 +83,10 @@ public class CollectionClass{
 
     public void add(Vehicle vehicle){
         collection.add(vehicle);
+        uuidHashSet.add(vehicle.getId());
     }
 
-    public void updateVyId(Pair<Vehicle, UUID> pair){
+    public void updateById(Pair<Vehicle, UUID> pair){
         Vehicle vehicleNew = pair.getL();
         UUID id = pair.getR();
 
@@ -86,6 +94,8 @@ public class CollectionClass{
         while (!collection.isEmpty()){
             Vehicle vehicleOld = collection.poll();
             if (vehicleOld.getId() == id){
+                uuidHashSet.remove(vehicleOld.getId());
+                uuidHashSet.add(vehicleNew.getId());
                 collectionNew.add(vehicleNew);
             } else {
                 collectionNew.add(vehicleOld);
@@ -99,12 +109,14 @@ public class CollectionClass{
     public void addIfMax(Vehicle vehicle){
         if (vehicle.compareTo(collection.peek()) > 0){
             collection.add(vehicle);
+            uuidHashSet.add(vehicle.getId());
         }
     }
 
     public void addIfMin(Vehicle vehicle){
         if (vehicle.compareTo(collection.peek()) < 0){
             collection.add(vehicle);
+            uuidHashSet.add(vehicle.getId());
         }
     }
 

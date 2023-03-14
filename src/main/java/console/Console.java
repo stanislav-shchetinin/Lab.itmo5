@@ -1,6 +1,8 @@
 package console;
 
 import base.Vehicle;
+import exceptions.ReadTypeException;
+import exceptions.ReadValueException;
 import service.CollectionClass;
 import service.Validate;
 import service.command.Command;
@@ -56,19 +58,27 @@ public class Console {
 
     }
 
-    public static Vehicle inputVehicle() {
+    public static Vehicle inputVehicle(CollectionClass collectionClass) {
         Vehicle vehicle = new Vehicle();
         Scanner in = new Scanner(System.in);
         for (Field field : vehicle.getClass().getDeclaredFields()){
             field.setAccessible(true);
-            try {
-                while (field.get(vehicle) == null){
+            boolean isCorrectValue = false;
+            while (!isCorrectValue){
+                try {
+                    isCorrectValue = true;
                     System.out.println(String.format("\nВведите %s: ", field.getName()));
                     String value = in.nextLine();
-                    field.set(vehicle, thisType(value, field));
+                    field.set(vehicle, thisType(value, field, collectionClass));
+                } catch (IllegalArgumentException e) {
+                    isCorrectValue = false;
+                    logger.warning(String.format("Неверный тип %s", field.getName()));
+                } catch (IllegalAccessException e){
+                    logger.fine("Запись в поле запрещена");
+                } catch (ReadValueException e){
+                    isCorrectValue = false;
+                    logger.warning(e.getMessage());
                 }
-            } catch (IllegalAccessException e) {
-                logger.warning(String.format("Неверный тип %s", field.getName()));
             }
         }
         return vehicle;

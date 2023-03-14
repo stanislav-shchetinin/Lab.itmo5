@@ -63,26 +63,57 @@ public class Validate { //все методы видны в пределах к�
         return vehicle;
     }
 
-    public static Object thisType (String value, Field field){
-        try {
-            if (field.getType().equals(UUID.class)){
-                return UUID.fromString(value); //6f369f5d-7b26-4d0c-9c35-cb6c980f5f24
-            } else if (field.getType().equals(String.class)){
-                return value;
-            } else if (field.getType().equals(Coordinates.class)){
-                String[] str = value.split(" ");
-                return new Coordinates(Float.parseFloat(str[0]), Float.parseFloat(str[1])); //12.5 -8877.9
-            } else if (field.getType().equals(ZonedDateTime.class)){
-                return ZonedDateTime.parse(value); //2022-05-26T08:15:30+07:00[Asia/Ho_Chi_Minh]
-            } else if (field.getType().equals(Double.class) || field.getType().equals(double.class)){
-                return Double.parseDouble(value);
-            } else if (field.getType().equals(Long.class)){
-                return Long.parseLong(value);
-            } else if (field.getType().equals(VehicleType.class)){
-                return VehicleType.valueOf(value);
+    private static UUID uuidFromString(String value, CollectionClass collectionClass) throws IllegalArgumentException, ReadValueException {
+        UUID uuid = UUID.fromString(value);
+        if (collectionClass.getUuidHashSet().contains(uuid)){
+            throw new ReadValueException("Передаваемый id не уникален");
+        }
+        return uuid;
+    }
+    private static Coordinates coordinatesFromString (String value) throws IllegalArgumentException, ReadValueException {
+        String[] str = value.split(" ");
+        Coordinates coordinates = new Coordinates(Float.parseFloat(str[0]), Float.parseFloat(str[1]));
+        if (coordinates.getY() > -762){
+            throw new ReadValueException("Координата Y не может быть больше -762");
+        }
+        return coordinates;
+    }
+
+    private static Double doubleFromString (String value, Field field) throws IllegalArgumentException, ReadValueException {
+        Double ans = Double.parseDouble(value);
+        if (field.getName().equals("enginePower") || field.getName().equals("distanceTravelled")){
+            if (ans <= 0){
+                throw new ReadValueException(String.format("Значение поля %s должно быть больше 0", field.getName()));
             }
-        } catch (IllegalArgumentException e){
-            LoggerForCommands.loggerWarning((String.format("Неверный тип %s", field.getName())));
+        }
+        return ans;
+    }
+
+    private static Long longFromString (String value, Field field) throws IllegalArgumentException, ReadValueException {
+        Long ans = Long.parseLong(value);
+        if (field.getName().equals("capacity")){
+            if (ans <= 0){
+                throw new ReadValueException(String.format("Значение поля %s должно быть больше 0", field.getName()));
+            }
+        }
+        return ans;
+    }
+
+    public static Object thisType (String value, Field field, CollectionClass collectionClass) throws IllegalArgumentException, ReadValueException {
+        if (field.getType().equals(UUID.class)){
+            return uuidFromString(value, collectionClass); //6f369f5d-7b26-4d0c-9c35-cb6c980f5f24
+        } else if (field.getType().equals(String.class)){
+            return value;
+        } else if (field.getType().equals(Coordinates.class)){
+            return coordinatesFromString(value); //12.5 -8877.9
+        } else if (field.getType().equals(ZonedDateTime.class)){
+            return ZonedDateTime.parse(value); //2022-05-26T08:15:30+07:00[Asia/Ho_Chi_Minh]
+        } else if (field.getType().equals(Double.class) || field.getType().equals(double.class)){
+            return doubleFromString(value, field);
+        } else if (field.getType().equals(Long.class)){
+            return longFromString(value, field);
+        } else if (field.getType().equals(VehicleType.class)){
+            return VehicleType.valueOf(value);
         }
         return null;
     }

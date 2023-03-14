@@ -4,6 +4,8 @@ import base.Vehicle;
 import service.CollectionClass;
 import service.command.Command;
 
+import static console.Console.inputVehicle;
+
 public class AddIfMax implements Command {
     private Vehicle vehicle;
     private CollectionClass collectionClass;
@@ -13,7 +15,7 @@ public class AddIfMax implements Command {
     }
     @Override
     public void getParametr() {
-
+        vehicle = inputVehicle(collectionClass);
     }
 
     @Override

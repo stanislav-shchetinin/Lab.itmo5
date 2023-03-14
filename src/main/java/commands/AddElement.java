@@ -22,6 +22,6 @@ public class AddElement implements Command {
 
     @Override
     public void getParametr() {
-        vehicle = inputVehicle();
+        vehicle = inputVehicle(collectionClass);
     }
 }
