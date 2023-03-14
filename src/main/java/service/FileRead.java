@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
 import java.util.Scanner;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,9 +22,8 @@ public class FileRead {
 
     private static final Logger logger = Logger.getLogger(FileRead.class.getName());
 
-    public static PriorityQueue<Vehicle> fileRead(File file){
+    public static void fileRead(File file, CollectionClass collectionClass){
 
-        PriorityQueue<Vehicle> priorityQueue = new PriorityQueue<>();
         int numberWord = 1;
 
         String str = Parse.parseFromCSVtoString(file);
@@ -41,12 +41,11 @@ public class FileRead {
                 break;
             }
             if (vehicle != null){
-                priorityQueue.add(vehicle);
+                vehicle.setId(UUID.randomUUID()); //Временно пока не добавлю айди и дату из файла
+                collectionClass.add(vehicle);
             }
         }
         in.close();
-        return priorityQueue;
-
     }
 
 }

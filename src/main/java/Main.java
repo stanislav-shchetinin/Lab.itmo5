@@ -25,12 +25,12 @@ public class Main {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
     public static void main(String[] args) {
 
-        /*File file = getFile(); //NAME_FILE
+        CollectionClass collectionClass = new CollectionClass();
+        File file = getFile(); //NAME_FILE
 
-        CollectionClass collectionClass = new CollectionClass(FileRead.fileRead(file));
+        FileRead.fileRead(file, collectionClass); //Считывание файла и запись его в collectionClass
 
-        Console.inputCommands(collectionClass);*/
-        inputVehicle();
+        Console.inputCommands(collectionClass);
 
     }
 }

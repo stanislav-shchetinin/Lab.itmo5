@@ -28,7 +28,7 @@ public class Console {
 
         while (true){
             System.out.print("\nВведите имя переменной среды: ");
-            String nameVar = in.nextLine();
+            String nameVar = in.nextLine().trim();
 
             if (mapEnv.containsKey(nameVar)){
                 nameFile = mapEnv.get(nameVar);

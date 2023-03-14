@@ -9,6 +9,7 @@ import java.util.*;
 public class CollectionClass{
     private Date date;
     private PriorityQueue<Vehicle> collection = new PriorityQueue();
+    private HashSet<UUID> uuidHashSet = new HashSet<>();
     public CollectionClass (PriorityQueue collection){
         this.collection = collection;
         date = new Date();
