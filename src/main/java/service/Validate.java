@@ -63,14 +63,14 @@ public class Validate { //все методы видны в пределах к�
         return vehicle;
     }
 
-    private static UUID uuidFromString(String value, CollectionClass collectionClass) throws IllegalArgumentException, ReadValueException {
+    public static UUID uuidFromString(String value, CollectionClass collectionClass) throws IllegalArgumentException, ReadValueException {
         UUID uuid = UUID.fromString(value);
         if (collectionClass.getUuidHashSet().contains(uuid)){
             throw new ReadValueException("Передаваемый id не уникален");
         }
         return uuid;
     }
-    private static Coordinates coordinatesFromString (String value) throws IllegalArgumentException, ReadValueException {
+    public static Coordinates coordinatesFromString (String value) throws IllegalArgumentException, ReadValueException {
         String[] str = value.split(" ");
         Coordinates coordinates = new Coordinates(Float.parseFloat(str[0]), Float.parseFloat(str[1]));
         if (coordinates.getY() > -762){

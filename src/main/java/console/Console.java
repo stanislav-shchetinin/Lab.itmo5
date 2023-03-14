@@ -18,6 +18,7 @@ import java.util.UUID;
 import java.util.logging.Logger;
 
 import static service.Validate.thisType;
+import static service.Validate.uuidFromString;
 
 public class Console {
 
@@ -82,6 +83,21 @@ public class Console {
             }
         }
         return vehicle;
+    }
+
+    public static UUID inputUUID (CollectionClass collectionClass){
+        Scanner in = new Scanner(System.in);
+        while (true){
+            String value = in.next();
+            try {
+                UUID uuid = uuidFromString(value, collectionClass);
+                return uuid;
+            } catch (ReadValueException e) {
+                logger.warning(e.getMessage());
+            } catch (IllegalArgumentException e) {
+                logger.warning("Неверный тип id");
+            }
+        }
     }
 
 }

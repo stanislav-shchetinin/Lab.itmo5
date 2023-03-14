@@ -8,6 +8,7 @@ import service.command.Command;
 import java.util.AbstractMap;
 import java.util.UUID;
 
+import static console.Console.inputUUID;
 import static console.Console.inputVehicle;
 
 public class UpdateId implements Command {
@@ -20,8 +21,10 @@ public class UpdateId implements Command {
     }
     @Override
     public void getParametr() {
-        Vehicle vehicle;
-        vehicle = inputVehicle(collectionClass);
+        UUID uuid = inputUUID(collectionClass);
+        Vehicle vehicle = inputVehicle(collectionClass);
+        pair.setL(vehicle);
+        pair.setR(uuid);
     }
 
     @Override
