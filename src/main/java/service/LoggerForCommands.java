@@ -10,6 +10,6 @@ public class LoggerForCommands {
         logger.info(messege);
     }
     public static void loggerWarning(String messege){
-        logger.info(messege);
+        logger.warning(messege);
     }
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class  Vehicle implements Comparable<Vehicle>{
-    private UUID id = UUID.randomUUID(); //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private UUID id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private java.time.ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -17,6 +17,8 @@ public class  Vehicle implements Comparable<Vehicle>{
     private Long capacity; //Поле может быть null, Значение поля должно быть больше 0
     private Double distanceTravelled; //Поле может быть null, Значение поля должно быть больше 0
     private VehicleType type; //Поле не может быть null
+
+    public Vehicle(){}
     public Vehicle(String name, Coordinates coordinates, double enginePower,
                    Long capacity, Double distanceTravelled, VehicleType type) throws ReadValueException {
         this.name = name;
@@ -44,6 +46,38 @@ public class  Vehicle implements Comparable<Vehicle>{
             throw new ReadValueException("distanceTravelled должна быть больше 0, установлено значение 0.1 в distanceTravelled");
         }
 
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public void setCreationDate(ZonedDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public void setEnginePower(double enginePower) {
+        this.enginePower = enginePower;
+    }
+
+    public void setCapacity(Long capacity) {
+        this.capacity = capacity;
+    }
+
+    public void setDistanceTravelled(Double distanceTravelled) {
+        this.distanceTravelled = distanceTravelled;
+    }
+
+    public void setType(VehicleType type) {
+        this.type = type;
     }
 
     public double getEnginePower() {

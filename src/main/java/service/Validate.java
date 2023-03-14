@@ -6,8 +6,13 @@ import base.VehicleType;
 import exceptions.ReadTypeException;
 import exceptions.ReadValueException;
 
+import java.lang.reflect.Field;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Validate { //все методы видны в пределах классов service
 
@@ -56,6 +61,30 @@ public class Validate { //все методы видны в пределах к�
                 readVehicleType(in, numberWord + 6)
         );
         return vehicle;
+    }
+
+    public static Object thisType (String value, Field field){
+        try {
+            if (field.getType().equals(UUID.class)){
+                return UUID.fromString(value); //6f369f5d-7b26-4d0c-9c35-cb6c980f5f24
+            } else if (field.getType().equals(String.class)){
+                return value;
+            } else if (field.getType().equals(Coordinates.class)){
+                String[] str = value.split(" ");
+                return new Coordinates(Float.parseFloat(str[0]), Float.parseFloat(str[1])); //12.5 -8877.9
+            } else if (field.getType().equals(ZonedDateTime.class)){
+                return ZonedDateTime.parse(value); //2022-05-26T08:15:30+07:00[Asia/Ho_Chi_Minh]
+            } else if (field.getType().equals(Double.class) || field.getType().equals(double.class)){
+                return Double.parseDouble(value);
+            } else if (field.getType().equals(Long.class)){
+                return Long.parseLong(value);
+            } else if (field.getType().equals(VehicleType.class)){
+                return VehicleType.valueOf(value);
+            }
+        } catch (IllegalArgumentException e){
+            LoggerForCommands.loggerWarning((String.format("Неверный тип %s", field.getName())));
+        }
+        return null;
     }
 
 }

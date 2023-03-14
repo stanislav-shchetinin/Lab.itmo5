@@ -1,14 +1,21 @@
 package console;
 
+import base.Vehicle;
 import service.CollectionClass;
+import service.Validate;
 import service.command.Command;
 import service.command.InitMap;
 
 import java.io.File;
+import java.lang.reflect.Field;
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.UUID;
 import java.util.logging.Logger;
+
+import static service.Validate.thisType;
 
 public class Console {
 
@@ -47,6 +54,24 @@ public class Console {
             command.execute();
         }
 
+    }
+
+    public static Vehicle inputVehicle() {
+        Vehicle vehicle = new Vehicle();
+        Scanner in = new Scanner(System.in);
+        for (Field field : vehicle.getClass().getDeclaredFields()){
+            field.setAccessible(true);
+            try {
+                while (field.get(vehicle) == null){
+                    System.out.println(String.format("\nВведите %s: ", field.getName()));
+                    String value = in.nextLine();
+                    field.set(vehicle, thisType(value, field));
+                }
+            } catch (IllegalAccessException e) {
+                logger.warning(String.format("Неверный тип %s", field.getName()));
+            }
+        }
+        return vehicle;
     }
 
 }
