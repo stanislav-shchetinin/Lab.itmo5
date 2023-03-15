@@ -14,8 +14,8 @@ public class AddIfMin implements Command {
         this.collectionClass = collectionClass;
     }
     @Override
-    public void getParametr() {
-        vehicle = inputVehicle(collectionClass);
+    public void setElement() {
+        this.vehicle = inputVehicle(collectionClass);
     }
 
     @Override

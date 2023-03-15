@@ -16,12 +16,11 @@ public class AddElement implements Command {
     }
 
     @Override
+    public void setElement() {
+        this.vehicle = inputVehicle(collectionClass);
+    }
+    @Override
     public void execute() {
         collectionClass.add(vehicle);
-    }
-
-    @Override
-    public void getParametr() {
-        vehicle = inputVehicle(collectionClass);
     }
 }

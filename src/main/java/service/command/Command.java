@@ -2,7 +2,7 @@ package service.command;
 
 public interface Command {
     void execute();
-    default void getParametr(){
-
-    }
+    default void setElement(){}
+    default void setParametr(String parametr){}
+    default void clearFields(){}
 }

@@ -2,6 +2,7 @@ package commands;
 
 import base.Vehicle;
 import service.CollectionClass;
+import service.LoggerForCommands;
 import service.command.Command;
 
 import java.util.PriorityQueue;
@@ -15,10 +16,25 @@ public class CountByCapacity implements Command {
     }
 
     @Override
-    public void getParametr() {}
+    public void setParametr(String longString) {
+        try {
+            this.capacity = Long.parseLong(longString);
+        } catch (IllegalArgumentException e){
+            LoggerForCommands.loggerWarning("Неверный тип Long");
+        }
+    }
 
     @Override
     public void execute() {
-        collectionClass.countByCapacity(capacity);
+        if (capacity == null){
+            LoggerForCommands.loggerWarning("Недостаточно параметров, чтобы выполнить комманду");
+        } else {
+            collectionClass.countByCapacity(capacity);
+        }
+    }
+
+    @Override
+    public void clearFields() {
+        capacity = null;
     }
 }

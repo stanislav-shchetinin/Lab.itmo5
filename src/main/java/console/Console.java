@@ -47,14 +47,27 @@ public class Console {
             }
         }
     }
+
     public static void inputCommands(CollectionClass collectionClass) {
         HashMap<String, Command> mapCommand = InitMap.mapCommand(collectionClass);
         Scanner in = new Scanner(System.in);
         while (true){
-            String nameCommand = in.next();
+            String[] arrayString = in.nextLine().trim().split(" ");
+            if (arrayString.length == 0){
+                continue;
+            }
+            String nameCommand = arrayString[0];
             Command command = mapCommand.get(nameCommand);
-            command.getParametr();
+            if (command == null){
+                logger.warning("Не существует команды с указанным названием");
+                continue;
+            }
+            if (arrayString.length != 1){
+                command.setParametr(arrayString[1]);
+            }
+            command.setElement();
             command.execute();
+            command.clearFields();
         }
 
     }

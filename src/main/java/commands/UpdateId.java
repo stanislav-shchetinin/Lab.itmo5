@@ -2,6 +2,7 @@ package commands;
 
 import base.Vehicle;
 import service.CollectionClass;
+import service.LoggerForCommands;
 import service.Pair;
 import service.command.Command;
 
@@ -20,15 +21,31 @@ public class UpdateId implements Command {
         this.collectionClass = collectionClass;
     }
     @Override
-    public void getParametr() {
-        UUID uuid = inputUUID(collectionClass);
+    public void setElement() {
         Vehicle vehicle = inputVehicle(collectionClass);
         pair.setL(vehicle);
-        pair.setR(uuid);
+    }
+
+    @Override
+    public void setParametr(String uuidString){
+        try {
+            this.pair.setR(UUID.fromString(uuidString));
+        } catch (IllegalArgumentException e){
+            LoggerForCommands.loggerWarning("Неверный тип id");
+        }
     }
 
     @Override
     public void execute() {
-        collectionClass.updateById(pair);
+        if (pair.getR() == null){
+            LoggerForCommands.loggerWarning("Недостаточно параметров, чтобы выполнить комманду");
+        } else {
+            collectionClass.updateById(pair);
+        }
+    }
+
+    @Override
+    public void clearFields() {
+        pair = null;
     }
 }
