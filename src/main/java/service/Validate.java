@@ -6,6 +6,7 @@ import base.VehicleType;
 import exceptions.ReadTypeException;
 import exceptions.ReadValueException;
 
+import java.io.File;
 import java.lang.reflect.Field;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -116,6 +117,15 @@ public class Validate { //все методы видны в пределах к�
             return VehicleType.valueOf(value);
         }
         return null;
+    }
+
+    public static File checkFile(File file) throws ReadValueException {
+        if (file.exists() && !file.isDirectory()){
+            LoggerForCommands.loggerInfo("Файл успешно получен");
+            return file;
+        } else {
+            throw new ReadValueException("Не существует файла по указанному пути");
+        }
     }
 
 }

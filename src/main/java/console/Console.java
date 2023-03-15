@@ -17,8 +17,7 @@ import java.util.Scanner;
 import java.util.UUID;
 import java.util.logging.Logger;
 
-import static service.Validate.thisType;
-import static service.Validate.uuidFromString;
+import static service.Validate.*;
 
 public class Console {
 
@@ -31,20 +30,18 @@ public class Console {
 
         while (true){
             System.out.print("\nВведите имя переменной среды: ");
-            String nameVar = in.nextLine().trim();
-
-            if (mapEnv.containsKey(nameVar)){
-                nameFile = mapEnv.get(nameVar);
-                File file = new File(nameFile);
-                if (file.exists() && !file.isDirectory()){
-                    logger.info("Файл успешно получен");
-                    return file;
+            try {
+                String nameVar = in.nextLine().trim();
+                if (mapEnv.containsKey(nameVar)){
+                    nameFile = mapEnv.get(nameVar);
+                    return checkFile(new File(nameFile));
                 } else {
-                    System.out.print("Не существует файла по указанному пути");
+                    System.out.print("Не существует такой переменной окружения");
                 }
-            } else {
-                System.out.print("Не существует такой переменной окружения");
+            } catch (ReadValueException e){
+                logger.warning(e.getMessage());
             }
+
         }
     }
 
