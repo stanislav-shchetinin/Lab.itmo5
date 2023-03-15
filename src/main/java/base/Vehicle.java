@@ -18,6 +18,7 @@ public class  Vehicle implements Comparable<Vehicle>{
     private Double distanceTravelled; //Поле может быть null, Значение поля должно быть больше 0
     private VehicleType type; //Поле не может быть null
 
+
     public Vehicle(){}
     public Vehicle(String name, Coordinates coordinates, double enginePower,
                    Long capacity, Double distanceTravelled, VehicleType type) throws ReadValueException {

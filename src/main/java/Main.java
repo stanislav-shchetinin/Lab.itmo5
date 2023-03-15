@@ -17,8 +17,8 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static console.Console.getFile;
-import static console.Console.inputVehicle;
+import static console.Console.*;
+import static service.Parse.parseFromCSVtoString;
 
 public class Main {
 
@@ -28,7 +28,7 @@ public class Main {
         CollectionClass collectionClass = new CollectionClass();
         File file = getFile(); //NAME_FILE
 
-        FileRead.fileRead(file, collectionClass); //Считывание файла и запись его в collectionClass
+        fromFileVehicle(collectionClass, file); //Считывание файла и запись его в collectionClass
 
         Console.inputCommands(collectionClass);
 

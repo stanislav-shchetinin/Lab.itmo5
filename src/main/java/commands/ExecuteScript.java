@@ -6,6 +6,7 @@ import service.LoggerForCommands;
 import service.command.Command;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import static service.Validate.checkFile;
 
@@ -22,7 +23,7 @@ public class ExecuteScript implements Command {
         if (file == null){
             LoggerForCommands.loggerWarning("Недостаточно параметров, чтобы выполнить комманду");
         } else {
-            
+
         }
     }
 
@@ -30,7 +31,7 @@ public class ExecuteScript implements Command {
     public void setParametr(String nameFile) {
         try {
             this.file = checkFile(new File(nameFile));
-        } catch (ReadValueException e) {
+        } catch (FileNotFoundException e) {
             LoggerForCommands.loggerWarning(e.getMessage());
         }
     }

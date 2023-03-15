@@ -7,6 +7,7 @@ import exceptions.ReadTypeException;
 import exceptions.ReadValueException;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -119,12 +120,12 @@ public class Validate { //все методы видны в пределах к�
         return null;
     }
 
-    public static File checkFile(File file) throws ReadValueException {
+    public static File checkFile(File file) throws FileNotFoundException {
         if (file.exists() && !file.isDirectory()){
             LoggerForCommands.loggerInfo("Файл успешно получен");
             return file;
         } else {
-            throw new ReadValueException("Не существует файла по указанному пути");
+            throw new FileNotFoundException("Не существует файла по указанному пути");
         }
     }
 

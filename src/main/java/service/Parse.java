@@ -29,7 +29,8 @@ public class Parse {
 
                 String[] record;
                 while ((record = csvReader.readNext()) != null) {
-                    res += String.join(" ", record);
+                    String dop = String.join("\n", record);
+                    res += dop;
                     res += "\n";
                 }
             }

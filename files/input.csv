@@ -1,6 +1,3 @@
-name,coordinates.x, coordinates.y,engine_power,capacity,distance_travelled,type
-Max,"12,4","-769",5,4,100,CAR
-Max,"12,4","-769",3,4,100,CAR
-Max,"12,4","-769",6,4,100,CAR
-Max,"12,4","-769",4,4,100,CAR
-Max,"12,4","-769",4,3,100,CAR
+id,name,coordinates.x, coordinates.y,creation_data,engine_power,capacity,distance_travelled,type
+6f369f5d-7b26-4d0c-9c35-cb6c980f5f24,Max,"23.3","-762",2022-05-26T08:15:30+07:00[Asia/Ho_Chi_Minh],1,1,1,CAR
+6f369f5d-7b26-4d0c-9c35-cb6c980f5f24,Max,"23.3","-762",2022-05-26T08:15:30+07:00[Asia/Ho_Chi_Minh],1,1,1,CAR
