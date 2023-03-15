@@ -4,6 +4,8 @@ import base.Vehicle;
 import service.CollectionClass;
 import service.command.Command;
 
+import java.util.Scanner;
+
 import static console.Console.inputVehicle;
 
 public class AddIfMax implements Command {
@@ -15,7 +17,7 @@ public class AddIfMax implements Command {
     }
     @Override
     public void setElement() {
-        this.vehicle = inputVehicle(collectionClass);
+        this.vehicle = inputVehicle(collectionClass, new Scanner(System.in));
     }
 
     @Override

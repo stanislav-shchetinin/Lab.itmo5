@@ -7,6 +7,7 @@ import service.Pair;
 import service.command.Command;
 
 import java.util.AbstractMap;
+import java.util.Scanner;
 import java.util.UUID;
 
 import static console.Console.inputUUID;
@@ -22,7 +23,7 @@ public class UpdateId implements Command {
     }
     @Override
     public void setElement() {
-        Vehicle vehicle = inputVehicle(collectionClass);
+        Vehicle vehicle = inputVehicle(collectionClass, new Scanner(System.in));
         pair.setL(vehicle);
     }
 

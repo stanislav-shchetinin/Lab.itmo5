@@ -4,6 +4,8 @@ import base.Vehicle;
 import service.CollectionClass;
 import service.command.Command;
 
+import java.util.Scanner;
+
 import static console.Console.inputVehicle;
 
 public class AddElement implements Command {
@@ -17,7 +19,7 @@ public class AddElement implements Command {
 
     @Override
     public void setElement() {
-        this.vehicle = inputVehicle(collectionClass);
+        this.vehicle = inputVehicle(collectionClass, new Scanner(System.in));
     }
     @Override
     public void execute() {

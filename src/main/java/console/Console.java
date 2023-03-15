@@ -69,9 +69,8 @@ public class Console {
 
     }
 
-    public static Vehicle inputVehicle(CollectionClass collectionClass) {
+    public static Vehicle inputVehicle(CollectionClass collectionClass, Scanner in) {
         Vehicle vehicle = new Vehicle();
-        Scanner in = new Scanner(System.in);
         for (Field field : vehicle.getClass().getDeclaredFields()){
             field.setAccessible(true);
             boolean isCorrectValue = false;
