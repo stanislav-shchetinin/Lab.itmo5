@@ -83,4 +83,19 @@ public class Validate {
         }
     }
 
+    public static File readCheckFile(File file)throws FileNotFoundException {
+        file = checkFile(file);
+        if (!file.canRead()){
+            throw new FileNotFoundException("Отказано в доступе");
+        }
+        return file;
+    }
+    public static File writeCheckFile(File file) throws FileNotFoundException {
+        file = checkFile(file);
+        if (!file.canWrite()){
+            throw new FileNotFoundException("Отказано в доступе");
+        }
+        return file;
+    }
+
 }

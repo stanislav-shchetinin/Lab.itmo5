@@ -17,8 +17,6 @@ public class FileRead {
 
     public static void fromFileVehicle(CollectionClass collectionClass, File file) {
         Scanner in = new Scanner(parseFromCSVtoString(file));
-        String data = parseFromCSVtoString(file);
-        data = data.substring(0, data.length() - 1); //Добавляется null значение в конец, поэтому обрезаем его
         while (in.hasNext()){
             Vehicle vehicle = new Vehicle();
             boolean isCorrectVehicle = true;

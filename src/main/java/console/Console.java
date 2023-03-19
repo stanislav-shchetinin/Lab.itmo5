@@ -2,6 +2,7 @@ package console;
 
 import base.Vehicle;
 import exceptions.ReadValueException;
+
 import lombok.extern.slf4j.Slf4j;
 import service.CollectionClass;
 import service.NoInputTypes;
@@ -31,7 +32,7 @@ public class Console {
                 String nameVar = in.nextLine().trim();
                 if (mapEnv.containsKey(nameVar)){
                     nameFile = mapEnv.get(nameVar);
-                    return checkFile(new File(nameFile));
+                    return readCheckFile(new File(nameFile));
                 } else {
                     System.out.print("Не существует такой переменной окружения");
                 }

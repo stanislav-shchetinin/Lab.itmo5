@@ -1,9 +1,15 @@
 package service;
 
 import base.Vehicle;
+import lombok.extern.slf4j.Slf4j;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
+import static service.Validate.checkFile;
+import static service.Validate.readCheckFile;
+@Slf4j
 public class CollectionClass{
     private Date date;
     private PriorityQueue<Vehicle> collection = new PriorityQueue();
@@ -57,22 +63,22 @@ public class CollectionClass{
         System.out.print(hashSet.toString());
     }
     public void removeById (UUID id){
-        PriorityQueue<Vehicle> collectionNew = new PriorityQueue<Vehicle>();
+        PriorityQueue<Vehicle> collectionNew = new PriorityQueue<>();
         while (!collection.isEmpty()){
             Vehicle vehicle = (Vehicle) collection.poll();
-            if (vehicle.getId() != id){
+            if (!vehicle.getId().equals(id)){
                 collectionNew.add(vehicle);
             }
         }
         uuidHashSet.remove(id);
-        collection = collectionNew;
+        this.collection = new PriorityQueue<>(collectionNew);
     }
 
     public void countByCapacity(Long capacity){
         Integer count = 0;
         PriorityQueue<Vehicle> collectionCopy = new PriorityQueue<>(collection);
         while (!collectionCopy.isEmpty()){
-            if (collectionCopy.poll().getCapacity() == capacity){
+            if (collectionCopy.poll().getCapacity().equals(capacity)){
                 count += 1;
             }
         }
@@ -91,7 +97,7 @@ public class CollectionClass{
         PriorityQueue<Vehicle> collectionNew = new PriorityQueue<>();
         while (!collection.isEmpty()){
             Vehicle vehicleOld = collection.poll();
-            if (vehicleOld.getId() == id){
+            if (vehicleOld.getId().equals(id)){
                 uuidHashSet.remove(vehicleOld.getId());
                 uuidHashSet.add(vehicleNew.getId());
                 collectionNew.add(vehicleNew);
@@ -116,6 +122,19 @@ public class CollectionClass{
             collection.add(vehicle);
             uuidHashSet.add(vehicle.getId());
         }
+    }
+
+    public void executeScript(File file){
+        try {
+            file = readCheckFile(file);
+            Scanner in = new Scanner(file);
+            while (in.hasNext()){
+
+            }
+        } catch (FileNotFoundException e) {
+            log.error(e.getMessage());
+        }
+
     }
 
 }

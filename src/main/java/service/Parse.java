@@ -33,14 +33,11 @@ public class Parse {
                     res += "\n";
                 }
             }
-        } catch (FileNotFoundException e){
-            log.error(String.format("%s: Нет прав на чтение файла", e.getMessage()));
         } catch (IOException e){
             log.error(String.format("Файл с именем %s не найден", e.getMessage()));
         } catch (CsvValidationException e){
             log.error(e.getMessage());
         }
-
 
         return res;
 
