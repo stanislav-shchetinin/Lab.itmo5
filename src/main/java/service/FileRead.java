@@ -15,8 +15,7 @@ import static service.Validate.*;
 @Slf4j
 public class FileRead {
 
-    public static void fromFileVehicle(CollectionClass collectionClass, File file) {
-        Scanner in = new Scanner(parseFromCSVtoString(file));
+    public static void fromFileVehicle(CollectionClass collectionClass, Scanner in) {
         while (in.hasNext()){
             Vehicle vehicle = new Vehicle();
             boolean isCorrectVehicle = true;

@@ -67,7 +67,8 @@ public class Console {
 
     }
 
-    public static Vehicle inputVehicle(CollectionClass collectionClass, Scanner in) {
+    public static Vehicle inputVehicle(CollectionClass collectionClass) {
+        Scanner in = new Scanner(System.in);
         Vehicle vehicle = new Vehicle();
         HashSet<String> setNoInputTypes = setNoInputTypes(NoInputTypes.values());
         for (Field field : vehicle.getClass().getDeclaredFields()){

@@ -21,7 +21,7 @@ public class UpdateId implements Command {
     }
     @Override
     public void setElement() {
-        Vehicle vehicle = inputVehicle(collectionClass, new Scanner(System.in));
+        Vehicle vehicle = inputVehicle(collectionClass);
         pair.setL(vehicle);
     }
 

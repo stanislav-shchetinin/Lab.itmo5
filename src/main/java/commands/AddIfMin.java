@@ -17,7 +17,7 @@ public class AddIfMin implements Command {
     }
     @Override
     public void setElement() {
-        this.vehicle = inputVehicle(collectionClass, new Scanner(System.in));
+        this.vehicle = inputVehicle(collectionClass);
     }
 
     @Override

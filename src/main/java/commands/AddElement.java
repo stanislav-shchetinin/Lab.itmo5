@@ -19,7 +19,7 @@ public class AddElement implements Command {
 
     @Override
     public void setElement() {
-        this.vehicle = inputVehicle(collectionClass, new Scanner(System.in));
+        this.vehicle = inputVehicle(collectionClass);
     }
     @Override
     public void execute() {
