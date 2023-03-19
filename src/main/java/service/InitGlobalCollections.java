@@ -1,12 +1,12 @@
-package service.command;
+package service;
 
 import commands.*;
-import service.CollectionClass;
+import service.command.Command;
 
-import java.io.File;
 import java.util.HashMap;
+import java.util.HashSet;
 
-public class InitMap {
+public class InitGlobalCollections {
 
     public static HashMap<String, Command> mapCommand(CollectionClass collectionClass){
         HashMap<String, Command> map = new HashMap<>();
@@ -27,6 +27,14 @@ public class InitMap {
         map.put("print_ascending", new PrintAscending(collectionClass));
         map.put("print_unique_engine_power", new PrintUniqueEnginePower(collectionClass));
         return map;
+    }
+
+    public static HashSet<String> setNoInputTypes (NoInputTypes[] args){
+        HashSet<String> res = new HashSet<>();
+        for (NoInputTypes x : args){
+            res.add(x.getName());
+        }
+        return res;
     }
 
 }

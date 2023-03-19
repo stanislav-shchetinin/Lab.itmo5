@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.UUID;
 
-import static console.Console.inputUUID;
-
 public class RemoveById implements Command {
     private CollectionClass collectionClass;
     private UUID id;

@@ -10,13 +10,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.util.NoSuchElementException;
-import java.util.PriorityQueue;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static service.InitGlobalCollections.setNoInputTypes;
 import static service.Parse.parseFromCSVtoString;
 import static service.Validate.*;
 

@@ -10,7 +10,6 @@ import java.util.AbstractMap;
 import java.util.Scanner;
 import java.util.UUID;
 
-import static console.Console.inputUUID;
 import static console.Console.inputVehicle;
 
 public class UpdateId implements Command {

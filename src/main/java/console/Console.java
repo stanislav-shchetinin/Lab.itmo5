@@ -1,26 +1,19 @@
 package console;
 
-import base.Coordinates;
 import base.Vehicle;
-import exceptions.ReadTypeException;
 import exceptions.ReadValueException;
 import service.CollectionClass;
-import service.FileRead;
-import service.Validate;
+import service.NoInputTypes;
 import service.command.Command;
-import service.command.InitMap;
+import service.InitGlobalCollections;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
-import java.time.ZonedDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Logger;
 
-import static service.Parse.parseFromCSVtoString;
+import static service.InitGlobalCollections.setNoInputTypes;
 import static service.Validate.*;
 
 public class Console {
@@ -50,7 +43,7 @@ public class Console {
     }
 
     public static void inputCommands(CollectionClass collectionClass) {
-        HashMap<String, Command> mapCommand = InitMap.mapCommand(collectionClass);
+        HashMap<String, Command> mapCommand = InitGlobalCollections.mapCommand(collectionClass);
         Scanner in = new Scanner(System.in);
         while (true){
             String[] arrayString = in.nextLine().trim().split(" ");
@@ -75,7 +68,11 @@ public class Console {
 
     public static Vehicle inputVehicle(CollectionClass collectionClass, Scanner in) {
         Vehicle vehicle = new Vehicle();
+        HashSet<String> setNoInputTypes = setNoInputTypes(NoInputTypes.values());
         for (Field field : vehicle.getClass().getDeclaredFields()){
+            if (setNoInputTypes.contains(field.getType().getSimpleName())){ //Если ID или DATA
+                continue;
+            }
             field.setAccessible(true);
             boolean isCorrectValue = false;
             while (!isCorrectValue){
@@ -96,21 +93,6 @@ public class Console {
             }
         }
         return vehicle;
-    }
-
-    public static UUID inputUUID (CollectionClass collectionClass){
-        Scanner in = new Scanner(System.in);
-        while (true){
-            String value = in.next();
-            try {
-                UUID uuid = uuidFromString(value, collectionClass);
-                return uuid;
-            } catch (ReadValueException e) {
-                logger.warning(e.getMessage());
-            } catch (IllegalArgumentException e) {
-                logger.warning("Неверный тип id");
-            }
-        }
     }
 
 }
