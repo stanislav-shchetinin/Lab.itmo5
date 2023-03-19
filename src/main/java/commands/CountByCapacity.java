@@ -1,13 +1,9 @@
 package commands;
 
-import base.Vehicle;
+import lombok.extern.slf4j.Slf4j;
 import service.CollectionClass;
-import service.LoggerForCommands;
 import service.command.Command;
-
-import java.util.PriorityQueue;
-import java.util.UUID;
-
+@Slf4j
 public class CountByCapacity implements Command {
     private CollectionClass collectionClass;
     private Long capacity;
@@ -20,14 +16,14 @@ public class CountByCapacity implements Command {
         try {
             this.capacity = Long.parseLong(longString);
         } catch (IllegalArgumentException e){
-            LoggerForCommands.loggerWarning("Неверный тип Long");
+            log.error("Неверный тип Long");
         }
     }
 
     @Override
     public void execute() {
         if (capacity == null){
-            LoggerForCommands.loggerWarning("Недостаточно параметров, чтобы выполнить комманду");
+            log.error("Недостаточно параметров, чтобы выполнить комманду");
         } else {
             collectionClass.countByCapacity(capacity);
         }

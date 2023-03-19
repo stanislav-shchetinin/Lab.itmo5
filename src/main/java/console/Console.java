@@ -2,6 +2,7 @@ package console;
 
 import base.Vehicle;
 import exceptions.ReadValueException;
+import lombok.extern.slf4j.Slf4j;
 import service.CollectionClass;
 import service.NoInputTypes;
 import service.command.Command;
@@ -11,14 +12,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
 import java.util.*;
-import java.util.logging.Logger;
 
 import static service.InitGlobalCollections.setNoInputTypes;
 import static service.Validate.*;
 
+@Slf4j
 public class Console {
 
-    private static final Logger logger = Logger.getLogger(Console.class.getName());
     public static File getFile(){
 
         String nameFile = "";
@@ -36,7 +36,7 @@ public class Console {
                     System.out.print("Не существует такой переменной окружения");
                 }
             } catch (FileNotFoundException e){
-                logger.warning(e.getMessage());
+                log.error(e.getMessage());
             }
 
         }
@@ -53,7 +53,7 @@ public class Console {
             String nameCommand = arrayString[0];
             Command command = mapCommand.get(nameCommand);
             if (command == null){
-                logger.warning("Не существует команды с указанным названием");
+                log.error("Не существует команды с указанным названием");
                 continue;
             }
             if (arrayString.length != 1){
@@ -83,12 +83,12 @@ public class Console {
                     field.set(vehicle, thisType(value, field, collectionClass));
                 } catch (IllegalArgumentException e) {
                     isCorrectValue = false;
-                    logger.warning(String.format("Неверный тип %s", field.getName()));
+                    log.error(String.format("Неверный тип %s", field.getName()));
                 } catch (IllegalAccessException e){
-                    logger.fine("Запись в поле запрещена");
+                    log.error("Запись в поле запрещена");
                 } catch (ReadValueException e){
                     isCorrectValue = false;
-                    logger.warning(e.getMessage());
+                    log.error(e.getMessage());
                 }
             }
         }

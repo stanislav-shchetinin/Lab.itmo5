@@ -5,6 +5,7 @@ import base.Vehicle;
 import base.VehicleType;
 import exceptions.ReadTypeException;
 import exceptions.ReadValueException;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.UUID;
-
+@Slf4j
 public class Validate {
 
     public static UUID uuidFromString(String value, CollectionClass collectionClass) throws IllegalArgumentException, ReadValueException {
@@ -75,7 +76,7 @@ public class Validate {
 
     public static File checkFile(File file) throws FileNotFoundException {
         if (file.exists() && !file.isDirectory()){
-            LoggerForCommands.loggerInfo("Файл успешно получен");
+            log.info("Файл успешно получен");
             return file;
         } else {
             throw new FileNotFoundException("Не существует файла по указанному пути");

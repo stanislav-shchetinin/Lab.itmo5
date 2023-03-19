@@ -1,14 +1,11 @@
 package commands;
 
+import lombok.extern.slf4j.Slf4j;
 import service.CollectionClass;
-import service.LoggerForCommands;
 import service.command.Command;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
 import java.util.UUID;
-
+@Slf4j
 public class RemoveById implements Command {
     private CollectionClass collectionClass;
     private UUID id;
@@ -21,14 +18,14 @@ public class RemoveById implements Command {
         try {
             this.id = UUID.fromString(uuidString);
         } catch (IllegalArgumentException e){
-            LoggerForCommands.loggerWarning("Неверный тип id");
+            log.error("Неверный тип id");
         }
     }
 
     @Override
     public void execute() {
         if (id == null){
-            LoggerForCommands.loggerWarning("Недостаточно параметров, чтобы выполнить комманду");
+            log.error("Недостаточно параметров, чтобы выполнить комманду");
         } else {
             collectionClass.removeById(id);
         }

@@ -1,11 +1,6 @@
 package base;
 
-import exceptions.ReadValueException;
-
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class  Vehicle implements Comparable<Vehicle>{
@@ -17,7 +12,6 @@ public class  Vehicle implements Comparable<Vehicle>{
     private Long capacity; //Поле может быть null, Значение поля должно быть больше 0
     private Double distanceTravelled; //Поле может быть null, Значение поля должно быть больше 0
     private VehicleType type; //Поле не может быть null
-
 
     public Vehicle(){
         this.creationDate = ZonedDateTime.now();
