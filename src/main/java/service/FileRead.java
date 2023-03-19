@@ -9,6 +9,7 @@ import exceptions.ReadValueException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
 import java.util.Scanner;
@@ -16,36 +17,48 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static service.Parse.parseFromCSVtoString;
 import static service.Validate.*;
 
 public class FileRead {
 
     private static final Logger logger = Logger.getLogger(FileRead.class.getName());
 
-    public static void fileRead(File file, CollectionClass collectionClass){
-
-        int numberWord = 1;
-
-        String str = Parse.parseFromCSVtoString(file);
-        Scanner in = new Scanner(str);
-
+    public static void fromFileVehicle(CollectionClass collectionClass, File file) {
+        Scanner in = new Scanner(parseFromCSVtoString(file));
+        String data = parseFromCSVtoString(file);
+        data = data.substring(0, data.length() - 1); //Добавляется null значение в конец, поэтому обрезаем его
         while (in.hasNext()){
-            Vehicle vehicle = null;
-            try {
-                vehicle = readVehicle(in, numberWord);
-                numberWord += 7;
-            } catch (NoSuchElementException e){
-                logger.warning("Недостаточно значений, чтобы добавить последний объект");
-            } catch (ReadTypeException | ReadValueException e) {
-                logger.warning(e.getMessage());
+            Vehicle vehicle = new Vehicle();
+            boolean isCorrectVehicle = true;
+            for (Field field : vehicle.getClass().getDeclaredFields()){
+                field.setAccessible(true);
+                if (in.hasNext()){
+                    try {
+                        String value = in.nextLine();
+                        if (field.getType() == Coordinates.class && in.hasNext()){
+                            value += " " + in.nextLine();
+                            value.replaceAll(",", ".");
+                        }
+                        field.set(vehicle, thisType(value, field, collectionClass));
+                    } catch (IllegalArgumentException e) {
+                        isCorrectVehicle = false;
+                        logger.warning(String.format("Неверный тип %s", field.getName()));
+                        break;
+                    } catch (ReadValueException e) {
+                        isCorrectVehicle = false;
+                        logger.warning(e.getMessage());
+                    } catch (IllegalAccessException e) {
+                        logger.fine("Нет доступа к полю");
+                    }
+                }
+            }
+            if (isCorrectVehicle){
+                collectionClass.add(vehicle);
+            } else {
                 break;
             }
-            if (vehicle != null){
-                vehicle.setId(UUID.randomUUID()); //Временно пока не добавлю айди и дату из файла
-                collectionClass.add(vehicle);
-            }
         }
-        in.close();
     }
 
 }

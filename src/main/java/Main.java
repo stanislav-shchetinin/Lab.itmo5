@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static console.Console.*;
+import static service.FileRead.fromFileVehicle;
 import static service.Parse.parseFromCSVtoString;
 
 public class Main {
