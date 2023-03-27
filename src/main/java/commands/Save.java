@@ -1,6 +1,6 @@
 package commands;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import service.CollectionClass;
 import service.Parse;
 import service.command.Command;
@@ -9,7 +9,7 @@ import java.io.*;
 
 import static service.Validate.writeCheckFile;
 
-@Slf4j
+@Log
 public class Save implements Command {
 
     private CollectionClass collectionClass;
@@ -29,7 +29,7 @@ public class Save implements Command {
             byte[] buffer = queueString.getBytes();
             bos.write(buffer, 0, buffer.length);
         } catch (IOException e) {
-            log.error(String.format("Проблемы с файлом %s", file.toString()));
+            log.warning(String.format("Проблемы с файлом %s", file.toString()));
         }
     }
 }

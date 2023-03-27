@@ -1,22 +1,16 @@
 package service;
 
 import base.Coordinates;
-import base.Vehicle;
 import base.VehicleType;
-import exceptions.ReadTypeException;
 import exceptions.ReadValueException;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
 import java.util.UUID;
-@Slf4j
+@Log
 public class Validate {
 
     public static UUID uuidFromString(String value, CollectionClass collectionClass) throws IllegalArgumentException, ReadValueException {

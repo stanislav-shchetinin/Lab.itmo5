@@ -3,7 +3,7 @@ package console;
 import base.Vehicle;
 import exceptions.ReadValueException;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import service.CollectionClass;
 import service.NoInputTypes;
 import service.command.Command;
@@ -17,7 +17,7 @@ import java.util.*;
 import static service.InitGlobalCollections.setNoInputTypes;
 import static service.Validate.*;
 
-@Slf4j
+@Log
 public class Console {
 
     public static File getFile(){
@@ -37,7 +37,7 @@ public class Console {
                     System.out.print("Не существует такой переменной окружения");
                 }
             } catch (FileNotFoundException e){
-                log.error(e.getMessage());
+                log.warning(e.getMessage());
             }
 
         }
@@ -54,7 +54,7 @@ public class Console {
             String nameCommand = arrayString[0];
             Command command = mapCommand.get(nameCommand);
             if (command == null){
-                log.error("Не существует команды с указанным названием");
+                log.warning("Не существует команды с указанным названием");
                 continue;
             }
             if (arrayString.length != 1){
@@ -85,12 +85,12 @@ public class Console {
                     field.set(vehicle, thisType(value, field, collectionClass));
                 } catch (IllegalArgumentException e) {
                     isCorrectValue = false;
-                    log.error(String.format("Неверный тип %s", field.getName()));
+                    log.warning(String.format("Неверный тип %s", field.getName()));
                 } catch (IllegalAccessException e){
-                    log.error("Запись в поле запрещена");
+                    log.warning("Запись в поле запрещена");
                 } catch (ReadValueException e){
                     isCorrectValue = false;
-                    log.error(e.getMessage());
+                    log.warning(e.getMessage());
                 }
             }
         }

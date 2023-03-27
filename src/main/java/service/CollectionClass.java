@@ -1,15 +1,14 @@
 package service;
 
 import base.Vehicle;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-import static service.Validate.checkFile;
 import static service.Validate.readCheckFile;
-@Slf4j
+@Log
 public class CollectionClass{
     private Date date;
     private PriorityQueue<Vehicle> collection = new PriorityQueue();
@@ -132,7 +131,7 @@ public class CollectionClass{
 
             }
         } catch (FileNotFoundException e) {
-            log.error(e.getMessage());
+            log.warning(e.getMessage());
         }
 
     }

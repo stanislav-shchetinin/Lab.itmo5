@@ -3,16 +3,13 @@ package service;
 import base.Coordinates;
 import base.Vehicle;
 import exceptions.ReadValueException;
-import lombok.extern.slf4j.Slf4j;
-
-import java.io.File;
+import lombok.extern.java.Log;
 
 import java.lang.reflect.Field;
 import java.util.*;
 
-import static service.Parse.parseFromCSVtoString;
 import static service.Validate.*;
-@Slf4j
+@Log
 public class FileRead {
 
     public static void fromFileVehicle(CollectionClass collectionClass, Scanner in) {
@@ -31,13 +28,13 @@ public class FileRead {
                         field.set(vehicle, thisType(value, field, collectionClass));
                     } catch (IllegalArgumentException e) {
                         isCorrectVehicle = false;
-                        log.error(String.format("Неверный тип %s", field.getName()));
+                        log.warning(String.format("Неверный тип %s", field.getName()));
                         break;
                     } catch (ReadValueException e) {
                         isCorrectVehicle = false;
-                        log.error(e.getMessage());
+                        log.warning(e.getMessage());
                     } catch (IllegalAccessException e) {
-                        log.warn("Нет доступа к полю");
+                        log.warning("Нет доступа к полю");
                     }
                 }
             }

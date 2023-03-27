@@ -4,16 +4,13 @@ import base.Coordinates;
 import base.Vehicle;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 
 import java.io.*;
 import java.lang.reflect.Field;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.PriorityQueue;
 import java.util.Scanner;
-import java.util.logging.Logger;
-@Slf4j
+@Log
 public class Parse {
     public static String parseFromCSVtoString(File file) {
 
@@ -34,9 +31,9 @@ public class Parse {
                 }
             }
         } catch (IOException e){
-            log.error(String.format("Файл с именем %s не найден", e.getMessage()));
+            log.warning(String.format("Файл с именем %s не найден", e.getMessage()));
         } catch (CsvValidationException e){
-            log.error(e.getMessage());
+            log.warning(e.getMessage());
         }
 
         return res;
@@ -63,7 +60,7 @@ public class Parse {
                     }
                     ans += ",";
                 } catch (IllegalAccessException e){
-                    log.error("Нет доступа к полю класса");
+                    log.warning("Нет доступа к полю класса");
                 }
             }
             ans += "\n";

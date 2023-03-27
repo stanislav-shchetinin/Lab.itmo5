@@ -4,8 +4,6 @@ import base.Vehicle;
 import service.CollectionClass;
 import service.command.Command;
 
-import java.util.Scanner;
-
 import static console.Console.inputVehicle;
 
 public class AddElement implements Command {

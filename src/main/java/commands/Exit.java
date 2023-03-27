@@ -1,8 +1,8 @@
 package commands;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import service.command.Command;
-@Slf4j
+@Log
 public class Exit implements Command {
 
     @Override

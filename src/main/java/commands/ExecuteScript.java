@@ -1,6 +1,6 @@
 package commands;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import service.CollectionClass;
 import service.command.Command;
 
@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import static service.Validate.checkFile;
-@Slf4j
+@Log
 public class ExecuteScript implements Command {
 
     private CollectionClass collectionClass;
@@ -20,7 +20,7 @@ public class ExecuteScript implements Command {
     @Override
     public void execute() {
         if (file == null){
-            log.error("Недостаточно параметров, чтобы выполнить комманду");
+            log.warning("Недостаточно параметров, чтобы выполнить комманду");
         } else {
 
         }
@@ -31,7 +31,7 @@ public class ExecuteScript implements Command {
         try {
             this.file = checkFile(new File(nameFile));
         } catch (FileNotFoundException e) {
-            log.error(e.getMessage());
+            log.warning(e.getMessage());
         }
     }
 

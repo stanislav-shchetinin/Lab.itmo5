@@ -1,16 +1,16 @@
 package commands;
 
 import base.Vehicle;
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import service.CollectionClass;
 import service.Pair;
 import service.command.Command;
 
-import java.util.Scanner;
 import java.util.UUID;
 
 import static console.Console.inputVehicle;
-@Slf4j
+@Log
 public class UpdateId implements Command {
 
     private Pair<Vehicle, UUID> pair;
@@ -30,14 +30,14 @@ public class UpdateId implements Command {
         try {
             this.pair.setR(UUID.fromString(uuidString));
         } catch (IllegalArgumentException e){
-            log.error("Неверный тип id");
+            log.warning("Неверный тип id");
         }
     }
 
     @Override
     public void execute() {
         if (pair.getR() == null){
-            log.error("Недостаточно параметров, чтобы выполнить комманду");
+            log.warning("Недостаточно параметров, чтобы выполнить комманду");
         } else {
             collectionClass.updateById(pair);
         }
