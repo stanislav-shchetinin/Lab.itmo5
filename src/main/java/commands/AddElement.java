@@ -19,6 +19,18 @@ public class AddElement implements Command {
     public void setElement() {
         this.vehicle = inputVehicle(collectionClass);
     }
+
+    @Override
+    public String description() {
+        return "add {element} : добавить новый элемент в коллекцию";
+    }
+
+
+    @Override
+    public String name() {
+        return "add";
+    }
+
     @Override
     public void execute() {
         collectionClass.add(vehicle);

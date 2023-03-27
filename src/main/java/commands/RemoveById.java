@@ -23,16 +23,27 @@ public class RemoveById implements Command {
     }
 
     @Override
+    public void clearFields() {
+        id = null;
+    }
+
+    @Override
+    public String description() {
+        return "remove_by_id: удалить элемент из коллекции по его id";
+    }
+
+    @Override
+    public String name() {
+        return "remove_by_id";
+    }
+
+    @Override
     public void execute() {
         if (id == null){
-            log.warning("Недостаточно параметров, чтобы выполнить комманду");
+            log.warning("Недостаточно параметров, чтобы выполнить команду");
         } else {
             collectionClass.removeById(id);
         }
     }
 
-    @Override
-    public void clearFields() {
-        id = null;
-    }
 }

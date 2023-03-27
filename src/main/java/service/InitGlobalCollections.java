@@ -3,8 +3,7 @@ package service;
 import commands.*;
 import service.command.Command;
 
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 public class InitGlobalCollections {
 

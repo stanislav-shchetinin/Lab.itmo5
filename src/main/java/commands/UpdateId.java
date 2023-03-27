@@ -35,16 +35,26 @@ public class UpdateId implements Command {
     }
 
     @Override
+    public void clearFields() {
+        pair = null;
+    }
+
+    @Override
+    public String description() {
+        return "update id:обновить элемент с заданным id";
+    }
+
+    @Override
+    public String name() {
+        return "update";
+    }
+
+    @Override
     public void execute() {
         if (pair.getR() == null){
             log.warning("Недостаточно параметров, чтобы выполнить комманду");
         } else {
             collectionClass.updateById(pair);
         }
-    }
-
-    @Override
-    public void clearFields() {
-        pair = null;
     }
 }

@@ -19,6 +19,15 @@ public class AddIfMin implements Command {
     }
 
     @Override
+    public String description() {
+        return "add_if_min {element} : добавить новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции";
+    }
+
+    @Override
+    public String name() {
+        return "add_if_min";
+    }
+    @Override
     public void execute() {
         collectionClass.addIfMin(vehicle);
     }

@@ -21,6 +21,16 @@ public class CountByCapacity implements Command {
     }
 
     @Override
+    public String description() {
+        return "count_by_capacity : очистить коллекцию";
+    }
+
+    @Override
+    public String name() {
+        return "count_by_capacity";
+    }
+
+    @Override
     public void execute() {
         if (capacity == null){
             log.warning("Недостаточно параметров, чтобы выполнить комманду");

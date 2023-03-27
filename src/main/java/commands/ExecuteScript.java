@@ -17,14 +17,6 @@ public class ExecuteScript implements Command {
     public ExecuteScript(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
-    @Override
-    public void execute() {
-        if (file == null){
-            log.warning("Недостаточно параметров, чтобы выполнить комманду");
-        } else {
-
-        }
-    }
 
     @Override
     public void setParametr(String nameFile) {
@@ -38,5 +30,23 @@ public class ExecuteScript implements Command {
     @Override
     public void clearFields() {
         file = null;
+    }
+
+    @Override
+    public String description() {
+        return "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме";
+    }
+
+    @Override
+    public String name() {
+        return "execute_script";
+    }
+    @Override
+    public void execute() {
+        if (file == null){
+            log.warning("Недостаточно параметров, чтобы выполнить комманду");
+        } else {
+
+        }
     }
 }

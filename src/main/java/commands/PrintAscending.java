@@ -9,6 +9,17 @@ public class PrintAscending implements Command {
     public PrintAscending(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+
+    @Override
+    public String description() {
+        return "print_ascending : вывести элементы коллекции в порядке возрастания";
+    }
+
+
+    @Override
+    public String name() {
+        return "print_ascending";
+    }
     @Override
     public void execute() {
         collectionClass.printAscending();

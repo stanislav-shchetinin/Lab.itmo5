@@ -5,4 +5,7 @@ public interface Command {
     default void setElement(){}
     default void setParametr(String parametr){}
     default void clearFields(){}
+    String description();
+
+    String name();
 }

@@ -19,6 +19,16 @@ public class Save implements Command {
     public Save(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+
+    @Override
+    public String description() {
+        return "save : сохранить коллекцию в файл";
+    }
+
+    @Override
+    public String name() {
+        return "save";
+    }
     @Override
     public void execute() {
         try (FileOutputStream fos = new FileOutputStream(writeCheckFile(file));
