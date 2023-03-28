@@ -6,6 +6,7 @@ import service.Parse;
 import service.command.Command;
 
 import java.io.*;
+import java.util.PriorityQueue;
 
 import static service.Validate.writeCheckFile;
 
@@ -37,7 +38,7 @@ public class Save implements Command {
              BufferedOutputStream bos = new BufferedOutputStream(fos)) {
             byte[] bufferHead = HEAD.getBytes();
             bos.write(bufferHead, 0, bufferHead.length);
-            String queueString = Parse.queueToString(collectionClass.getCollection());
+            String queueString = Parse.queueToString(new PriorityQueue<>(collectionClass.getCollection()));
             byte[] buffer = queueString.getBytes();
             bos.write(buffer, 0, buffer.length);
         } catch (IOException e) {

@@ -125,7 +125,6 @@ public class CollectionClass{
 
     public void executeScript(File file){
         try {
-            file = readCheckFile(file);
             Scanner in = new Scanner(file);
             while (in.hasNext()){
 

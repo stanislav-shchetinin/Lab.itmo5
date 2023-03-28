@@ -32,7 +32,9 @@ public class Console {
                 String nameVar = in.nextLine().trim();
                 if (mapEnv.containsKey(nameVar)){
                     nameFile = mapEnv.get(nameVar);
-                    return readCheckFile(new File(nameFile));
+                    File file = readCheckFile(new File(nameFile));
+                    log.info("Файл успешно получен");
+                    return file;
                 } else {
                     System.out.print("Не существует такой переменной окружения");
                 }

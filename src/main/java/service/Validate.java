@@ -3,14 +3,12 @@ package service;
 import base.Coordinates;
 import base.VehicleType;
 import exceptions.ReadValueException;
-import lombok.extern.java.Log;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
 import java.time.ZonedDateTime;
 import java.util.UUID;
-@Log
 public class Validate {
 
     public static UUID uuidFromString(String value, CollectionClass collectionClass) throws IllegalArgumentException, ReadValueException {
@@ -70,7 +68,6 @@ public class Validate {
 
     public static File checkFile(File file) throws FileNotFoundException {
         if (file.exists() && !file.isDirectory()){
-            log.info("Файл успешно получен");
             return file;
         } else {
             throw new FileNotFoundException("Не существует файла по указанному пути");

@@ -7,7 +7,8 @@ import service.command.Command;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-import static service.Validate.checkFile;
+import static service.Validate.readCheckFile;
+
 @Log
 public class ExecuteScript implements Command {
 
@@ -22,7 +23,7 @@ public class ExecuteScript implements Command {
     @Override
     public void setParametr(String nameFile) {
         try {
-            this.file = checkFile(new File(nameFile));
+            this.file = readCheckFile(new File(nameFile));
         } catch (FileNotFoundException e) {
             log.warning(e.getMessage());
         }
