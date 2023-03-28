@@ -12,7 +12,7 @@ public class RemoveById implements Command {
     public RemoveById(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
-
+    public RemoveById(){}
     @Override
     public void setParametr(String uuidString) {
         try {

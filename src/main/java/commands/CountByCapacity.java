@@ -10,6 +10,7 @@ public class CountByCapacity implements Command {
     public CountByCapacity(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    public CountByCapacity(){}
 
     @Override
     public void setParametr(String longString) {

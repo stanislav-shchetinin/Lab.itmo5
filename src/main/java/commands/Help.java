@@ -4,6 +4,8 @@ import service.CollectionClass;
 import service.InitGlobalCollections;
 import service.command.Command;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Help implements Command {
@@ -19,8 +21,8 @@ public class Help implements Command {
     }
     @Override
     public void execute() {
-        HashMap<String, Command> mapCommand = InitGlobalCollections.mapCommand(new CollectionClass());
-        for (Command command : mapCommand.values()){
+        ArrayList<Command> helpCommand = InitGlobalCollections.helpCommand();
+        for (Command command : helpCommand){
             System.out.println(command.description());
         }
     }

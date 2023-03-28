@@ -13,6 +13,7 @@ public class AddIfMin implements Command {
     public AddIfMin(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    public AddIfMin(){}
     @Override
     public void setElement() {
         this.vehicle = inputVehicle(collectionClass);

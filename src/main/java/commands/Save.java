@@ -14,11 +14,13 @@ public class Save implements Command {
 
     private CollectionClass collectionClass;
     private final String HEAD = "id,name,coordinates.x,coordinates.y,date,engine_power,capacity,distance_travelled,type\n";
-    private File file = new File("files/output.csv");
+    private File file = null;
 
-    public Save(CollectionClass collectionClass){
+    public Save(CollectionClass collectionClass, File file){
         this.collectionClass = collectionClass;
+        this.file = file;
     }
+    public Save(){}
 
     @Override
     public String description() {

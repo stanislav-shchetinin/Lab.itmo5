@@ -9,6 +9,7 @@ public class Show implements Command {
     public Show(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    public Show(){}
 
     @Override
     public String description() {

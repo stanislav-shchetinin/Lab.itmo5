@@ -3,11 +3,12 @@ package service;
 import commands.*;
 import service.command.Command;
 
+import java.io.File;
 import java.util.*;
 
 public class InitGlobalCollections {
 
-    public static HashMap<String, Command> mapCommand(CollectionClass collectionClass){
+    public static HashMap<String, Command> mapCommand(CollectionClass collectionClass, File file){
         HashMap<String, Command> map = new HashMap<>();
         map.put("help", new Help());
         map.put("info", new Info(collectionClass));
@@ -16,7 +17,7 @@ public class InitGlobalCollections {
         map.put("update_id", new UpdateId(collectionClass));
         map.put("remove_by_id", new RemoveById(collectionClass));
         map.put("clear", new Clear(collectionClass));
-        map.put("save", new Save(collectionClass));
+        map.put("save", new Save(collectionClass, file));
         map.put("execute_script", new ExecuteScript(collectionClass));
         map.put("exit", new Exit());
         map.put("remove_first", new RemoveFirst(collectionClass));
@@ -26,6 +27,15 @@ public class InitGlobalCollections {
         map.put("print_ascending", new PrintAscending(collectionClass));
         map.put("print_unique_engine_power", new PrintUniqueEnginePower(collectionClass));
         return map;
+    }
+
+    public static ArrayList<Command> helpCommand(){
+        return new ArrayList<>(List.of(
+                new Help(), new Info(), new Show(), new AddElement(), new UpdateId(),
+                new RemoveById(), new Clear(), new Save(), new ExecuteScript(), new Exit(),
+                new RemoveFirst(), new AddIfMax(), new AddIfMin(), new CountByCapacity(), new PrintAscending(),
+                new PrintUniqueEnginePower()
+        ));
     }
 
     public static HashSet<String> setNoInputTypes (NoInputTypes[] args){

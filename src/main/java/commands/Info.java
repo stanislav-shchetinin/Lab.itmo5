@@ -10,7 +10,7 @@ public class Info implements Command {
     public Info(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
-
+    public Info(){}
     @Override
     public String description() {
         return "info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)";

@@ -40,6 +40,12 @@ public class Parse {
 
     }
 
+    private static String doubleWithQuotMark (Double d){
+        return "\"" + d + "\""; //Не через String.format, чтобы double записывался через точку, а не запятую
+    }
+    private static String floatWithQuotMark (Float f){
+        return "\"" + f + "\""; //Не через String.format, чтобы double записывался через точку, а не запятую
+    }
     public static String queueToString(PriorityQueue<Vehicle> priorityQueue){
         String ans = "";
         while (!priorityQueue.isEmpty()){
@@ -48,13 +54,13 @@ public class Parse {
                 field.setAccessible(true);
                 try{
                     if (field.getType() == Double.class || field.getType() == double.class){
-                        ans += String.format("\"%f\"", field.get(vehicle));
+                        ans += doubleWithQuotMark((Double) field.get(vehicle));
                     } else if (field.getType() == Coordinates.class){
                         Field[] fieldsCoordinates = field.getType().getDeclaredFields();
                         fieldsCoordinates[0].setAccessible(true); //x
                         fieldsCoordinates[1].setAccessible(true); //y
-                        ans += String.format("\"%f\",\"%f\"", fieldsCoordinates[0].get(vehicle.getCoordinates()) ,
-                                fieldsCoordinates[1].get(vehicle.getCoordinates()));
+                        ans += floatWithQuotMark((Float)fieldsCoordinates[0].get(vehicle.getCoordinates())) + "," +
+                                floatWithQuotMark((Float) fieldsCoordinates[1].get(vehicle.getCoordinates()));
                     } else {
                         ans += field.get(vehicle).toString();
                     }

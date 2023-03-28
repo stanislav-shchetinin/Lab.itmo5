@@ -17,6 +17,7 @@ public class ExecuteScript implements Command {
     public ExecuteScript(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    public ExecuteScript(){}
 
     @Override
     public void setParametr(String nameFile) {

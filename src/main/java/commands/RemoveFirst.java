@@ -9,7 +9,7 @@ public class RemoveFirst implements Command {
     public RemoveFirst(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
-
+    public RemoveFirst(){}
     @Override
     public String description() {
         return "remove_first : удалить первый элемент из коллекции";

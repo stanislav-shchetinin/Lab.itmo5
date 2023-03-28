@@ -14,6 +14,8 @@ public class AddElement implements Command {
     public AddElement(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    public AddElement(){
+    }
 
     @Override
     public void setElement() {

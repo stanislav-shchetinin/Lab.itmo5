@@ -19,6 +19,7 @@ public class UpdateId implements Command {
     public UpdateId(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    public UpdateId(){}
     @Override
     public void setElement() {
         Vehicle vehicle = inputVehicle(collectionClass);

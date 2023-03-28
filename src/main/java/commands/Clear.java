@@ -10,6 +10,7 @@ public class Clear implements Command {
     public Clear(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    public Clear(){}
 
     @Override
     public String description() {

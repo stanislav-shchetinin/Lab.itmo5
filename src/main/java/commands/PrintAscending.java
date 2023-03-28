@@ -9,6 +9,7 @@ public class PrintAscending implements Command {
     public PrintAscending(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    public PrintAscending(){}
 
     @Override
     public String description() {

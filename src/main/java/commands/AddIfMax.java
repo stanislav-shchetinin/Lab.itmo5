@@ -13,6 +13,7 @@ public class AddIfMax implements Command {
     public AddIfMax(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    public AddIfMax(){}
     @Override
     public void setElement() {
         this.vehicle = inputVehicle(collectionClass);

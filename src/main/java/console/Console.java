@@ -43,8 +43,8 @@ public class Console {
         }
     }
 
-    public static void inputCommands(CollectionClass collectionClass) {
-        HashMap<String, Command> mapCommand = InitGlobalCollections.mapCommand(collectionClass);
+    public static void inputCommands(CollectionClass collectionClass, File file) {
+        HashMap<String, Command> mapCommand = InitGlobalCollections.mapCommand(collectionClass, file);
         Scanner in = new Scanner(System.in);
         while (true){
             String[] arrayString = in.nextLine().trim().split(" ");

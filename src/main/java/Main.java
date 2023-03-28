@@ -17,7 +17,7 @@ public class Main {
 
         fromFileVehicle(collectionClass, new Scanner(parseFromCSVtoString(file))); //Считывание файла и запись его в collectionClass
 
-        Console.inputCommands(collectionClass);
+        Console.inputCommands(collectionClass, file);
 
     }
 }   

@@ -9,7 +9,7 @@ public class PrintUniqueEnginePower implements Command {
     public PrintUniqueEnginePower(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
-
+    public PrintUniqueEnginePower(){}
     @Override
     public String description() {
         return "print_unique_engine_power : вывести уникальные значения поля enginePower всех элементов в коллекции";
