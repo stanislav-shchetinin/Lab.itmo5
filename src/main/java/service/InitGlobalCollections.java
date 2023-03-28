@@ -1,9 +1,11 @@
 package service;
 
+import base.VehicleType;
 import commands.*;
 import service.command.Command;
 
 import java.io.File;
+import java.time.ZonedDateTime;
 import java.util.*;
 
 public class InitGlobalCollections {
@@ -44,6 +46,13 @@ public class InitGlobalCollections {
             res.add(x.getName());
         }
         return res;
+    }
+
+    public static HashSet<Class> primitiveTypes(){
+        return new HashSet<>(List.of(
+                Double.class, Float.class, double.class, UUID.class, String.class, ZonedDateTime.class, Long.class, VehicleType.class,
+                float.class
+        ));
     }
 
 }

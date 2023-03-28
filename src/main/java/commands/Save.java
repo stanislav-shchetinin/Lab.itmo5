@@ -1,11 +1,15 @@
 package commands;
 
+import base.Vehicle;
 import lombok.extern.java.Log;
 import service.CollectionClass;
+import service.InitGlobalCollections;
 import service.Parse;
 import service.command.Command;
 
 import java.io.*;
+import java.lang.reflect.Field;
+import java.util.HashSet;
 import java.util.PriorityQueue;
 
 import static service.Validate.writeCheckFile;
@@ -14,14 +18,34 @@ import static service.Validate.writeCheckFile;
 public class Save implements Command {
 
     private CollectionClass collectionClass;
-    private final String HEAD = "id,name,coordinates.x,coordinates.y,date,engine_power,capacity,distance_travelled,type\n";
+    private final String HEAD = getHead(Vehicle.class);
     private File file = null;
-
     public Save(CollectionClass collectionClass, File file){
         this.collectionClass = collectionClass;
         this.file = file;
     }
     public Save(){}
+
+    private String getHead(Class clazz){
+        HashSet<Class> primitiveTypes = InitGlobalCollections.primitiveTypes();
+        String ans = "";
+        for (Field field : clazz.getDeclaredFields()){
+            ans += String.format("%s", getStringFields(field, primitiveTypes));
+        }
+        return String.format("%s\n", ans.substring(0, ans.length() - 1)); //убрал последнюю запятую
+    }
+    private String getStringFields(Field field, HashSet<Class> primitiveTypes){
+        String ans = "";
+
+        if (primitiveTypes.contains(field.getType())){
+            return String.format("%s,", field.getName());
+        }
+        for (Field simpleField : field.getType().getDeclaredFields()){
+            ans += String.format("%s", getStringFields(simpleField, primitiveTypes));
+        }
+
+        return ans;
+    }
 
     @Override
     public String description() {
