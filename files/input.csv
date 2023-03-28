@@ -1,2 +1,4 @@
 id,name,x,y,creationDate,enginePower,capacity,distanceTravelled,type
-6f369f5d-7b26-4d0c-9c35-cb6c980f5f24,Max,"23.3","-762.0",2022-05-26T08:15:30+07:00[Asia/Ho_Chi_Minh],"1.0",1,"1.0",CAR,
+ccff7e8d-6f5a-4cb4-a0a6-f65f14c40f9f,1,"12.32","-800.004",2023-03-28T23:19:08.684023300+03:00[Europe/Volgograd],"1.0",1,"1.0",CAR
+37a86baa-4503-4b68-a217-3dcbb99474cd,1,"12.32","-800.004",2023-03-28T23:19:32.434798300+03:00[Europe/Volgograd],"1.0",1,"1.0",CAR
+6f369f5d-7b26-4d0c-9c35-cb6c980f5f24,Max,"23.3","-762.0",2022-05-26T08:15:30+07:00[Asia/Ho_Chi_Minh],"1.0",1,"1.0",CAR

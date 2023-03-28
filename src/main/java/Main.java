@@ -1,5 +1,6 @@
 import base.Coordinates;
 import base.Vehicle;
+import base.VehicleType;
 import commands.Save;
 import console.Console;
 

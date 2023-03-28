@@ -15,6 +15,7 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 import static service.InitGlobalCollections.setNoInputTypes;
+import static service.Parse.formatInput;
 import static service.Validate.*;
 
 @Log
@@ -27,7 +28,7 @@ public class Console {
         Scanner in = new Scanner(System.in);
 
         while (true){
-            System.out.print("\nВведите имя переменной среды: ");
+            System.out.print("\nВведите имя переменной среды:\n");
             try {
                 String nameVar = in.nextLine().trim();
                 if (mapEnv.containsKey(nameVar)){
@@ -40,6 +41,9 @@ public class Console {
                 }
             } catch (FileNotFoundException e){
                 log.warning(e.getMessage());
+            } catch (NoSuchElementException e){
+                log.warning("Не введены значения");
+                System.exit(1); //1 - означает ошибку no line из-за которой произошло завершение
             }
 
         }
@@ -49,22 +53,27 @@ public class Console {
         HashMap<String, Command> mapCommand = InitGlobalCollections.mapCommand(collectionClass, file);
         Scanner in = new Scanner(System.in);
         while (true){
-            String[] arrayString = in.nextLine().trim().split(" ");
-            if (arrayString.length == 0){
-                continue;
+            try {
+                String[] arrayString = in.nextLine().trim().split(" ");
+                if (arrayString.length == 0){
+                    continue;
+                }
+                String nameCommand = arrayString[0];
+                Command command = mapCommand.get(nameCommand);
+                if (command == null){
+                    log.warning("Не существует команды с указанным названием");
+                    continue;
+                }
+                if (arrayString.length != 1){
+                    command.setParametr(arrayString[1]);
+                }
+                command.setElement();
+                command.execute();
+                command.clearFields();
+            } catch (NoSuchElementException e){
+                log.warning("Не введены значения");
+                break;
             }
-            String nameCommand = arrayString[0];
-            Command command = mapCommand.get(nameCommand);
-            if (command == null){
-                log.warning("Не существует команды с указанным названием");
-                continue;
-            }
-            if (arrayString.length != 1){
-                command.setParametr(arrayString[1]);
-            }
-            command.setElement();
-            command.execute();
-            command.clearFields();
         }
 
     }
@@ -82,7 +91,7 @@ public class Console {
             while (!isCorrectValue){
                 try {
                     isCorrectValue = true;
-                    System.out.println(String.format("\nВведите %s: ", field.getName()));
+                    System.out.println(String.format("\n%sВведите %s: ", formatInput(field.getType()), field.getName()));
                     String value = in.nextLine();
                     field.set(vehicle, thisType(value, field, collectionClass));
                 } catch (IllegalArgumentException e) {

@@ -20,6 +20,9 @@ public class Validate {
     }
     public static Coordinates coordinatesFromString (String value) throws IllegalArgumentException, ReadValueException {
         String[] str = value.split(" ");
+        if (str.length < 2){
+            throw new ReadValueException("Неверный формат");
+        }
         Coordinates coordinates = new Coordinates(Float.parseFloat(str[0]), Float.parseFloat(str[1]));
         if (coordinates.getY() > -762){
             throw new ReadValueException("Координата Y не может быть больше -762");
@@ -61,6 +64,15 @@ public class Validate {
         } else if (field.getType().equals(Long.class)){
             return longFromString(value, field);
         } else if (field.getType().equals(VehicleType.class)){
+            Integer num = -1;
+            try {
+                num = Integer.parseInt(value);
+            } catch (IllegalArgumentException e){
+                //Игнорирую исключение, т.к. если пришло не число - значит VehicleType
+            }
+            if (num != -1){
+                return VehicleType.values()[num - 1];
+            }
             return VehicleType.valueOf(value);
         }
         return null;
