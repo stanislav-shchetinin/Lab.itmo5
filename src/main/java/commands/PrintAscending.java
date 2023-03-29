@@ -3,13 +3,20 @@ package commands;
 import service.CollectionClass;
 import service.command.Command;
 import service.command.NoArgument;
-
+/**
+ * Класс команды: print_ascending
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды
+ * Реализует маркировочный интерфейс NoArgument, чтобы можно было проверить какие аргументы принимает команда (без аргументов)
+ * */
 public class PrintAscending implements Command, NoArgument {
     private CollectionClass collectionClass;
 
     public PrintAscending(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    /**
+     * Пустой конструктор нужен для создания пустых объектов в списках команд
+     * */
     public PrintAscending(){}
 
     @Override

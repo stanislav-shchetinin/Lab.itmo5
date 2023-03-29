@@ -3,7 +3,11 @@ package commands;
 import service.CollectionClass;
 import service.command.Command;
 import service.command.NoArgument;
-
+/**
+ * Класс команды информации о коллекции: info
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды
+ * Реализует маркировочный интерфейс NoArgument, чтобы можно было проверить какие аргументы принимает команда (без аргументов)
+ * */
 public class Info implements Command, NoArgument {
 
     private CollectionClass collectionClass;
@@ -11,6 +15,9 @@ public class Info implements Command, NoArgument {
     public Info(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    /**
+     * Пустой конструктор нужен для создания пустых объектов в списках команд
+     * */
     public Info(){}
     @Override
     public String description() {
@@ -22,6 +29,10 @@ public class Info implements Command, NoArgument {
     public String name() {
         return "info";
     }
+
+    /**
+     * В менеджере коллекции хранится вся информация, которая нужна
+     * */
     @Override
     public void execute() {
         System.out.println(String.format("Тип: %s\nДата инициализации: %s\nКоличество элементов: %d",

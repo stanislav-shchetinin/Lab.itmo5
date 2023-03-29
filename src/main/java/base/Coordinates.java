@@ -1,5 +1,8 @@
 package base;
-
+/**
+* Класс для хранения координат (x, y)
+ * Реализует Comparable, чтобы была возможность сравнить пару координат
+ */
 public class Coordinates implements Comparable<Coordinates>{
     private Float x; //Поле не может быть null
     private float y; //Значение поля должно быть больше -762
@@ -13,10 +16,9 @@ public class Coordinates implements Comparable<Coordinates>{
         return y;
     }
 
-    public void setY(float y) {
-        this.y = y;
-    }
-
+    /**
+     * Сначала сравнение по x, потом по y
+     * */
     @Override
     public int compareTo(Coordinates o) {
         int res = this.x.compareTo(o.x);

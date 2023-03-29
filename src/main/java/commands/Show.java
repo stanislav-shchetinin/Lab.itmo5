@@ -4,12 +4,20 @@ import service.CollectionClass;
 import service.command.Command;
 import service.command.NoArgument;
 
+/**
+ * Класс команды: show
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды
+ * Реализует маркировочный интерфейс NoArgument, чтобы можно было проверить какие аргументы принимает команда (без аргументов)
+ * */
 public class Show implements Command, NoArgument {
     private CollectionClass collectionClass;
 
     public Show(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    /**
+     * Пустой конструктор нужен для создания пустых объектов в списках команд
+     * */
     public Show(){}
 
     @Override
@@ -21,6 +29,10 @@ public class Show implements Command, NoArgument {
     public String name() {
         return "show";
     }
+
+    /**
+     * Из менеджера коллекции берется коллекция, переводится в строку и удаляется последний символ (лишняя запятая)
+     * */
     @Override
     public void execute() {
         System.out.print(collectionClass.getCollection().toString().substring(1, collectionClass.getCollection().toString().length() - 1));

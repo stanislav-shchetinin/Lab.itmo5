@@ -23,6 +23,12 @@ import static service.InitGlobalCollections.setNoInputTypes;
 import static service.Validate.readCheckFile;
 import static service.Validate.thisType;
 
+/**
+ * Класс команды: execute_script имя_файла
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды
+ * Реализует маркировочный интерфейс OneArgument, чтобы можно было проверить какие аргументы принимает команда (один аргумент - имя файла скрипта)
+ * Аннотация @Log создает поле логгера
+ * */
 @Log
 public class ExecuteScript implements Command, OneArgument {
 
@@ -33,6 +39,9 @@ public class ExecuteScript implements Command, OneArgument {
     private static ExecuteScript Instance = null;
     private HashMap<String, Command> mapCommand;
     HashSet<String> setNoInputTypes = setNoInputTypes(NoInputTypes.values());
+    /**
+     * Один объект класса на весь проекта, чтобы не перезаписывался Set для проверки на цикл
+     * */
     public static ExecuteScript getInstance(CollectionClass collectionClass, File fileSave) {
         if (Instance == null){
             Instance = new ExecuteScript(collectionClass, fileSave);
@@ -43,6 +52,9 @@ public class ExecuteScript implements Command, OneArgument {
         this.collectionClass = collectionClass;
         this.fileSave = fileSave;
     }
+    /**
+     * Пустой конструктор нужен для создания пустых объектов в списках команд
+     * */
     public ExecuteScript(){}
 
     @Override
@@ -54,6 +66,9 @@ public class ExecuteScript implements Command, OneArgument {
         }
     }
 
+    /**
+     * Очистка поля после выполнения команды, чтобы ситуации, что в команду не были переданы аргументы, а началось выполнение с прошлыми, не было
+     * */
     @Override
     public void clearFields() {
         file = null;
@@ -74,6 +89,9 @@ public class ExecuteScript implements Command, OneArgument {
             log.warning("Недостаточно параметров, чтобы выполнить комманду");
             return;
         }
+        /**
+         * Текущее имя файла встречалось ранее
+         * */
         if (nameFiles.contains(file.getName())){
             log.warning("Вызов файлов зациклился");
             return;
@@ -83,7 +101,13 @@ public class ExecuteScript implements Command, OneArgument {
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNext()){
+                /**
+                 * Разделение  line из файла на компоненты
+                 * */
                 String[] line = scanner.nextLine().trim().split(" ");
+                /**
+                 * Первое слово в line всегда имя команды
+                 * */
                 Command command = mapCommand.get(line[0]);
                 if (command == null){
                     log.warning("Не существует команды с указанным названием");
@@ -103,12 +127,18 @@ public class ExecuteScript implements Command, OneArgument {
         }
     }
 
+    /**
+     * Проверка команды на то, есть ли у нее одиночный аргумент, если да, то нужно его установить
+     * */
     private void commandSetParametr(Command command, String parametr){
         if (command instanceof OneArgument){
             command.setParametr(parametr);
         }
     }
 
+    /**
+     * Проверка команды на то, есть ли у нее element, как аргумент, если да, то нужно проверить есть ли у этой команды еще и одиночный элемент
+     * */
     private void commandSetElement(Command command, String[] line) throws ReadValueException, IllegalAccessException {
         if (command instanceof ElementArgument){
             //+1 т.к. line[0] - имя команды, +1 т.к. Coordinates имеет два поля
@@ -119,13 +149,18 @@ public class ExecuteScript implements Command, OneArgument {
             }
         }
     }
-
+    /**
+     * Метод для получения объекта Vehicle из line из файла
+     * */
     private Vehicle vehicleFromArray (String[] line) throws ReadValueException, IllegalAccessException {
         if (line.length - 1 < Vehicle.class.getDeclaredFields().length - setNoInputTypes.size()){ //-1 т.к. line[0] - имя команды
             throw new ReadValueException("Недостаточно аргументов для записи Vehicle");
         }
         Vehicle vehicle = new Vehicle();
         int num = 1; //line[0] - название команды
+        /**
+         * Перебор всех полей класса Vehicle
+         * */
         for (Field field : Vehicle.class.getDeclaredFields()){
             field.setAccessible(true);
             if (setNoInputTypes.contains(field.getType().getSimpleName())){ //Если ID или DATA
@@ -133,10 +168,16 @@ public class ExecuteScript implements Command, OneArgument {
             }
             line[num] = line[num].trim();
             String str = line[num];
+            /**
+             * Отдельный случай - класс координат, т.к. у него два поля => он принимает два значения из line
+             * */
             if (field.getType().equals(Coordinates.class)){
                 ++num;
                 str += " " + line[num].trim();
             }
+            /**
+             * Установить в поле полученyю str (перед этим нужно пройти проверку на корректность)
+             * */
             field.set(vehicle, thisType(str, field, collectionClass));
             ++num;
         }

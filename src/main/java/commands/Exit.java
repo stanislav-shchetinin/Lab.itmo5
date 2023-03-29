@@ -3,7 +3,12 @@ package commands;
 import lombok.extern.java.Log;
 import service.command.Command;
 import service.command.NoArgument;
-
+/**
+ * Класс завершения программы: exit
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды
+ * Реализует маркировочный интерфейс NoArgument, чтобы можно было проверить какие аргументы принимает команда (без аргументов)
+ * Аннотация @Log создает поле логгера
+ * */
 @Log
 public class Exit implements Command, NoArgument {
     @Override

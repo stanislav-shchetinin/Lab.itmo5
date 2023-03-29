@@ -14,7 +14,12 @@ import java.util.HashSet;
 import java.util.PriorityQueue;
 
 import static service.Validate.writeCheckFile;
-
+/**
+ * Класс команды: remove_first
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды
+ * Реализует маркировочный интерфейс NoArgument, чтобы можно было проверить какие аргументы принимает команда (без аргументов)
+ * Аннотация @Log создает поле логгера
+ * */
 @Log
 public class Save implements Command, NoArgument {
 
@@ -25,8 +30,15 @@ public class Save implements Command, NoArgument {
         this.collectionClass = collectionClass;
         this.file = file;
     }
+    /**
+     * Пустой конструктор нужен для создания пустых объектов в списках команд
+     * */
     public Save(){}
 
+    /**
+     * Метод для генерации заголовка csv файла по полям класса clazz
+     * primitiveTypes - список типов данных на которых нужно остановиться спускаться в рекурсию и вернуть в строку
+     * */
     private String getHead(Class clazz){
         HashSet<Class> primitiveTypes = InitGlobalCollections.primitiveTypes();
         String ans = "";
@@ -35,6 +47,9 @@ public class Save implements Command, NoArgument {
         }
         return String.format("%s\n", ans.substring(0, ans.length() - 1)); //убрал последнюю запятую
     }
+    /**
+     * Метод спуска в рекурсию по полям для метода getHead
+     * */
     private String getStringFields(Field field, HashSet<Class> primitiveTypes){
         String ans = "";
 
@@ -57,13 +72,17 @@ public class Save implements Command, NoArgument {
     public String name() {
         return "save";
     }
+
+    /**
+     * В методе реализована сериализация данных и запись их в файл
+     * */
     @Override
     public void execute() {
         try (FileOutputStream fos = new FileOutputStream(writeCheckFile(file));
-             BufferedOutputStream bos = new BufferedOutputStream(fos)) {
-            byte[] bufferHead = HEAD.getBytes();
-            bos.write(bufferHead, 0, bufferHead.length);
-            String queueString = Parse.queueToString(new PriorityQueue<>(collectionClass.getCollection()));
+             BufferedOutputStream bos = new BufferedOutputStream(fos)) { //Создание потоков для записи в файл и сериализации
+            byte[] bufferHead = HEAD.getBytes(); //Превращение заголовка в список байтов
+            bos.write(bufferHead, 0, bufferHead.length); //массив байтов, смещение от начала, количество байт для записи
+            String queueString = Parse.queueToString(new PriorityQueue<>(collectionClass.getCollection())); //перевод в строку очереди
             byte[] buffer = queueString.getBytes();
             bos.write(buffer, 0, buffer.length);
         } catch (IOException e) {

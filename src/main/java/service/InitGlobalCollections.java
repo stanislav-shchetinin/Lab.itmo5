@@ -8,8 +8,14 @@ import java.io.File;
 import java.time.ZonedDateTime;
 import java.util.*;
 
+/**
+ * Класс для инициализации вспомогательных коллекций
+ * */
 public class InitGlobalCollections {
 
+    /**
+     * Map для всех команд
+     * */
     public static HashMap<String, Command> mapCommand(CollectionClass collectionClass, File file){
         HashMap<String, Command> map = new HashMap<>();
         map.put("help", new Help());
@@ -30,7 +36,9 @@ public class InitGlobalCollections {
         map.put("print_unique_engine_power", new PrintUniqueEnginePower(collectionClass));
         return map;
     }
-
+    /**
+     * Список всех команд
+     * */
     public static ArrayList<Command> helpCommand(){
         return new ArrayList<>(List.of(
                 new Help(), new Info(), new Show(), new AddElement(), new UpdateId(),
@@ -39,7 +47,9 @@ public class InitGlobalCollections {
                 new PrintUniqueEnginePower()
         ));
     }
-
+    /**
+     * Set для поле Vehicle, который пользователь не должен вводить из консоли (или которые не получаются из execute_script)
+     * */
     public static HashSet<String> setNoInputTypes (NoInputTypes[] args){
         HashSet<String> res = new HashSet<>();
         for (NoInputTypes x : args){
@@ -47,7 +57,9 @@ public class InitGlobalCollections {
         }
         return res;
     }
-
+    /**
+     * Set для примитивных типов данных - типы данных, на которых останавливаем рекурсию
+     * */
     public static HashSet<Class> primitiveTypes(){
         return new HashSet<>(List.of(
                 Double.class, Float.class, double.class, UUID.class, String.class, ZonedDateTime.class, Long.class, VehicleType.class,

@@ -3,6 +3,10 @@ package base;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
+/**
+ * Класс объекты которого хранятся в коллекции
+ * Реализует Comparable, чтобы была возможность сравнить пару объктов класса
+ * */
 public class  Vehicle implements Comparable<Vehicle>{
     private UUID id = UUID.randomUUID(); //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
@@ -17,36 +21,8 @@ public class  Vehicle implements Comparable<Vehicle>{
         this.creationDate = ZonedDateTime.now();
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    public void setCreationDate(ZonedDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public void setEnginePower(double enginePower) {
-        this.enginePower = enginePower;
-    }
-
-    public void setCapacity(Long capacity) {
-        this.capacity = capacity;
-    }
-
-    public void setDistanceTravelled(Double distanceTravelled) {
-        this.distanceTravelled = distanceTravelled;
-    }
-
-    public void setType(VehicleType type) {
-        this.type = type;
     }
 
     public double getEnginePower() {
@@ -69,6 +45,9 @@ public class  Vehicle implements Comparable<Vehicle>{
         return Double.valueOf(l).compareTo(Double.valueOf(r));
     }
 
+    /**
+     * Сравнение по (от более важного к менее): типу т.с., мощности, вместимости, пробегу, координатам, имени, дате создания, id
+     * */
     @Override
     public int compareTo(Vehicle o) {
 

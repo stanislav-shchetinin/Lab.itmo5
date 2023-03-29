@@ -18,14 +18,20 @@ import java.util.*;
 import static service.InitGlobalCollections.setNoInputTypes;
 import static service.Parse.formatInput;
 import static service.Validate.*;
-
+/**
+ * Класс, в котором реализовано взаимодействие с пользователем (ввод данных из консоли)
+ * <p>
+ * Аннотация @Log создает поле логгера
+ * */
 @Log
 public class Console {
-
+    /**
+     * Метод получения файла из консоли (из имени переменной окружения)
+     * */
     public static File getFile(){
 
         String nameFile = "";
-        Map<String, String> mapEnv = System.getenv();
+        Map<String, String> mapEnv = System.getenv(); //получение всех переменных окружения
         Scanner in = new Scanner(System.in);
 
         while (true){
@@ -49,13 +55,17 @@ public class Console {
 
         }
     }
-
+    /**
+     * Метод для ввода команд из консоли
+     * <p>
+     * <b>file</b> нужен для получения команды Save в mapCommand
+     * */
     public static void inputCommands(CollectionClass collectionClass, File file) {
         HashMap<String, Command> mapCommand = InitGlobalCollections.mapCommand(collectionClass, file);
         Scanner in = new Scanner(System.in);
         while (true){
             try {
-                String[] arrayString = in.nextLine().trim().split(" ");
+                String[] arrayString = in.nextLine().trim().split(" "); //разрез строки по пробелу и удаление крайних пробелов
                 if (arrayString.length == 0){
                     continue;
                 }
@@ -81,13 +91,17 @@ public class Console {
         }
 
     }
-
-    public static void consoleVehicle (CollectionClass collectionClass, Scanner in, Vehicle vehicle, Field field) throws ReadValueException, IllegalAccessException {
+    /**
+     * Вспомогательный метод для ввода Vehicle: выдает сообщение пользователю с просьбой о вводе данных и устанавливает значения в поле
+     * */
+    private static void consoleVehicle (CollectionClass collectionClass, Scanner in, Vehicle vehicle, Field field) throws ReadValueException, IllegalAccessException {
         System.out.println(String.format("\n%sВведите %s: ", formatInput(field.getType()), field.getName()));
         String value = in.nextLine();
         field.set(vehicle, thisType(value, field, collectionClass));
     }
-
+     /**
+      * Ввод Vehicle из консоли
+      * */
     public static Vehicle inputVehicle(CollectionClass collectionClass) {
         Scanner in = new Scanner(System.in);
         Vehicle vehicle = new Vehicle();

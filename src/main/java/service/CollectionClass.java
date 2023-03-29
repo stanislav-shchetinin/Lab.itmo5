@@ -3,19 +3,22 @@ package service;
 import base.Vehicle;
 import lombok.extern.java.Log;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
-
-import static service.Validate.readCheckFile;
+/**
+ * Менеджер по работе с коллекцией<p>
+ * Аннотация @Log создает поле логгера
+ * */
 @Log
 public class CollectionClass{
     private Date date;
     private PriorityQueue<Vehicle> collection = new PriorityQueue();
+    /**
+     * Поле хранит id всех объектов, чтобы отслеживать не уникальные id
+     * */
     private HashSet<UUID> uuidHashSet = new HashSet<>();
     public CollectionClass (PriorityQueue collection){
         this.collection = collection;
-        date = new Date();
+        date = new Date(); //при создании устанавливает текущую дату
     }
     public CollectionClass(){
         date = new Date();
@@ -59,7 +62,7 @@ public class CollectionClass{
         while (!collectionCopy.isEmpty()){
             hashSet.add(collectionCopy.poll().getEnginePower());
         }
-        System.out.print(hashSet.toString());
+        System.out.print(hashSet);
     }
     public void removeById (UUID id){
         PriorityQueue<Vehicle> collectionNew = new PriorityQueue<>();
@@ -121,18 +124,6 @@ public class CollectionClass{
             collection.add(vehicle);
             uuidHashSet.add(vehicle.getId());
         }
-    }
-
-    public void executeScript(File file){
-        try {
-            Scanner in = new Scanner(file);
-            while (in.hasNext()){
-
-            }
-        } catch (FileNotFoundException e) {
-            log.warning(e.getMessage());
-        }
-
     }
 
 }

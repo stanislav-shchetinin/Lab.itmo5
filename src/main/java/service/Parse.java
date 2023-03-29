@@ -10,8 +10,17 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.util.PriorityQueue;
 import java.util.Scanner;
+
+/**
+ * Класс, в котором находятся статические методы для перевода типов из одного вида в другой<p>
+ * Аннотация @Log создает поле логгера
+ * */
 @Log
 public class Parse {
+
+    /**
+     * Перевод csv файла в строку
+     * */
     public static String parseFromCSVtoString(File file) {
 
         String res = "";
@@ -47,6 +56,10 @@ public class Parse {
     private static String floatWithQuotMark (Float f){
         return "\"" + f + "\""; //Не через String.format, чтобы double записывался через точку, а не запятую
     }
+
+    /**
+     * Перевод очереди в строку
+     * */
     public static String queueToString(PriorityQueue<Vehicle> priorityQueue){
         String ans = "";
         while (!priorityQueue.isEmpty()){
@@ -75,7 +88,9 @@ public class Parse {
         }
         return ans;
     }
-
+    /**
+     * Метод, в котором в зависимости от класса предлагается формат ввода данных
+     * */
     public static String formatInput(Class clazz){
         if (clazz.getSimpleName().equals("Coordinates")){
             return "(Пример: \"12.32 -800.004\") ";

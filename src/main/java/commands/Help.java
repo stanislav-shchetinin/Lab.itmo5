@@ -1,14 +1,15 @@
 package commands;
 
-import service.CollectionClass;
 import service.InitGlobalCollections;
 import service.command.Command;
 import service.command.NoArgument;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
-
+/**
+ * Класс команды вывода всех команд с описанием: help
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды
+ * Реализует маркировочный интерфейс NoArgument, чтобы можно было проверить какие аргументы принимает команда (без аргументов)
+ * */
 public class Help implements Command, NoArgument {
 
     @Override
@@ -20,6 +21,10 @@ public class Help implements Command, NoArgument {
     public String name() {
         return "help";
     }
+
+    /**
+     * В методе перебирается список всех команд и выводится их описание
+     * */
     @Override
     public void execute() {
         ArrayList<Command> helpCommand = InitGlobalCollections.helpCommand();

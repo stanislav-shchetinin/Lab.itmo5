@@ -1,7 +1,9 @@
 package service.command;
 
 import base.Vehicle;
-
+/**
+ * Интерфейс Command для паттерна Command
+ * */
 public interface Command {
     void execute();
     default void setElement(Vehicle vehicle){}

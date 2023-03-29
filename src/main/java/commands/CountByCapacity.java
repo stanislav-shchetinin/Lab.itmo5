@@ -4,7 +4,12 @@ import lombok.extern.java.Log;
 import service.CollectionClass;
 import service.command.Command;
 import service.command.OneArgument;
-
+/**
+ * Класс команды: count_by_capacity capacity
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды
+ * Реализует маркировочный интерфейс OneArgument, чтобы можно было проверить какие аргументы принимает команда (один аргумент - capacity)
+ * Аннотация @Log создает поле логгера
+ * */
 @Log
 public class CountByCapacity implements Command, OneArgument {
     private CollectionClass collectionClass;
@@ -12,6 +17,9 @@ public class CountByCapacity implements Command, OneArgument {
     public CountByCapacity(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    /**
+     * Пустой конструктор нужен для создания пустых объектов в списках команд
+     * */
     public CountByCapacity(){}
 
     @Override
@@ -41,7 +49,9 @@ public class CountByCapacity implements Command, OneArgument {
             collectionClass.countByCapacity(capacity);
         }
     }
-
+    /**
+     * Очистка поля после выполнения команды, чтобы ситуации, что в команду не были переданы аргументы, а началось выполнение с прошлыми, не было
+     * */
     @Override
     public void clearFields() {
         capacity = null;

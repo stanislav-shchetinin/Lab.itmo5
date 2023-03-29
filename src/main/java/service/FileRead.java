@@ -9,9 +9,16 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 import static service.Validate.*;
+
+/**
+ * Класс для чтения из файла<p>
+ * Аннотация @Log создает поле логгера
+ * */
 @Log
 public class FileRead {
-
+    /**
+     * Метод для считывания из файла Vehicle
+     * */
     public static void fromFileVehicle(CollectionClass collectionClass, Scanner in) {
         while (in.hasNext()){
             Vehicle vehicle = new Vehicle();
@@ -23,7 +30,7 @@ public class FileRead {
                         String value = in.nextLine();
                         if (field.getType() == Coordinates.class && in.hasNext()){
                             value += " " + in.nextLine();
-                            value.replaceAll(",", ".");
+                            value.replaceAll(",", "."); //Если в Double запятые, а не точки
                         }
                         field.set(vehicle, thisType(value, field, collectionClass));
                     } catch (IllegalArgumentException e) {

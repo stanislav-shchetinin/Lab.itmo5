@@ -9,6 +9,10 @@ import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
 import java.time.ZonedDateTime;
 import java.util.UUID;
+
+/**
+ * Класс, в котором прописана вся валидация данных
+ * */
 public class Validate {
 
     public static UUID uuidFromString(String value, CollectionClass collectionClass) throws IllegalArgumentException, ReadValueException {

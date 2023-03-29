@@ -3,7 +3,11 @@ package commands;
 import service.CollectionClass;
 import service.command.Command;
 import service.command.NoArgument;
-
+/**
+ * Класс очистки коллекции: clear
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды
+ * Реализует маркировочный интерфейс NoArgument, чтобы можно было проверить какие аргументы принимает команда (без аргументов)
+ * */
 public class Clear implements Command, NoArgument {
 
     private CollectionClass collectionClass;
@@ -11,6 +15,9 @@ public class Clear implements Command, NoArgument {
     public Clear(CollectionClass collectionClass){
         this.collectionClass = collectionClass;
     }
+    /**
+     * Пустой конструктор нужен для создания пустых объектов в списках команд
+     * */
     public Clear(){}
 
     @Override
