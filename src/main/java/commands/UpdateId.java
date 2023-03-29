@@ -19,7 +19,7 @@ import java.util.UUID;
 @Log
 public class UpdateId implements Command, ElementArgument, OneArgument {
 
-    private Pair<Vehicle, UUID> pair;
+    private Pair<Vehicle, UUID> pair = new Pair<>();
     private CollectionClass collectionClass;
 
     public UpdateId(CollectionClass collectionClass){
