@@ -105,6 +105,9 @@ public class ExecuteScript implements Command, OneArgument {
                  * Разделение  line из файла на компоненты
                  * */
                 String[] line = scanner.nextLine().trim().split(" ");
+                if (line.length == 0){
+                    continue;
+                }
                 /**
                  * Первое слово в line всегда имя команды
                  * */
@@ -113,7 +116,7 @@ public class ExecuteScript implements Command, OneArgument {
                     log.warning("Не существует команды с указанным названием");
                     continue;
                 }
-                commandSetParametr(command, line[1]);
+                commandSetParametr(command, line);
                 commandSetElement(command, line);
                 command.execute();
                 command.clearFields();
@@ -130,9 +133,9 @@ public class ExecuteScript implements Command, OneArgument {
     /**
      * Проверка команды на то, есть ли у нее одиночный аргумент, если да, то нужно его установить
      * */
-    private void commandSetParametr(Command command, String parametr){
-        if (command instanceof OneArgument){
-            command.setParametr(parametr);
+    private void commandSetParametr(Command command, String[] line){
+        if (command instanceof OneArgument && line.length >= 2){
+            command.setParametr(line[1]);
         }
     }
 

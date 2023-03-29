@@ -2,3 +2,4 @@ show
 add 1 12.32 -800.004 1.0 1 1.0 CAR
 show
 execute_script files/script
+show

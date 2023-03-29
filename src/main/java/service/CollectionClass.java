@@ -47,6 +47,10 @@ public class CollectionClass{
         uuidHashSet.clear();
     }
     public void removeFirst(){
+        if (collection.size() == 0){
+            log.warning("Коллекция пустая");
+            return;
+        }
         UUID id = collection.poll().getId();
         uuidHashSet.remove(id);
     }

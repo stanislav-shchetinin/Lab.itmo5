@@ -50,12 +50,12 @@ public class UpdateId implements Command, ElementArgument, OneArgument {
 
     @Override
     public String description() {
-        return "update id:обновить элемент с заданным id";
+        return "update_id id:обновить элемент с заданным id";
     }
 
     @Override
     public String name() {
-        return "update";
+        return "update_id";
     }
 
     @Override
