@@ -4,7 +4,7 @@ import java.time.ZonedDateTime;
 import java.util.UUID;
 
 /**
- * Класс объекты которого хранятся в коллекции
+ * Класс объекты которого хранятся в коллекции<p>
  * Реализует Comparable, чтобы была возможность сравнить пару объктов класса
  * */
 public class  Vehicle implements Comparable<Vehicle>{

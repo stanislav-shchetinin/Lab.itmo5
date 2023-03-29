@@ -4,8 +4,8 @@ import service.CollectionClass;
 import service.command.Command;
 import service.command.NoArgument;
 /**
- * Класс команды информации о коллекции: info
- * Реализует класс Command, чтобы можно было вызывать выполнение команды
+ * Класс команды информации о коллекции: info<p>
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды<p>
  * Реализует маркировочный интерфейс NoArgument, чтобы можно было проверить какие аргументы принимает команда (без аргументов)
  * */
 public class Info implements Command, NoArgument {

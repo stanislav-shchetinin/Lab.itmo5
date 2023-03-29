@@ -11,9 +11,9 @@ import service.command.OneArgument;
 import java.util.UUID;
 
 /**
- * Класс команды: update_bu_id id {element}
- * Реализует класс Command, чтобы можно было вызывать выполнение команды
- * Реализует маркировочный интерфейс ElementArgument (т.к. один из аргументов - объект класса Vehicle) и OneArgument (id)
+ * Класс команды: update_bu_id id {element}<p>
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды<p>
+ * Реализует маркировочный интерфейс ElementArgument (т.к. один из аргументов - объект класса Vehicle) и OneArgument (id)<p>
  * Аннотация @Log создает поле логгера
  * */
 @Log

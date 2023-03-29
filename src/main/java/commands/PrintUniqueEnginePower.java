@@ -4,8 +4,8 @@ import service.CollectionClass;
 import service.command.Command;
 import service.command.NoArgument;
 /**
- * Класс команды: print_unique_engine_power
- * Реализует класс Command, чтобы можно было вызывать выполнение команды
+ * Класс команды: print_unique_engine_power<p>
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды<p>
  * Реализует маркировочный интерфейс NoArgument, чтобы можно было проверить какие аргументы принимает команда (без аргументов)
  * */
 public class PrintUniqueEnginePower implements Command, NoArgument {

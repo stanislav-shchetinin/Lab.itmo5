@@ -5,9 +5,9 @@ import service.command.Command;
 import service.command.NoArgument;
 
 /**
- * Класс команды: show
- * Реализует класс Command, чтобы можно было вызывать выполнение команды
- * Реализует маркировочный интерфейс NoArgument, чтобы можно было проверить какие аргументы принимает команда (без аргументов)
+ * Класс команды: show<p>
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды<p>
+ * Реализует маркировочный интерфейс NoArgument, чтобы можно было проверить какие аргументы принимает команда (без аргументов)<p>
  * */
 public class Show implements Command, NoArgument {
     private CollectionClass collectionClass;

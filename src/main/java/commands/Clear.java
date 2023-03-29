@@ -4,8 +4,8 @@ import service.CollectionClass;
 import service.command.Command;
 import service.command.NoArgument;
 /**
- * Класс очистки коллекции: clear
- * Реализует класс Command, чтобы можно было вызывать выполнение команды
+ * Класс очистки коллекции: clear<p>
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды<p>
  * Реализует маркировочный интерфейс NoArgument, чтобы можно было проверить какие аргументы принимает команда (без аргументов)
  * */
 public class Clear implements Command, NoArgument {

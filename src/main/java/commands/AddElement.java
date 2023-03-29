@@ -6,8 +6,8 @@ import service.command.Command;
 import service.command.ElementArgument;
 
 /**
- * Класс команды добавления элемента: add {element}
- * Реализует класс Command, чтобы можно было вызывать выполнение команды
+ * Класс команды добавления элемента: add {element}<p>
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды<p>
  * Реализует маркировочный интерфейс ElementArgument, чтобы можно было проверить какие аргументы принимает команда
  * */
 public class AddElement implements Command, ElementArgument {

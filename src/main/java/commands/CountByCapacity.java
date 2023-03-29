@@ -5,9 +5,9 @@ import service.CollectionClass;
 import service.command.Command;
 import service.command.OneArgument;
 /**
- * Класс команды: count_by_capacity capacity
- * Реализует класс Command, чтобы можно было вызывать выполнение команды
- * Реализует маркировочный интерфейс OneArgument, чтобы можно было проверить какие аргументы принимает команда (один аргумент - capacity)
+ * Класс команды: count_by_capacity capacity<p>
+ * Реализует класс Command, чтобы можно было вызывать выполнение команды<p>
+ * Реализует маркировочный интерфейс OneArgument, чтобы можно было проверить какие аргументы принимает команда (один аргумент - capacity)<p>
  * Аннотация @Log создает поле логгера
  * */
 @Log

@@ -1,6 +1,6 @@
 package base;
 /**
-* Класс для хранения координат (x, y)
+* Класс для хранения координат (x, y)<p>
  * Реализует Comparable, чтобы была возможность сравнить пару координат
  */
 public class Coordinates implements Comparable<Coordinates>{
