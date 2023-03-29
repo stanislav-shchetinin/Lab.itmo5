@@ -29,8 +29,17 @@ public class ExecuteScript implements Command, OneArgument {
     private CollectionClass collectionClass;
     private File file;
     private File fileSave;
-
-    public ExecuteScript(CollectionClass collectionClass, File fileSave){
+    private HashSet<String> nameFiles = new HashSet<>();
+    private static ExecuteScript Instance = null;
+    private HashMap<String, Command> mapCommand;
+    HashSet<String> setNoInputTypes = setNoInputTypes(NoInputTypes.values());
+    public static ExecuteScript getInstance(CollectionClass collectionClass, File fileSave) {
+        if (Instance == null){
+            Instance = new ExecuteScript(collectionClass, fileSave);
+        }
+        return Instance;
+    }
+    private ExecuteScript(CollectionClass collectionClass, File fileSave){
         this.collectionClass = collectionClass;
         this.fileSave = fileSave;
     }
@@ -65,7 +74,12 @@ public class ExecuteScript implements Command, OneArgument {
             log.warning("Недостаточно параметров, чтобы выполнить комманду");
             return;
         }
-        HashMap<String, Command> mapCommand = mapCommand(collectionClass, fileSave);
+        if (nameFiles.contains(file.getName())){
+            log.warning("Вызов файлов зациклился");
+            return;
+        }
+        nameFiles.add(file.getName());
+        mapCommand = mapCommand(collectionClass, fileSave);
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNext()){
@@ -75,17 +89,8 @@ public class ExecuteScript implements Command, OneArgument {
                     log.warning("Не существует команды с указанным названием");
                     continue;
                 }
-                if (command instanceof OneArgument){
-                    command.setParametr(line[1]);
-                }
-                if (command instanceof ElementArgument){
-                    //+1 т.к. line[0] - имя команды, +1 т.к. Coordinates имеет два поля
-                    if (line.length == Vehicle.class.getDeclaredFields().length + 1 - setNoInputTypes(NoInputTypes.values()).size() + 1){
-                        command.setElement(vehicleFromArray(line));
-                    } else {
-                        command.setElement(vehicleFromArray(Arrays.copyOfRange(line, 1, line.length - 1))); //у update_id еще один аргумент
-                    }
-                }
+                commandSetParametr(command, line[1]);
+                commandSetElement(command, line);
                 command.execute();
                 command.clearFields();
             }
@@ -98,8 +103,24 @@ public class ExecuteScript implements Command, OneArgument {
         }
     }
 
+    private void commandSetParametr(Command command, String parametr){
+        if (command instanceof OneArgument){
+            command.setParametr(parametr);
+        }
+    }
+
+    private void commandSetElement(Command command, String[] line) throws ReadValueException, IllegalAccessException {
+        if (command instanceof ElementArgument){
+            //+1 т.к. line[0] - имя команды, +1 т.к. Coordinates имеет два поля
+            if (line.length == Vehicle.class.getDeclaredFields().length + 1 - setNoInputTypes(NoInputTypes.values()).size() + 1){
+                command.setElement(vehicleFromArray(line));
+            } else {
+                command.setElement(vehicleFromArray(Arrays.copyOfRange(line, 1, line.length - 1))); //у update_id еще один аргумент
+            }
+        }
+    }
+
     private Vehicle vehicleFromArray (String[] line) throws ReadValueException, IllegalAccessException {
-        HashSet<String> setNoInputTypes = setNoInputTypes(NoInputTypes.values());
         if (line.length - 1 < Vehicle.class.getDeclaredFields().length - setNoInputTypes.size()){ //-1 т.к. line[0] - имя команды
             throw new ReadValueException("Недостаточно аргументов для записи Vehicle");
         }
