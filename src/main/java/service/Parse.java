@@ -17,7 +17,8 @@ public class Parse {
         String res = "";
 
         try (Scanner in = new Scanner(file)){
-            in.nextLine(); //Заголовок
+            if (in.hasNext())
+                in.nextLine(); //Заголовок
             while (in.hasNext()) {
 
                 Reader reader = new StringReader(in.next());

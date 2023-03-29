@@ -2,8 +2,9 @@ package commands;
 
 import service.CollectionClass;
 import service.command.Command;
+import service.command.NoArgument;
 
-public class PrintUniqueEnginePower implements Command {
+public class PrintUniqueEnginePower implements Command, NoArgument {
     private CollectionClass collectionClass;
 
     public PrintUniqueEnginePower(CollectionClass collectionClass){

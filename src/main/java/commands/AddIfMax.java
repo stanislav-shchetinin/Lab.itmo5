@@ -3,10 +3,13 @@ package commands;
 import base.Vehicle;
 import service.CollectionClass;
 import service.command.Command;
+import service.command.ElementArgument;
+
+import java.util.Scanner;
 
 import static console.Console.inputVehicle;
 
-public class AddIfMax implements Command {
+public class AddIfMax implements Command, ElementArgument {
     private Vehicle vehicle;
     private CollectionClass collectionClass;
 
@@ -15,8 +18,8 @@ public class AddIfMax implements Command {
     }
     public AddIfMax(){}
     @Override
-    public void setElement() {
-        this.vehicle = inputVehicle(collectionClass);
+    public void setElement(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     @Override

@@ -3,10 +3,11 @@ package commands;
 import lombok.extern.java.Log;
 import service.CollectionClass;
 import service.command.Command;
+import service.command.OneArgument;
 
 import java.util.UUID;
 @Log
-public class RemoveById implements Command {
+public class RemoveById implements Command, OneArgument {
     private CollectionClass collectionClass;
     private UUID id;
     public RemoveById(CollectionClass collectionClass){

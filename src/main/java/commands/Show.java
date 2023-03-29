@@ -2,8 +2,9 @@ package commands;
 
 import service.CollectionClass;
 import service.command.Command;
+import service.command.NoArgument;
 
-public class Show implements Command {
+public class Show implements Command, NoArgument {
     private CollectionClass collectionClass;
 
     public Show(CollectionClass collectionClass){

@@ -2,16 +2,18 @@ package commands;
 
 import base.Vehicle;
 import lombok.extern.java.Log;
-import lombok.extern.slf4j.Slf4j;
 import service.CollectionClass;
 import service.Pair;
 import service.command.Command;
+import service.command.ElementArgument;
+import service.command.OneArgument;
 
+import java.util.Scanner;
 import java.util.UUID;
 
 import static console.Console.inputVehicle;
 @Log
-public class UpdateId implements Command {
+public class UpdateId implements Command, ElementArgument, OneArgument {
 
     private Pair<Vehicle, UUID> pair;
     private CollectionClass collectionClass;
@@ -21,8 +23,7 @@ public class UpdateId implements Command {
     }
     public UpdateId(){}
     @Override
-    public void setElement() {
-        Vehicle vehicle = inputVehicle(collectionClass);
+    public void setElement(Vehicle vehicle) {
         pair.setL(vehicle);
     }
 

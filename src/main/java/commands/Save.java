@@ -6,6 +6,7 @@ import service.CollectionClass;
 import service.InitGlobalCollections;
 import service.Parse;
 import service.command.Command;
+import service.command.NoArgument;
 
 import java.io.*;
 import java.lang.reflect.Field;
@@ -15,7 +16,7 @@ import java.util.PriorityQueue;
 import static service.Validate.writeCheckFile;
 
 @Log
-public class Save implements Command {
+public class Save implements Command, NoArgument {
 
     private CollectionClass collectionClass;
     private final String HEAD = getHead(Vehicle.class);

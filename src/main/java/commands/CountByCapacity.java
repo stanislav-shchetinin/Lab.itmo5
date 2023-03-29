@@ -3,8 +3,10 @@ package commands;
 import lombok.extern.java.Log;
 import service.CollectionClass;
 import service.command.Command;
+import service.command.OneArgument;
+
 @Log
-public class CountByCapacity implements Command {
+public class CountByCapacity implements Command, OneArgument {
     private CollectionClass collectionClass;
     private Long capacity;
     public CountByCapacity(CollectionClass collectionClass){

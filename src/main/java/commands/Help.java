@@ -3,12 +3,13 @@ package commands;
 import service.CollectionClass;
 import service.InitGlobalCollections;
 import service.command.Command;
+import service.command.NoArgument;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Help implements Command {
+public class Help implements Command, NoArgument {
 
     @Override
     public String description() {

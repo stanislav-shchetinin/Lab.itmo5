@@ -8,6 +8,7 @@ import service.CollectionClass;
 import service.NoInputTypes;
 import service.command.Command;
 import service.InitGlobalCollections;
+import service.command.ElementArgument;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -67,7 +68,10 @@ public class Console {
                 if (arrayString.length != 1){
                     command.setParametr(arrayString[1]);
                 }
-                command.setElement();
+                if (command instanceof ElementArgument){
+                    Vehicle vehicle = inputVehicle(collectionClass);
+                    command.setElement(vehicle);
+                }
                 command.execute();
                 command.clearFields();
             } catch (NoSuchElementException e){
@@ -76,6 +80,12 @@ public class Console {
             }
         }
 
+    }
+
+    public static void consoleVehicle (CollectionClass collectionClass, Scanner in, Vehicle vehicle, Field field) throws ReadValueException, IllegalAccessException {
+        System.out.println(String.format("\n%sВведите %s: ", formatInput(field.getType()), field.getName()));
+        String value = in.nextLine();
+        field.set(vehicle, thisType(value, field, collectionClass));
     }
 
     public static Vehicle inputVehicle(CollectionClass collectionClass) {
@@ -91,9 +101,7 @@ public class Console {
             while (!isCorrectValue){
                 try {
                     isCorrectValue = true;
-                    System.out.println(String.format("\n%sВведите %s: ", formatInput(field.getType()), field.getName()));
-                    String value = in.nextLine();
-                    field.set(vehicle, thisType(value, field, collectionClass));
+                    consoleVehicle(collectionClass, in, vehicle, field);
                 } catch (IllegalArgumentException e) {
                     isCorrectValue = false;
                     log.warning(String.format("Неверный тип %s", field.getName()));

@@ -2,8 +2,10 @@ package commands;
 
 import lombok.extern.java.Log;
 import service.command.Command;
+import service.command.NoArgument;
+
 @Log
-public class Exit implements Command {
+public class Exit implements Command, NoArgument {
     @Override
     public String description() {
         return "exit : завершить программу (без сохранения в файл)";

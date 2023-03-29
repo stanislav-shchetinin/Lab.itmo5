@@ -2,8 +2,9 @@ package commands;
 
 import service.CollectionClass;
 import service.command.Command;
+import service.command.NoArgument;
 
-public class RemoveFirst implements Command {
+public class RemoveFirst implements Command, NoArgument {
     private CollectionClass collectionClass;
 
     public RemoveFirst(CollectionClass collectionClass){
