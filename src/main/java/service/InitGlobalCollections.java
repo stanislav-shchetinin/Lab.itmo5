@@ -20,7 +20,7 @@ public class InitGlobalCollections {
         map.put("remove_by_id", new RemoveById(collectionClass));
         map.put("clear", new Clear(collectionClass));
         map.put("save", new Save(collectionClass, file));
-        map.put("execute_script", new ExecuteScript(collectionClass));
+        map.put("execute_script", new ExecuteScript(collectionClass, file));
         map.put("exit", new Exit());
         map.put("remove_first", new RemoveFirst(collectionClass));
         map.put("add_if_max", new AddIfMax(collectionClass));

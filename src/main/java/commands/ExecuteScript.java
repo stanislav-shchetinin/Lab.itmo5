@@ -28,10 +28,11 @@ public class ExecuteScript implements Command, OneArgument {
 
     private CollectionClass collectionClass;
     private File file;
-    private File fileSave = new File("files/input.csv");
+    private File fileSave;
 
-    public ExecuteScript(CollectionClass collectionClass){
+    public ExecuteScript(CollectionClass collectionClass, File fileSave){
         this.collectionClass = collectionClass;
+        this.fileSave = fileSave;
     }
     public ExecuteScript(){}
 
@@ -86,6 +87,7 @@ public class ExecuteScript implements Command, OneArgument {
                     }
                 }
                 command.execute();
+                command.clearFields();
             }
         } catch (FileNotFoundException e) {
             log.warning("Файл не найден");
