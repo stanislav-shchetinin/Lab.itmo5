@@ -12,6 +12,7 @@ import service.command.ElementArgument;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -28,11 +29,11 @@ public class Console {
     /**
      * Метод получения файла из консоли (из имени переменной окружения)
      * */
-    public static File getFile(){
+    public static File getFile(InputStream inputStream){
 
         String nameFile = "";
         Map<String, String> mapEnv = System.getenv(); //получение всех переменных окружения
-        Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(inputStream);
 
         while (true){
             System.out.print("\nВведите имя переменной среды:\n");

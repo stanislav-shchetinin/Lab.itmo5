@@ -25,7 +25,7 @@ public class Main {
     public static void main(String[] args) {
 
         CollectionClass collectionClass = new CollectionClass(); //Менеджер коллекции
-        File file = getFile(); //NAME_FILE
+        File file = getFile(System.in); //NAME_FILE
 
         fromFileVehicle(collectionClass, new Scanner(parseFromCSVtoString(file))); //Считывание файла и запись его в collectionClass
 
