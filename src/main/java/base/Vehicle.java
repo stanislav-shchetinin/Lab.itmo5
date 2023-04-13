@@ -1,5 +1,6 @@
 package base;
 
+import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
@@ -7,7 +8,7 @@ import java.util.UUID;
  * Класс объекты которого хранятся в коллекции<p>
  * Реализует Comparable, чтобы была возможность сравнить пару объктов класса
  * */
-public class  Vehicle implements Comparable<Vehicle>{
+public class  Vehicle implements Comparable<Vehicle>, Serializable {
     private UUID id = UUID.randomUUID(); //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
