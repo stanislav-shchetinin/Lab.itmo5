@@ -29,16 +29,17 @@ public class Console {
     /**
      * Метод получения файла из консоли (из имени переменной окружения)
      * */
-    public static File getFile(InputStream inputStream){
+    public static File getFile(Scanner in){
 
         String nameFile = "";
         Map<String, String> mapEnv = System.getenv(); //получение всех переменных окружения
-        Scanner in = new Scanner(inputStream);
 
         while (true){
-            System.out.print("\nВведите имя переменной среды:\n");
             try {
-                String nameVar = in.nextLine().trim();
+                System.out.print("\nВведите имя переменной среды:\n");
+                String nameVar = null;
+                if (in.hasNext())
+                    nameVar = in.nextLine().trim();
                 if (mapEnv.containsKey(nameVar)){
                     nameFile = mapEnv.get(nameVar);
                     File file = readCheckFile(new File(nameFile));
@@ -49,7 +50,7 @@ public class Console {
                 }
             } catch (FileNotFoundException e){
                 log.warning(e.getMessage());
-            } catch (NoSuchElementException e){
+            } catch (NullPointerException e){
                 log.warning("Не введены значения");
                 System.exit(1); //1 - означает ошибку no line из-за которой произошло завершение
             }
