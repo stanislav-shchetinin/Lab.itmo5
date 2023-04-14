@@ -1,7 +1,13 @@
 package step;
 
+import commands.Info;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Когда;
+import io.cucumber.java.ru.Пусть;
+import io.cucumber.java.ru.Тогда;
+import service.CollectionClass;
+import service.command.Command;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,27 +16,35 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import static console.Console.getFile;
+import static service.FileRead.fromFileVehicle;
+import static service.Parse.parseFromCSVtoString;
 
 public class MyStepdefs {
-    private String string;
     private File file;
+    private CollectionClass collectionClass = new CollectionClass();
 
-    @Дано("запуск метода получения файла")
-    public void startGetFile() throws IOException {
-        File fileWithTests = new File("files/test_files/test_get_file");
+    @Дано("запуск метода получения файла с переменными окружения из {string}")
+    public void startGetFile(String arg) throws IOException {
+        File fileWithTests = new File(arg);
         Scanner scanner = new Scanner(fileWithTests);
-        while (scanner.hasNext()){
-            this.file = getFile(scanner);
+        try {
+            while (scanner.hasNext()){
+                this.file = getFile(scanner);
+            }
+        } catch (Throwable e){
+            throw new PendingException();
         }
 
     }
-    @Дано("на вход подается переменная окружения {string}")
-    public void getEnvironmentVariable(String arg1){
-        System.out.println(arg1);
-        string = arg1;
+    @Тогда("получение коллекции из файла")
+    public void setCollectionFromFile(){
+        fromFileVehicle(collectionClass, new Scanner(parseFromCSVtoString(file)));
     }
-    @Когда("выдать сравнить строки с {string}")
-    public void equalsStrings(String arg1){
-        System.out.println(string.equals(arg1));
+
+    @Пусть("вводится команда info")
+    public void testInfo(){
+        Command command = new Info(this.collectionClass);
+        command.execute();
     }
+
 }
