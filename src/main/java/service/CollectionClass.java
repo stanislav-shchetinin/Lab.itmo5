@@ -23,6 +23,11 @@ public class CollectionClass{
     public CollectionClass(){
         date = new Date();
     }
+    public CollectionClass (CollectionClass collectionClass){
+        this.collection = new PriorityQueue<>(collectionClass.getCollection());
+        this.date = collectionClass.getTime();
+        this.uuidHashSet = new HashSet<>(collectionClass.getUuidHashSet());
+    }
 
     public Date getTime() {
         return date;

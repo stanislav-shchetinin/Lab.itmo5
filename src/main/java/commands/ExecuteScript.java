@@ -4,6 +4,7 @@ import base.Coordinates;
 import base.Vehicle;
 import exceptions.ReadValueException;
 import lombok.extern.java.Log;
+import org.checkerframework.checker.units.qual.C;
 import service.CollectionClass;
 import service.NoInputTypes;
 import service.command.Command;
@@ -46,6 +47,7 @@ public class ExecuteScript implements Command, OneArgument {
         if (Instance == null){
             Instance = new ExecuteScript(collectionClass, fileSave);
         }
+        Instance.collectionClass = new CollectionClass(collectionClass);
         return Instance;
     }
     private ExecuteScript(CollectionClass collectionClass, File fileSave){
