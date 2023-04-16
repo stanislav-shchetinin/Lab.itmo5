@@ -37,7 +37,7 @@ public class Main {
 
             fromFileVehicle(collectionClass, new Scanner(parseFromCSVtoString(file))); //Считывание файла и запись его в collectionClass
 
-            String nameFile = "test18";
+            String nameFile = "test16";
 
             String nameInputFile = "files/test_files/test_cases/" + nameFile + "/test";
             String nameOutputFile = "files/test_files/test_cases/" + nameFile + "/test_right";

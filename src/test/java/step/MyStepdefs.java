@@ -58,6 +58,7 @@ public class MyStepdefs {
 
         String nameInputFile = "files/test_files/test_cases/" + nameFile + "/test";
         String nameOutputFile = "files/test_files/test_cases/" + nameFile + "/tets_my";
+        String nameRightFile = "files/test_files/test_cases/" + nameFile + "/test_right";
 
         try {
 
@@ -75,6 +76,13 @@ public class MyStepdefs {
         command.setParametr(nameInputFile);
         command.execute();
         command.clearFields();
+
+        File fileMy = new File(nameOutputFile);
+        File fileRight = new File(nameRightFile);
+
+        if (!fileMy.equals(fileRight)){
+            throw new PendingException(String.format("Неверный вывод %s", nameFile));
+        }
 
     }
 

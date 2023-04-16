@@ -1,0 +1,90 @@
+
+Id: 43e0ad49-34a0-47a0-880b-529282e5ab2c
+Name: 1
+Coordinates: { x = 12,320000; y = -800,004028 }
+Creation Date: 2023-03-29T11:46:10.570903300+03:00[Europe/Volgograd]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: CAR
+******************
+, 
+Id: 6f369f5d-7b26-4d0c-9c35-cb6c980f5f24
+Name: Max
+Coordinates: { x = 23,299999; y = -762,000000 }
+Creation Date: 2022-05-26T08:15:30+07:00[Asia/Ho_Chi_Minh]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: CAR
+******************
+
+Id: 43e0ad49-34a0-47a0-880b-529282e5ab2c
+Name: 1
+Coordinates: { x = 12,320000; y = -800,004028 }
+Creation Date: 2023-03-29T11:46:10.570903300+03:00[Europe/Volgograd]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: CAR
+******************
+, 
+Id: 6f369f5d-7b26-4d0c-9c35-cb6c980f5f24
+Name: Max
+Coordinates: { x = 23,299999; y = -762,000000 }
+Creation Date: 2022-05-26T08:15:30+07:00[Asia/Ho_Chi_Minh]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: CAR
+******************
+
+Id: 48a4d6a5-057e-4e75-bab3-b03e185bbfba
+Name: A
+Coordinates: { x = -10000000,000000; y = -10000000,000000 }
+Creation Date: 2023-04-16T17:02:00.430196+03:00[Europe/Volgograd]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: BICYCLE
+******************
+
+Id: c8d67a8b-9b78-44aa-b7ad-585c64619b82
+Name: Max
+Coordinates: { x = 100,121223; y = -769,000000 }
+Creation Date: 2023-04-16T17:02:00.432432200+03:00[Europe/Volgograd]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: CAR
+******************
+, 
+Id: ff6008fb-be01-4448-bec7-358b8a9fbcbe
+Name: Max
+Coordinates: { x = 100,121223; y = -769,000000 }
+Creation Date: 2023-04-16T17:02:00.432432200+03:00[Europe/Volgograd]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: CAR
+******************
+, 
+Id: 09efee43-91e9-48f9-bd1f-9f8b5a1a3a5a
+Name: Max
+Coordinates: { x = 100,121223; y = -769,000000 }
+Creation Date: 2023-04-16T17:02:00.432432200+03:00[Europe/Volgograd]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: PLANE
+******************
+, 
+Id: 48a4d6a5-057e-4e75-bab3-b03e185bbfba
+Name: A
+Coordinates: { x = -10000000,000000; y = -10000000,000000 }
+Creation Date: 2023-04-16T17:02:00.430196+03:00[Europe/Volgograd]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: BICYCLE
+******************
