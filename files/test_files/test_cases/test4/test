@@ -1,0 +1,6 @@
+update 43e0ad49-34a0-47a0-880b-529282e5ab2c Max 100.12122 -769 1 1 1 CAR
+show
+update -1 Max 100.12122 -769 1 1 1 CAR
+update 0 Max 100.12122 -769 1 1 1 CAR
+update 43e0ad49-34a0-47a0-880b-529282e5ab2b Max 100.12122 -769 1 1 1 CAR
+show

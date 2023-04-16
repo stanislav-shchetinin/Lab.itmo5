@@ -1,6 +1,9 @@
 package service.command;
 
 import base.Vehicle;
+
+import java.io.OutputStream;
+
 /**
  * Интерфейс Command для паттерна Command
  * */

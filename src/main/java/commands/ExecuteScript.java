@@ -13,6 +13,7 @@ import service.command.OneArgument;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -74,6 +75,7 @@ public class ExecuteScript implements Command, OneArgument {
     @Override
     public void clearFields() {
         file = null;
+        nameFiles.clear();
     }
 
     @Override
@@ -119,16 +121,16 @@ public class ExecuteScript implements Command, OneArgument {
                     continue;
                 }
                 commandSetParametr(command, line);
-                commandSetElement(command, line);
-                command.execute();
+                try {
+                    commandSetElement(command, line);
+                    command.execute();
+                } catch (ReadValueException | IllegalAccessException e){
+                    log.warning(e.getMessage());
+                }
                 command.clearFields();
             }
         } catch (FileNotFoundException e) {
             log.warning("Файл не найден");
-        } catch (ReadValueException e) {
-            log.warning(e.getMessage());
-        } catch (IllegalAccessException e) {
-            log.warning(e.getMessage());
         }
     }
 
@@ -159,7 +161,7 @@ public class ExecuteScript implements Command, OneArgument {
      * */
     private Vehicle vehicleFromArray (String[] line) throws ReadValueException, IllegalAccessException {
         if (line.length - 1 < Vehicle.class.getDeclaredFields().length - setNoInputTypes.size()){ //-1 т.к. line[0] - имя команды
-            throw new ReadValueException("Недостаточно аргументов для записи Vehicle");
+            log.warning("Недостаточно аргументов для записи Vehicle");
         }
         Vehicle vehicle = new Vehicle();
         int num = 1; //line[0] - название команды
@@ -183,7 +185,11 @@ public class ExecuteScript implements Command, OneArgument {
             /**
              * Установить в поле полученyю str (перед этим нужно пройти проверку на корректность)
              * */
-            field.set(vehicle, thisType(str, field, collectionClass));
+            try {
+                field.set(vehicle, thisType(str, field, collectionClass));
+            } catch (ReadValueException | IllegalAccessException e) {
+                throw e;
+            }
             ++num;
         }
         return  vehicle;

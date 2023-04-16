@@ -62,7 +62,7 @@ public class CollectionClass{
     public void printAscending(){
         PriorityQueue<Vehicle> collectionCopy = new PriorityQueue<>(collection);
         while (!collectionCopy.isEmpty()){
-            System.out.println(collectionCopy.poll().toString());
+            System.out.println(collectionCopy.poll());
         }
     }
     public void printUniqueEnginePower(){
@@ -93,7 +93,7 @@ public class CollectionClass{
                 count += 1;
             }
         }
-        System.out.println(count);
+        System.out.println(count); ////////////////////////////////////////////////////////////////
     }
 
     public void add(Vehicle vehicle){
@@ -122,14 +122,14 @@ public class CollectionClass{
     }
 
     public void addIfMax(Vehicle vehicle){
-        if (vehicle.compareTo(collection.peek()) > 0){
+        if (collection.size() == 0 || vehicle.compareTo(collection.peek()) > 0){
             collection.add(vehicle);
             uuidHashSet.add(vehicle.getId());
         }
     }
 
     public void addIfMin(Vehicle vehicle){
-        if (vehicle.compareTo(collection.peek()) < 0){
+        if (collection.size() == 0 || vehicle.compareTo(collection.peek()) < 0){
             collection.add(vehicle);
             uuidHashSet.add(vehicle.getId());
         }

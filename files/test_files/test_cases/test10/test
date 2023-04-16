@@ -1,0 +1,6 @@
+count_by_capacity 1
+show
+count_by_capacity -100
+count_by_capacity jfewjfle
+count_by_capacity 0
+show

@@ -1,0 +1,8 @@
+remove_first
+show
+clear
+remove_first
+show
+add Max 100.12122 -769 1 1 1 PLANE
+add Max 100.12122 -769 1 1 1 CAR
+add Max 100.12122 -769 1 1 1 1

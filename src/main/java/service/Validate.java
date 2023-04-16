@@ -54,6 +54,21 @@ public class Validate {
         return ans;
     }
 
+    private static VehicleType vehicleTypeFromString (String value) throws IllegalArgumentException, ReadValueException {
+        Integer num = -1;
+        try {
+            num = Integer.parseInt(value);
+            return VehicleType.values()[num - 1];
+        } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException e){
+            //Игнорирую исключение, т.к. если пришло не число - значит VehicleType
+        }
+        try {
+            return VehicleType.valueOf(value);
+        } catch (IllegalArgumentException e){
+            throw new ReadValueException(String.format("Нет такого VehicleType %s", value));
+        }
+    }
+
     public static Object thisType (String value, Field field, CollectionClass collectionClass) throws IllegalArgumentException, ReadValueException {
         if (field.getType().equals(UUID.class)){
             return uuidFromString(value, collectionClass); //6f369f5d-7b26-4d0c-9c35-cb6c980f5f24
@@ -68,16 +83,7 @@ public class Validate {
         } else if (field.getType().equals(Long.class)){
             return longFromString(value, field);
         } else if (field.getType().equals(VehicleType.class)){
-            Integer num = -1;
-            try {
-                num = Integer.parseInt(value);
-            } catch (IllegalArgumentException e){
-                //Игнорирую исключение, т.к. если пришло не число - значит VehicleType
-            }
-            if (num != -1){
-                return VehicleType.values()[num - 1];
-            }
-            return VehicleType.valueOf(value);
+            return vehicleTypeFromString(value);
         }
         return null;
     }

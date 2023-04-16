@@ -1,0 +1,18 @@
+clear
+add Max 100.12122 -769 1 1 1 PLANE
+add Max 100.12122 -769 1 1 1 CAR
+add Max 100.12122 -769 1 1 1 1
+help
+show
+update 43e0ad49-34a0-47a0-880b-529282e5ab2c Max 100.12122 -769 1 1 1 CAR
+remove_by_id 43e0ad49-34a0-47a0-880b-529282e5ab2c
+sdmcdsc
+add_if_min A -10000000 -10000000 1 1 1 BICYCLE
+add_if_max zzzzzz 9999999999 -769 9999999 99999999 99999999 PLANE
+add_if_max zzzzzz 9999999999 0 9999999 99999999 99999999 PLANE
+count_by_capacity 1
+count_by_capacity -1
+show
+print_ascending
+print_unique_engine_power
+show

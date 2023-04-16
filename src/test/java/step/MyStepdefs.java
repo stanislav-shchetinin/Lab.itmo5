@@ -8,6 +8,7 @@ import io.cucumber.java.ru.Дано;
 import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
+import lombok.extern.java.Log;
 import org.apache.commons.io.filefilter.FalseFileFilter;
 import org.checkerframework.checker.units.qual.C;
 import org.junit.rules.ErrorCollector;
@@ -16,10 +17,7 @@ import org.junit.runner.notification.Failure;
 import service.CollectionClass;
 import service.command.Command;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 import static console.Console.getFile;
@@ -27,7 +25,7 @@ import static console.Console.inputVehicle;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static service.FileRead.fromFileVehicle;
 import static service.Parse.parseFromCSVtoString;
-
+@Log
 public class MyStepdefs {
     private File file;
     private CollectionClass collectionClass = new CollectionClass();
@@ -57,11 +55,27 @@ public class MyStepdefs {
 
     @Пусть("тестируется случай {string}")
     public void testCase(String nameFile){
-        nameFile = "files/test_files/test_cases/" + nameFile;
+
+        String nameInputFile = "files/test_files/test_cases/" + nameFile + "/test";
+        String nameOutputFile = "files/test_files/test_cases/" + nameFile + "/tets_my";
+
+        try {
+
+            FileInputStream FileInputStream = new FileInputStream(nameInputFile);
+            PrintStream printStream = new PrintStream(nameOutputFile);
+            System.setIn(FileInputStream);
+            System.setOut(printStream);
+
+        } catch (FileNotFoundException e) {
+            log.warning("Проблемы с файлом ввода/вывода при тестировании");
+        }
+
         CollectionClass oldCollectionClass = new CollectionClass(collectionClass);
         Command command = ExecuteScript.getInstance(oldCollectionClass, file);
-        command.setParametr(nameFile);
+        command.setParametr(nameInputFile);
         command.execute();
+        command.clearFields();
+
     }
 
 }
