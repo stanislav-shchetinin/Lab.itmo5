@@ -9,10 +9,10 @@ Distance Travelled: 1,000000
 Type: CAR
 ******************
 , 
-Id: d0ba096a-29fa-4626-9ee9-1408fbbcb126
+Id: c1ec39c1-072b-4eb7-ae23-332eba49747a
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.385611900+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.475697200+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
@@ -29,12 +29,24 @@ Distance Travelled: 1,000000
 Type: CAR
 ******************
 , 
-Id: d0ba096a-29fa-4626-9ee9-1408fbbcb126
+Id: c1ec39c1-072b-4eb7-ae23-332eba49747a
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.385611900+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.475697200+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: CAR
 ******************
+
+Введите имя переменной среды:
+Не существует такой переменной окружения
+Введите имя переменной среды:
+
+Введите имя переменной среды:
+
+Введите имя переменной среды:
+
+Введите имя переменной среды:
+
+Введите имя переменной среды:

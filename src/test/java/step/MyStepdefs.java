@@ -9,6 +9,7 @@ import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
 import lombok.extern.java.Log;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.FalseFileFilter;
 import org.checkerframework.checker.units.qual.C;
 import org.junit.rules.ErrorCollector;
@@ -67,21 +68,21 @@ public class MyStepdefs {
             System.setIn(FileInputStream);
             System.setOut(printStream);
 
-        } catch (FileNotFoundException e) {
+            CollectionClass oldCollectionClass = new CollectionClass(collectionClass);
+            Command command = ExecuteScript.getInstance(oldCollectionClass, file);
+            command.setParametr(nameInputFile);
+            command.execute();
+            command.clearFields();
+
+            File fileMy = new File(nameOutputFile);
+            File fileRight = new File(nameRightFile);
+
+            if (!FileUtils.readFileToString(fileMy, "utf-8").equals(FileUtils.readFileToString(fileRight, "utf-8"))){
+                throw new PendingException(String.format("Неверный вывод %s", nameFile));
+            }
+
+        } catch (IOException e) {
             log.warning("Проблемы с файлом ввода/вывода при тестировании");
-        }
-
-        CollectionClass oldCollectionClass = new CollectionClass(collectionClass);
-        Command command = ExecuteScript.getInstance(oldCollectionClass, file);
-        command.setParametr(nameInputFile);
-        command.execute();
-        command.clearFields();
-
-        File fileMy = new File(nameOutputFile);
-        File fileRight = new File(nameRightFile);
-
-        if (!fileMy.equals(fileRight)){
-            throw new PendingException(String.format("Неверный вывод %s", nameFile));
         }
 
     }

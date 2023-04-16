@@ -19,32 +19,44 @@ Distance Travelled: 1,000000
 Type: CAR
 ******************
 , 
-Id: 6d5257dd-810b-44a9-adef-017f23e607bf
+Id: 799b58ef-e10b-44e5-b3fd-4df376db6513
 Name: Max1
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.374352300+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.441760900+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: CAR
 ******************
 , 
-Id: 8629b850-74e4-4fe5-a465-c2e81fcb3d76
+Id: 9e88e581-1c3f-464a-bbef-e5d3ce760b6a
 Name: Max9
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.379838700+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.447943400+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: PLANE
 ******************
 , 
-Id: a4600f10-c6a8-4457-8d30-8436d5b198e8
+Id: 17fd4b51-9b08-4d82-abe8-e68ed64a2676
 Name: Max10
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.379838700+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.447943400+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: CAR
 ******************
+
+Введите имя переменной среды:
+Не существует такой переменной окружения
+Введите имя переменной среды:
+
+Введите имя переменной среды:
+
+Введите имя переменной среды:
+
+Введите имя переменной среды:
+
+Введите имя переменной среды:

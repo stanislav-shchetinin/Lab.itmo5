@@ -15,30 +15,30 @@ count_by_capacity : очистить коллекцию
 print_ascending : вывести элементы коллекции в порядке возрастания
 print_unique_engine_power : вывести уникальные значения поля enginePower всех элементов в коллекции
 
-Id: 9d12da6f-8b56-4644-b44c-28d6537993e1
+Id: d3cfb87f-a55f-486a-9843-3fde33f9c3dd
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.448576300+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.703992500+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: CAR
 ******************
 , 
-Id: 6c3427b9-650d-4699-ac3f-c33feb47f608
+Id: 363a92d3-697b-4391-a9ee-8d576c18fa09
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.448576300+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.703992500+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: PLANE
 ******************
 , 
-Id: 8af762bc-2e70-4560-81f1-cef3f561f860
+Id: 082f4443-a5ed-46bb-b933-1323458739ae
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.449572400+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.703992500+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
@@ -47,50 +47,50 @@ Type: CAR
 3
 0
 
-Id: 9d12da6f-8b56-4644-b44c-28d6537993e1
+Id: d3cfb87f-a55f-486a-9843-3fde33f9c3dd
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.448576300+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.703992500+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: CAR
 ******************
 , 
-Id: 8af762bc-2e70-4560-81f1-cef3f561f860
+Id: 082f4443-a5ed-46bb-b933-1323458739ae
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.449572400+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.703992500+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: CAR
 ******************
 , 
-Id: 6c3427b9-650d-4699-ac3f-c33feb47f608
+Id: 363a92d3-697b-4391-a9ee-8d576c18fa09
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.448576300+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.703992500+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: PLANE
 ******************
 , 
-Id: 721e4c08-d10d-4eed-acd7-f680c05aee46
+Id: 2e148f5a-4e65-4b73-b8ee-c921ac1b9bd1
 Name: zzzzzz
 Coordinates: { x = 10000000000,000000; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.450568600+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.705985300+03:00[Europe/Volgograd]
 Engine Power: 9999999,000000
 Capacity: 99999999
 Distance Travelled: 99999999,000000
 Type: PLANE
 ******************
 
-Id: 9d12da6f-8b56-4644-b44c-28d6537993e1
+Id: d3cfb87f-a55f-486a-9843-3fde33f9c3dd
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.448576300+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.703992500+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
@@ -98,10 +98,10 @@ Type: CAR
 ******************
 
 
-Id: 8af762bc-2e70-4560-81f1-cef3f561f860
+Id: 082f4443-a5ed-46bb-b933-1323458739ae
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.449572400+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.703992500+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
@@ -109,10 +109,10 @@ Type: CAR
 ******************
 
 
-Id: 6c3427b9-650d-4699-ac3f-c33feb47f608
+Id: 363a92d3-697b-4391-a9ee-8d576c18fa09
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.448576300+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.703992500+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
@@ -120,10 +120,10 @@ Type: PLANE
 ******************
 
 
-Id: 721e4c08-d10d-4eed-acd7-f680c05aee46
+Id: 2e148f5a-4e65-4b73-b8ee-c921ac1b9bd1
 Name: zzzzzz
 Coordinates: { x = 10000000000,000000; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.450568600+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.705985300+03:00[Europe/Volgograd]
 Engine Power: 9999999,000000
 Capacity: 99999999
 Distance Travelled: 99999999,000000
@@ -131,42 +131,54 @@ Type: PLANE
 ******************
 
 [1.0, 9999999.0]
-Id: 9d12da6f-8b56-4644-b44c-28d6537993e1
+Id: d3cfb87f-a55f-486a-9843-3fde33f9c3dd
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.448576300+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.703992500+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: CAR
 ******************
 , 
-Id: 8af762bc-2e70-4560-81f1-cef3f561f860
+Id: 082f4443-a5ed-46bb-b933-1323458739ae
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.449572400+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.703992500+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: CAR
 ******************
 , 
-Id: 6c3427b9-650d-4699-ac3f-c33feb47f608
+Id: 363a92d3-697b-4391-a9ee-8d576c18fa09
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.448576300+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.703992500+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: PLANE
 ******************
 , 
-Id: 721e4c08-d10d-4eed-acd7-f680c05aee46
+Id: 2e148f5a-4e65-4b73-b8ee-c921ac1b9bd1
 Name: zzzzzz
 Coordinates: { x = 10000000000,000000; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.450568600+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.705985300+03:00[Europe/Volgograd]
 Engine Power: 9999999,000000
 Capacity: 99999999
 Distance Travelled: 99999999,000000
 Type: PLANE
 ******************
+
+Введите имя переменной среды:
+Не существует такой переменной окружения
+Введите имя переменной среды:
+
+Введите имя переменной среды:
+
+Введите имя переменной среды:
+
+Введите имя переменной среды:
+
+Введите имя переменной среды:

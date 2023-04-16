@@ -39,52 +39,64 @@ Distance Travelled: 1,000000
 Type: CAR
 ******************
 
-Id: 48a4d6a5-057e-4e75-bab3-b03e185bbfba
+Id: 0f12c519-bd33-4c72-b265-0f07f2b7d661
 Name: A
 Coordinates: { x = -10000000,000000; y = -10000000,000000 }
-Creation Date: 2023-04-16T17:02:00.430196+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.633295800+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: BICYCLE
 ******************
 
-Id: c8d67a8b-9b78-44aa-b7ad-585c64619b82
+Id: 2cb3c9ba-bd90-4b00-b5eb-6401fe8d7129
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.432432200+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.638284+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: CAR
 ******************
 , 
-Id: ff6008fb-be01-4448-bec7-358b8a9fbcbe
+Id: 5ddbf280-4031-4664-9f62-eb0ade1a1223
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.432432200+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.638284+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: CAR
 ******************
 , 
-Id: 09efee43-91e9-48f9-bd1f-9f8b5a1a3a5a
+Id: 82273e66-974f-441e-bea9-f9d111a55a76
 Name: Max
 Coordinates: { x = 100,121223; y = -769,000000 }
-Creation Date: 2023-04-16T17:02:00.432432200+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.638284+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: PLANE
 ******************
 , 
-Id: 48a4d6a5-057e-4e75-bab3-b03e185bbfba
+Id: 0f12c519-bd33-4c72-b265-0f07f2b7d661
 Name: A
 Coordinates: { x = -10000000,000000; y = -10000000,000000 }
-Creation Date: 2023-04-16T17:02:00.430196+03:00[Europe/Volgograd]
+Creation Date: 2023-04-16T20:45:35.633295800+03:00[Europe/Volgograd]
 Engine Power: 1,000000
 Capacity: 1
 Distance Travelled: 1,000000
 Type: BICYCLE
 ******************
+
+Введите имя переменной среды:
+Не существует такой переменной окружения
+Введите имя переменной среды:
+
+Введите имя переменной среды:
+
+Введите имя переменной среды:
+
+Введите имя переменной среды:
+
+Введите имя переменной среды:
