@@ -1,0 +1,50 @@
+
+Id: 43e0ad49-34a0-47a0-880b-529282e5ab2c
+Name: 1
+Coordinates: { x = 12,320000; y = -800,004028 }
+Creation Date: 2023-03-29T11:46:10.570903300+03:00[Europe/Volgograd]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: CAR
+******************
+, 
+Id: 6f369f5d-7b26-4d0c-9c35-cb6c980f5f24
+Name: Max
+Coordinates: { x = 23,299999; y = -762,000000 }
+Creation Date: 2022-05-26T08:15:30+07:00[Asia/Ho_Chi_Minh]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: CAR
+******************
+, 
+Id: 4073c79a-5291-46cb-bac1-5038c0a5ead6
+Name: Max1
+Coordinates: { x = 100,121223; y = -769,000000 }
+Creation Date: 2023-04-16T16:48:28.780987700+03:00[Europe/Volgograd]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: CAR
+******************
+, 
+Id: 147b45c4-947d-4384-93d2-fe7dfa103cb4
+Name: Max9
+Coordinates: { x = 100,121223; y = -769,000000 }
+Creation Date: 2023-04-16T16:48:28.783765900+03:00[Europe/Volgograd]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: PLANE
+******************
+, 
+Id: 011c7dbe-46b2-469d-b5f1-9321d39018eb
+Name: Max10
+Coordinates: { x = 100,121223; y = -769,000000 }
+Creation Date: 2023-04-16T16:48:28.784768900+03:00[Europe/Volgograd]
+Engine Power: 1,000000
+Capacity: 1
+Distance Travelled: 1,000000
+Type: CAR
+******************

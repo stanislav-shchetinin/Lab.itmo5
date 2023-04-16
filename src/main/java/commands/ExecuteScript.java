@@ -138,7 +138,7 @@ public class ExecuteScript implements Command, OneArgument {
      * Проверка команды на то, есть ли у нее одиночный аргумент, если да, то нужно его установить
      * */
     private void commandSetParametr(Command command, String[] line){
-        if (command instanceof OneArgument && line.length >= 2){
+        if ((command instanceof OneArgument) && line.length >= 2){
             command.setParametr(line[1]);
         }
     }
@@ -152,7 +152,7 @@ public class ExecuteScript implements Command, OneArgument {
             if (line.length == Vehicle.class.getDeclaredFields().length + 1 - setNoInputTypes(NoInputTypes.values()).size() + 1){
                 command.setElement(vehicleFromArray(line));
             } else {
-                command.setElement(vehicleFromArray(Arrays.copyOfRange(line, 1, line.length - 1))); //у update_id еще один аргумент
+                command.setElement(vehicleFromArray(Arrays.copyOfRange(line, 1, line.length))); //у update_id еще один аргумент
             }
         }
     }
@@ -161,7 +161,7 @@ public class ExecuteScript implements Command, OneArgument {
      * */
     private Vehicle vehicleFromArray (String[] line) throws ReadValueException, IllegalAccessException {
         if (line.length - 1 < Vehicle.class.getDeclaredFields().length - setNoInputTypes.size()){ //-1 т.к. line[0] - имя команды
-            log.warning("Недостаточно аргументов для записи Vehicle");
+            throw new ReadValueException("Недостаточно аргументов для записи Vehicle");
         }
         Vehicle vehicle = new Vehicle();
         int num = 1; //line[0] - название команды

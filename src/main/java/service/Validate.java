@@ -27,31 +27,46 @@ public class Validate {
         if (str.length < 2){
             throw new ReadValueException("Неверный формат");
         }
-        Coordinates coordinates = new Coordinates(Float.parseFloat(str[0]), Float.parseFloat(str[1]));
-        if (coordinates.getY() > -762){
-            throw new ReadValueException("Координата Y не может быть больше -762");
+        try {
+            Coordinates coordinates = new Coordinates(Float.parseFloat(str[0]), Float.parseFloat(str[1]));
+            if (coordinates.getY() > -762){
+                throw new ReadValueException("Координата Y не может быть больше -762");
+            }
+            return coordinates;
+        } catch (NumberFormatException e){
+            throw new ReadValueException("Неверный тип числа");
         }
-        return coordinates;
+
     }
 
     private static Double doubleFromString (String value, Field field) throws IllegalArgumentException, ReadValueException {
-        Double ans = Double.parseDouble(value);
-        if (field.getName().equals("enginePower") || field.getName().equals("distanceTravelled")){
-            if (ans <= 0){
-                throw new ReadValueException(String.format("Значение поля %s должно быть больше 0", field.getName()));
+        try {
+            Double ans = Double.parseDouble(value);
+            if (field.getName().equals("enginePower") || field.getName().equals("distanceTravelled")){
+                if (ans <= 0){
+                    throw new ReadValueException(String.format("Значение поля %s должно быть больше 0", field.getName()));
+                }
             }
+            return ans;
+        } catch (NumberFormatException e){
+            throw new ReadValueException("Неверный тип числа");
         }
-        return ans;
+
     }
 
     private static Long longFromString (String value, Field field) throws IllegalArgumentException, ReadValueException {
-        Long ans = Long.parseLong(value);
-        if (field.getName().equals("capacity")){
-            if (ans <= 0){
-                throw new ReadValueException(String.format("Значение поля %s должно быть больше 0", field.getName()));
+        try {
+            Long ans = Long.parseLong(value);
+            if (field.getName().equals("capacity")){
+                if (ans <= 0){
+                    throw new ReadValueException(String.format("Значение поля %s должно быть больше 0", field.getName()));
+                }
             }
+            return ans;
+        } catch (NumberFormatException e){
+            throw new ReadValueException("Неверный тип числа");
         }
-        return ans;
+
     }
 
     private static VehicleType vehicleTypeFromString (String value) throws IllegalArgumentException, ReadValueException {

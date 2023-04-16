@@ -31,7 +31,8 @@ public class UpdateId implements Command, ElementArgument, OneArgument {
     public UpdateId(){}
     @Override
     public void setElement(Vehicle vehicle) {
-        pair.setL(vehicle);
+        if (vehicle != null)
+            pair.setL(vehicle);
     }
 
     @Override
@@ -45,7 +46,7 @@ public class UpdateId implements Command, ElementArgument, OneArgument {
 
     @Override
     public void clearFields() {
-        pair = null;
+        pair = new Pair<>();
     }
 
     @Override
@@ -60,7 +61,7 @@ public class UpdateId implements Command, ElementArgument, OneArgument {
 
     @Override
     public void execute() {
-        if (pair.getR() == null){
+        if (pair.getR() == null || pair.getL() == null){
             log.warning("Недостаточно параметров, чтобы выполнить комманду");
         } else {
             collectionClass.updateById(pair);
