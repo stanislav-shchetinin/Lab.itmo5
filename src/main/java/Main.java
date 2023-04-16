@@ -26,37 +26,13 @@ public class Main {
      * Метод main - стартовая точка проекта
      */
     public static void main(String[] args) {
-        try {
-            FileInputStream fileInputStream = new FileInputStream("files/test_files/test_get_file");
-            System.setIn(fileInputStream);
 
             CollectionClass collectionClass = new CollectionClass(); //Менеджер коллекции
             File file = getFile(new Scanner(System.in)); //NAME_FILE
 
-            fileInputStream.close();
-
             fromFileVehicle(collectionClass, new Scanner(parseFromCSVtoString(file))); //Считывание файла и запись его в collectionClass
 
-            String nameFile = "test16";
-
-            String nameInputFile = "files/test_files/test_cases/" + nameFile + "/test";
-            String nameOutputFile = "files/test_files/test_cases/" + nameFile + "/test_right";
-
-            FileInputStream newFileInputStream = new FileInputStream(nameInputFile);
-            PrintStream printStream = new PrintStream(nameOutputFile);
-            System.setIn(newFileInputStream);
-            System.setOut(printStream);
-
-            //Console.inputCommands(collectionClass, file); //Ввод команд из консоли
-
-            Command command = ExecuteScript.getInstance(collectionClass, file);
-            command.setParametr(nameInputFile);
-            command.execute();
-            command.clearFields();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+            Console.inputCommands(collectionClass, file); //Ввод команд из консоли
 
     }
 }   
